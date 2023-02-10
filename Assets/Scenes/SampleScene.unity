@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f40bd7c456c7a4baeded70360df215, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 0
+  gameOver: 0
   apples: 0
   oranges: 0
   bananas: 0
@@ -1427,11 +1427,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruits:
-  - {fileID: 7310942698959546115, guid: a01c274f3daa5494cb09d31327b2ac34, type: 3}
-  - {fileID: 5695590175472794504, guid: 234f889729f664b469a1bd1bc3b63d7a, type: 3}
   - {fileID: 5446048302518902911, guid: d2705862b0e89454c8ce622b33203f94, type: 3}
   - {fileID: 8103413596584198382, guid: 895b1b4d01632444192280d56dc9c369, type: 3}
-  - {fileID: 8246362033959644078, guid: fd17414a93759a54e982e240f64f911d, type: 3}
+  - {fileID: 7310942698959546115, guid: a01c274f3daa5494cb09d31327b2ac34, type: 3}
+  - {fileID: 5695590175472794504, guid: 234f889729f664b469a1bd1bc3b63d7a, type: 3}
   respawnTime: 0.5
 --- !u!1 &1983770295
 GameObject:

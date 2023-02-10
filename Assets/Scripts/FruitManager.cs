@@ -26,13 +26,17 @@ public class FruitManager : MonoBehaviour
 			}
 			else if (gameObject.name == "orange(Clone)")
 			{
-				playerData.points += 15;
+				playerData.points += 10;
 				playerData.oranges++;
 			}
 			else if (gameObject.name == "green-apple(Clone)")
 			{
 				playerData.apples++;
-				playerData.points += 10;
+				playerData.points += 5;
+			}
+			else if (gameObject.name == "bomb-vertical(Clone)")
+			{
+				playerData.gameOver = true;
 			}
 			playerData.totalFruits++;
 			Destroy(gameObject);

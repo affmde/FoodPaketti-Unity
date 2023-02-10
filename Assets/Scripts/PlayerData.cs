@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-	public int		level;
+	public bool		gameOver = false;
 	public int		apples;
 	public int		oranges;
 	public int		bananas;

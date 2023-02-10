@@ -9,7 +9,13 @@ public class SpawnManager : MonoBehaviour
 	private float timer;
 	[SerializeField]
 	private float respawnTime = 0.5f;
+	private PlayerData playerData;
 
+
+	private void	Awake()
+	{
+		playerData = FindObjectOfType<PlayerData>();
+	}
 
 	private bool	ProbableGetFruit()
 	{
@@ -20,21 +26,6 @@ public class SpawnManager : MonoBehaviour
 			return (false);
 	}
 
-	private int GetFruit()
-	{
-		int	rand = Random.Range(0, 100);
-		if (rand < 20)
-			return (1);
-		else if (rand < 40)
-			return (2);
-		else if (rand < 60)
-			return (3);
-		else if (rand < 80)
-			return (4);
-		else
-			return (5);
-	}
-
 	private Vector3 GetRandomPosition()
 	{
 		int	x = Random.Range(-10, 11);
@@ -43,22 +34,73 @@ public class SpawnManager : MonoBehaviour
 		return (pos);
 	}
 
-	private void	DeployFruit()
+	private void GenerateApples()
 	{
-		if (ProbableGetFruit())
-		{
+		Instantiate(fruits[0], GetRandomPosition(), Quaternion.Euler(0,0,0));
+	}
 
-			int	fruit = GetFruit();
-			if (fruit == 1)
-				Instantiate(fruits[0], GetRandomPosition(), Quaternion.Euler(0,0,0));
-			else if (fruit == 2)
-				Instantiate(fruits[1], GetRandomPosition(), Quaternion.Euler(0,0,0));
-			else if (fruit == 3)
-				Instantiate(fruits[2], GetRandomPosition(), Quaternion.Euler(0,0,0));
-			else if (fruit == 4)
-				Instantiate(fruits[3], GetRandomPosition(), Quaternion.Euler(0,0,0));
-			else if (fruit == 5)
-				Instantiate(fruits[4], GetRandomPosition(), Quaternion.Euler(0,0,0));
+	private void	GenerateOranges()
+	{
+		Instantiate(fruits[1], GetRandomPosition(), Quaternion.Euler(0,0,0));
+	}
+
+	private void	GenerateBananas()
+	{
+		Instantiate(fruits[2], GetRandomPosition(), Quaternion.Euler(0,0,0));
+	}
+
+	private void	GenerateBombs()
+	{
+		Instantiate(fruits[3], GetRandomPosition(), Quaternion.Euler(0,0,0));
+	}
+
+	private void GenerateFruit()
+	{
+		int	rand = Random.Range(0, 100);
+		if (rand < 50)
+			GenerateApples();
+		else if (rand < 75)
+			GenerateOranges();
+		else
+			GenerateBananas();
+	}
+
+	private void	Difficulty()
+	{
+		int	rand = Random.Range(0, 100);
+		if (playerData.time < 7)
+		{
+			if (rand < 80)
+				GenerateFruit();
+			else
+				GenerateBombs();
+		}
+		else if (playerData.time < 15)
+		{
+			if (rand < 70)
+				GenerateFruit();
+			else
+				GenerateBombs();
+		}
+		else if (playerData.time < 30)
+		{
+			if (rand < 55)
+				GenerateFruit();
+			else GenerateBombs();
+		}
+		else if (playerData.time < 45)
+		{
+			if (rand < 30)
+				GenerateFruit();
+			else
+				GenerateBombs();
+		}
+		else
+		{
+			if (rand < 10)
+				GenerateFruit();
+			else
+				GenerateBombs();
 		}
 	}
 
@@ -68,7 +110,7 @@ public class SpawnManager : MonoBehaviour
 		timer += Time.deltaTime;
 		if (timer >= respawnTime)
 		{
-			DeployFruit();
+			Difficulty();
 			timer = 0;
 		}
 	}
