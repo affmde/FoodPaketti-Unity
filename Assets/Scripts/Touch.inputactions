@@ -21,7 +21,7 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -38,9 +38,9 @@
                 },
                 {
                     "name": "",
-                    "id": "79d21580-769d-4a66-856d-e7695651f3bc",
+                    "id": "80cd0622-1a5c-4ded-a485-de565e64709c",
                     "path": "<Touchscreen>/Press",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "TouchPress",

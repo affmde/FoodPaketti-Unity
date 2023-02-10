@@ -18,7 +18,6 @@ public class FruitManager : MonoBehaviour
 			Destroy(gameObject);
 		if (col.collider.name == "Basket")
 		{
-			Debug.Log("Collided with basket. I am a " + gameObject.name);
 			if (gameObject.name == "banana(Clone)")
 			{
 				playerData.points += 25;
@@ -34,7 +33,7 @@ public class FruitManager : MonoBehaviour
 				playerData.apples++;
 				playerData.points += 5;
 			}
-			else if (gameObject.name == "bomb-vertical(Clone)")
+			else if (gameObject.name == "bombVertical(Clone)")
 			{
 				playerData.gameOver = true;
 			}

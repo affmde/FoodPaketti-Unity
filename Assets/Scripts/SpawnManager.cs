@@ -8,22 +8,13 @@ public class SpawnManager : MonoBehaviour
 	private List<GameObject> fruits;
 	private float timer;
 	[SerializeField]
-	private float respawnTime = 0.5f;
+	private float respawnTime = 0.1f;
 	private PlayerData playerData;
 
 
 	private void	Awake()
 	{
 		playerData = FindObjectOfType<PlayerData>();
-	}
-
-	private bool	ProbableGetFruit()
-	{
-		int	rand = Random.Range(0, 100);
-		if (rand < 80)
-			return (true);
-		else
-			return (false);
 	}
 
 	private Vector3 GetRandomPosition()

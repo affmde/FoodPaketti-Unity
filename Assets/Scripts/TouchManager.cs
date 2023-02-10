@@ -5,68 +5,54 @@ using UnityEngine.InputSystem;
 
 public class TouchManager : MonoBehaviour
 {
-    private PlayerInput playerInput;
 	[SerializeField]
-	private GameObject player;
-	private InputAction	touchPositionAction;
-	private InputAction	touchPressAction;
-	private bool hold = false;
-	private void Awake()
+	private float speed;
+	private TouchClass touchAction;
+	private Rigidbody2D rbody;
+	private Vector2 moveInput;
+	[SerializeField]
+	private GameObject basket;
+
+	void Awake()
 	{
-		playerInput = GetComponent<PlayerInput>();
-		touchPositionAction = playerInput.actions["TouchPosition"];
-		touchPressAction = playerInput.actions["TouchPress"];
-	}
-	
-	private void	TouchPressed(InputAction.CallbackContext context)
-	{
-		if (context.started)
-		{
-			Debug.Log("Started!!");
-		}
-		if (context.performed)
-		{
-			Debug.Log("Performed");
-			hold = true;
-		}
-		if (context.canceled)
-		{
-			Debug.Log("Canceled detected!!");
-			hold = false;
-		}
+		basket = GameObject.FindGameObjectWithTag("Basket");
+		touchAction = new TouchClass();
+		rbody = basket.GetComponent<Rigidbody2D>();
 	}
 
-	private void Move()
+	private void OnEnable()
 	{
-		Vector3 pos = Camera.main.ScreenToWorldPoint(touchPositionAction.ReadValue<Vector2>());
-		Vector3	newPlayerPosition = player.transform.position;
-		if ( pos.x > 0)
-		{
-			newPlayerPosition.x += 0.1f;
-			if (newPlayerPosition.x > 9)
-				newPlayerPosition.x = 9f;
-		}
-		else
-		{
-			newPlayerPosition.x -= 0.1f;
-			if (newPlayerPosition.x < -9)
-				newPlayerPosition.x = -9f;
-		}
-		player.transform.position = newPlayerPosition;
-	}
-	private void	OnEnable()
-	{
-		touchPressAction.performed += TouchPressed;
+		touchAction.Touch.Enable();
 	}
 
 	private void	OnDisable()
 	{
-		touchPressAction.performed -= TouchPressed;
+		touchAction.Touch.Disable();
 	}
 
-	private void	Update()
+	private void FixedUpdate()
 	{
-		if (hold)
-			Move();
+		Vector2 pos = touchAction.Touch.TouchPosition.ReadValue<Vector2>();
+		Debug.Log("Touch position: " + pos);
+		Vector2 newPos = basket.transform.position;
+		if (touchAction.Touch.TouchPress.IsPressed())
+		{
+			if (pos.x < Screen.width / 2)
+			{
+				newPos.x -= 0.3f;
+				if (newPos.x < -9)
+					newPos.x = -9;
+				basket.transform.position =newPos;
+			}
+			else
+			{
+				newPos.x += 0.3f;
+				if (newPos.x > Screen.width)
+					newPos.x = Screen.width;
+				basket.transform.position = newPos;
+			}
+			Debug.Log(basket.transform.position);
+			Debug.Log(Camera.main.ViewportToScreenPoint(basket.transform.position));
+		}
 	}
 }
