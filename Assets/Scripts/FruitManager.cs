@@ -18,17 +18,18 @@ public class FruitManager : MonoBehaviour
 			Destroy(gameObject);
 		if (col.collider.name == "Basket")
 		{
-			if (gameObject.name == "Banana")
+			Debug.Log("Collided with basket. I am a " + gameObject.name);
+			if (gameObject.name == "banana(Clone)")
 			{
 				playerData.points += 25;
 				playerData.bananas++;
 			}
-			else if (gameObject.name == "Orange")
+			else if (gameObject.name == "orange(Clone)")
 			{
 				playerData.points += 15;
 				playerData.oranges++;
 			}
-			else if (gameObject.name == "Apple")
+			else if (gameObject.name == "green-apple(Clone)")
 			{
 				playerData.apples++;
 				playerData.points += 10;
