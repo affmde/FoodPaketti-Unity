@@ -11,7 +11,18 @@ public class PlayerData : MonoBehaviour
 	public int		totalFruits;
 	public int		points;
 	public float	time;
+	public string	playerName;
 
+
+	public string Stringify()
+	{
+		return JsonUtility.ToJson(this);
+	}
+
+	public static PlayerData Parse(string json)
+	{
+		return (JsonUtility.FromJson<PlayerData>(json));
+	}
 
 	private void	Update()
 	{

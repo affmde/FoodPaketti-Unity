@@ -13,7 +13,7 @@ public class TouchManager : MonoBehaviour
 	[SerializeField]
 	private GameObject basket;
 
-	
+
 	void Awake()
 	{
 		basket = GameObject.FindGameObjectWithTag("Basket");
@@ -37,6 +37,7 @@ public class TouchManager : MonoBehaviour
 		Vector2 newPos = basket.transform.position;
 		if (touchAction.Touch.TouchPress.IsPressed())
 		{
+			Debug.Log("Button pressed");
 			if (pos.x < Screen.width / 2)
 			{
 				newPos.x -= 0.1f;
