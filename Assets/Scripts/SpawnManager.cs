@@ -10,18 +10,29 @@ public class SpawnManager : MonoBehaviour
 	[SerializeField]
 	private float respawnTime = 0.1f;
 	private PlayerData playerData;
-
+	private Vector2 screenBounds;
+	private float fruitWidth;
+	private float fruitHeight;
 
 	private void	Awake()
 	{
 		playerData = FindObjectOfType<PlayerData>();
 	}
 
+	private void	Start()
+	{
+		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+		fruitWidth = fruits[0].transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+		fruitHeight = fruits[0].transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+	}
+
 	private Vector3 GetRandomPosition()
 	{
-		int	x = Random.Range(-10, 11);
-		int y = 10;
+		float	x = Random.Range(screenBounds.x * -1 + fruitWidth, screenBounds.x - fruitWidth);
+		float y = 10;
 		Vector3 pos = new Vector3(x, y, 0);
+		pos.x = Mathf.Clamp(x, screenBounds.x * -1 + fruitWidth, screenBounds.x - fruitWidth);
+		pos.y = y;
 		return (pos);
 	}
 

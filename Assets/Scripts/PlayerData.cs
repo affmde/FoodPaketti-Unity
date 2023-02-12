@@ -15,8 +15,8 @@ public class PlayerData : MonoBehaviour
 
 	private void	Update()
 	{
-		if (gameOver)
-			SceneManager.LoadScene("GameOver");
+		//if (gameOver)
+		//	SceneManager.LoadScene("GameOver");
 	}
 }
 
