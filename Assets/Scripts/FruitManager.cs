@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FruitManager : MonoBehaviour
 {
-	private PlayerData playerData;
+	//private PlayerData playerData;
     
 
 	private void Awake()
 	{
-		playerData = FindAnyObjectByType<PlayerData>();
+		//playerData = FindAnyObjectByType<PlayerData>();
 	}
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -20,24 +20,24 @@ public class FruitManager : MonoBehaviour
 		{
 			if (gameObject.name == "banana(Clone)")
 			{
-				playerData.points += 25;
-				playerData.bananas++;
+				PlayerData.points += 25;
+				PlayerData.bananas++;
 			}
 			else if (gameObject.name == "orange(Clone)")
 			{
-				playerData.points += 10;
-				playerData.oranges++;
+				PlayerData.points += 10;
+				PlayerData.oranges++;
 			}
 			else if (gameObject.name == "green-apple(Clone)")
 			{
-				playerData.apples++;
-				playerData.points += 5;
+				PlayerData.apples++;
+				PlayerData.points += 5;
 			}
 			else if (gameObject.name == "bombVertical(Clone)")
 			{
-				playerData.gameOver = true;
+				PlayerData.gameOver = true;
 			}
-			playerData.totalFruits++;
+			PlayerData.totalFruits++;
 			Destroy(gameObject);
 		}
 	}

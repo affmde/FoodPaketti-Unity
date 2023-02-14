@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using UnityEngine.Networking;
-public class SendData : MonoBehaviour
+/*public class SendData : MonoBehaviour
 {
 	private PlayerData	playerData;
 	private bool		sendData;
@@ -15,7 +15,7 @@ public class SendData : MonoBehaviour
 
 	private void Start()
 	{
-		StartCoroutine(Download(playerData.playerName, result => {
+		StartCoroutine(Download(playerData.username, result => {
 			Debug.Log(result);
 		}));
 		sendData = false;
@@ -80,4 +80,15 @@ public class SendData : MonoBehaviour
 		}
 		sendData = true;
 	}
+
+	public static string Stringify()
+	{
+		return JsonUtility.ToJson(this);
+	}
+
+	public static PlayerData Parse(string json)
+	{
+		return (JsonUtility.FromJson<PlayerData>(json));
+	}
 }
+*/

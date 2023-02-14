@@ -9,14 +9,14 @@ public class SpawnManager : MonoBehaviour
 	private float timer;
 	[SerializeField]
 	private float respawnTime = 0.1f;
-	private PlayerData playerData;
+	//private PlayerData playerData;
 	private Vector2 screenBounds;
 	private float fruitWidth;
 	private float fruitHeight;
 
 	private void	Awake()
 	{
-		playerData = FindObjectOfType<PlayerData>();
+		//playerData = FindObjectOfType<PlayerData>();
 	}
 
 	private void	Start()
@@ -70,27 +70,27 @@ public class SpawnManager : MonoBehaviour
 	private void	Difficulty()
 	{
 		int	rand = Random.Range(0, 100);
-		if (playerData.time < 7)
+		if (PlayerData.time < 7)
 		{
 			if (rand < 80)
 				GenerateFruit();
 			else
 				GenerateBombs();
 		}
-		else if (playerData.time < 15)
+		else if (PlayerData.time < 15)
 		{
 			if (rand < 70)
 				GenerateFruit();
 			else
 				GenerateBombs();
 		}
-		else if (playerData.time < 30)
+		else if (PlayerData.time < 30)
 		{
 			if (rand < 55)
 				GenerateFruit();
 			else GenerateBombs();
 		}
-		else if (playerData.time < 45)
+		else if (PlayerData.time < 45)
 		{
 			if (rand < 30)
 				GenerateFruit();
