@@ -6,9 +6,17 @@ using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
+	public PlayerData playerData;
+
+	private void Awake()
+	{
+		playerData = new PlayerData();
+		DontDestroyOnLoad(transform.gameObject);
+	}
+
 	void Update()
 	{
-		if (PlayerData.gameOver)
+		if (playerData.gameOver)
 			SceneManager.LoadScene("GameOver");
 	}
 }

@@ -3,52 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using UnityEngine.Networking;
-/*public class SendData : MonoBehaviour
-{
-	private PlayerData	playerData;
-	private bool		sendData;
+using System.Linq;
 
+public class SendData : MonoBehaviour
+{
+	private string username;
+	private PlayerData playerData;
+	public PlayerData[] loadedData;
 	private void Awake()
 	{
-		playerData = FindAnyObjectByType<PlayerData>();
+		playerData = new PlayerData();
 	}
 
 	private void Start()
 	{
-		StartCoroutine(Download(playerData.username, result => {
-			Debug.Log(result);
-		}));
-		sendData = false;
+		
 	}
 
-    IEnumerator Download(string id, System.Action<PlayerData> callback = null)
+	public IEnumerator FetchData()
 	{
-		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3000/plummies/" + id))
+		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/save/getHighscores"))
 		{
 			yield return (request.SendWebRequest());
 
-			if (request.isNetworkError || request.isHttpError)
-			{
+			if (request.result == UnityWebRequest.Result.ConnectionError)
 				Debug.Log(request.error);
-				if (callback != null)
-				{
-					callback.Invoke(null);
-				}
-			}
 			else
 			{
-				if (callback != null)
-				{
-					callback.Invoke(PlayerData.Parse(request.downloadHandler.text));
-				}
+				string jsonString = fixJson(request.downloadHandler.text);
+				loadedData = JsonHelper.FromJson<PlayerData>(jsonString);
 			}	
 		}
 	}
 
-
-	IEnumerator Post(string profile, System.Action<bool> callback = null)
+	public void GetData()
 	{
-		using (UnityWebRequest request = new UnityWebRequest("http://localhost:3000/plummies", "POST"))
+		StartCoroutine(FetchData());
+	}
+
+	public static List<T> ReadFromJson<T> (string json)
+	{
+		if (string.IsNullOrEmpty(json) || json == "{}")
+			return (new List<T>());
+		
+		List<T> res = JsonHelper.FromJson<T>(json).ToList();
+		return (res);
+	}
+
+	public IEnumerator Post(string profile, System.Action<bool> callback = null)
+	{
+		using (UnityWebRequest request = new UnityWebRequest("http://localhost:3001/save/", "POST"))
 		{
 			request.SetRequestHeader("Content-Type", "application/json");
 			byte[] bodyRaw = Encoding.UTF8.GetBytes(profile);
@@ -70,25 +74,30 @@ using UnityEngine.Networking;
 		}
 	}
 
-	public void PostData()
+	/*public void PostData()
 	{
 		if (!sendData)
 		{
-			StartCoroutine(Post(playerData.Stringify(), result => {
+			StartCoroutine(Post(Stringify(), result => {
 				Debug.Log(result);
 			}));
 		}
 		sendData = true;
-	}
+	}*/
 
-	public static string Stringify()
+	/*public static string Stringify()
 	{
 		return JsonUtility.ToJson(this);
-	}
+	}*/
 
 	public static PlayerData Parse(string json)
 	{
 		return (JsonUtility.FromJson<PlayerData>(json));
 	}
+
+	string fixJson(string value)
+	{
+		value = "{\"Items\":" + value + "}";
+		return value;
+	}
 }
-*/

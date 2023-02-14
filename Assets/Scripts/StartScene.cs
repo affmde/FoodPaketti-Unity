@@ -13,6 +13,6 @@ public class StartScene : MonoBehaviour
 
 	public void	GoTOHeighScores()
 	{
-		SceneManager.LoadScene("Heighscores");
+		SceneManager.LoadScene("Highscores");
 	}
 }

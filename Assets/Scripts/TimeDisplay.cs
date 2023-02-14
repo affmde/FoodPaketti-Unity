@@ -5,23 +5,23 @@ using TMPro;
 
 public class TimeDisplay : MonoBehaviour
 {
-	//private PlayerData playerData;
+	private PlayerData playerData;
 	[SerializeField]
 	private TextMeshProUGUI text;
 	private void Awake()
 	{
-		//playerData = FindObjectOfType<PlayerData>();
+		playerData = FindObjectOfType<GameState>().playerData;
 	}
 
 	private void	Start()
 	{
-		text.text = PlayerData.time.ToString();
+		text.text = playerData.duration.ToString();
 	}
 
 	private void	Update()
 	{
-		PlayerData.time += Time.deltaTime;
-		int	timeDisplay = Mathf.FloorToInt(PlayerData.time);
+		playerData.duration += Time.deltaTime;
+		int	timeDisplay = Mathf.FloorToInt(playerData.duration);
 		text.text = timeDisplay.ToString();
 	}
 	

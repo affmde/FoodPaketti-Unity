@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class PlayerData
+[System.Serializable]
+public class PlayerData
 {
-	public static bool		gameOver = false;
-	public static int		apples;
-	public static int		oranges;
-	public static int		bananas;
-	public static int		totalFruits;
-	public static int		points;
-	public static float	time;
-	public static string	username;
-
-
+	public bool		gameOver = false;
+	public int		apples;
+	public int		oranges;
+	public int		bananas;
+	public int		totalFruits;
+	public int		points;
+	public float	duration;
+	public string	username;
 }
 
+
+[System.Serializable]
+public class Player
+{
+    public string playerId;
+    public string playerLoc;
+    public string playerNick;
+}

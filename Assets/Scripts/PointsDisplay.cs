@@ -6,12 +6,12 @@ public class PointsDisplay : MonoBehaviour
 {
 	[SerializeField]
 	private TextMeshProUGUI text;
-	//private PlayerData playerData;
+	private PlayerData playerData;
 
 
 	private void	Awake()
 	{
-		//playerData = FindObjectOfType<PlayerData>();
+		playerData = FindObjectOfType<GameState>().playerData;
 	}
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class PointsDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		int	points = PlayerData.points;
+		int	points = playerData.points;
 		text.text = points.ToString();
     }
 }
