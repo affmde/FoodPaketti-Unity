@@ -10,7 +10,7 @@ public class PlayerData
 	public int		oranges;
 	public int		bananas;
 	public int		totalFruits;
-	public int		points;
+	public int		score;
 	public float	duration;
 	public string	username;
 }

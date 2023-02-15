@@ -23,7 +23,7 @@ public class PointsDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		int	points = playerData.points;
+		int	points = playerData.score;
 		text.text = points.ToString();
     }
 }

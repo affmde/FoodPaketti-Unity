@@ -12,13 +12,21 @@ public class Highscores : MonoBehaviour
 		data = GetComponent<SendData>();
 	}
 
+	private void	PopulateGrid(PlayerData [] data)
+	{
+		int	i = 0;
+		foreach(var item in data)
+		{
+			cols[i].text = item.username;
+			cols[i + 1].text = item.score.ToString();
+			cols[i + 2].text = item.duration.ToString();
+			i += 3;
+		}
+	}
 	private IEnumerator LoadData()
 	{
 		yield return (data.FetchData());
-		Debug.Log(data.loadedData[0].apples);
-		cols[0].text = data.loadedData[0].username;
-		cols[1].text = data.loadedData[0].points.ToString();
-		cols[2].text = data.loadedData[0].duration.ToString();
+		PopulateGrid(data.loadedData);
 	}
 	private void Start()
 	{

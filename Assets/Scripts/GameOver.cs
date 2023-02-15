@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour
 
 	private void Start()
 	{
-		pointsText.text = playerData.points.ToString();
+		pointsText.text = playerData.score.ToString();
 	}
 
 }
