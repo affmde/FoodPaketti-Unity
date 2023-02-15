@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class Highscores : MonoBehaviour
 {
 	private SendData data;
@@ -28,6 +29,12 @@ public class Highscores : MonoBehaviour
 		yield return (data.FetchData());
 		PopulateGrid(data.loadedData);
 	}
+
+	public void ReturnScene()
+	{
+		SceneManagement.ChangeScene("StartScene");
+	}
+
 	private void Start()
 	{
 		StartCoroutine(LoadData());

@@ -29,7 +29,7 @@ public class SpawnManager : MonoBehaviour
 	private Vector3 GetRandomPosition()
 	{
 		float	x = Random.Range(screenBounds.x * -1 + fruitWidth, screenBounds.x - fruitWidth);
-		float y = 10;
+		float y = screenBounds.y + 1;
 		Vector3 pos = new Vector3(x, y, 0);
 		pos.x = Mathf.Clamp(x, screenBounds.x * -1 + fruitWidth, screenBounds.x - fruitWidth);
 		pos.y = y;

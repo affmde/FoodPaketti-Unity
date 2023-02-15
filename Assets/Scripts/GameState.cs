@@ -17,6 +17,9 @@ public class GameState : MonoBehaviour
 	void Update()
 	{
 		if (playerData.gameOver)
+		{
+			playerData.gameOver = false;
 			SceneManager.LoadScene("GameOver");
+		}
 	}
 }

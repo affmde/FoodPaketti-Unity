@@ -7,18 +7,7 @@ using System.Linq;
 
 public class SendData : MonoBehaviour
 {
-	private string username;
-	private PlayerData playerData;
 	public PlayerData[] loadedData;
-	private void Awake()
-	{
-		playerData = new PlayerData();
-	}
-
-	private void Start()
-	{
-		
-	}
 
 	public IEnumerator FetchData()
 	{
@@ -34,20 +23,6 @@ public class SendData : MonoBehaviour
 				loadedData = JsonHelper.FromJson<PlayerData>(jsonString);
 			}	
 		}
-	}
-
-	public void GetData()
-	{
-		StartCoroutine(FetchData());
-	}
-
-	public static List<T> ReadFromJson<T> (string json)
-	{
-		if (string.IsNullOrEmpty(json) || json == "{}")
-			return (new List<T>());
-		
-		List<T> res = JsonHelper.FromJson<T>(json).ToList();
-		return (res);
 	}
 
 	public IEnumerator Post(string profile, System.Action<bool> callback = null)
@@ -74,25 +49,18 @@ public class SendData : MonoBehaviour
 		}
 	}
 
-	/*public void PostData()
+	public void PostData(PlayerData playerInfo)
 	{
-		if (!sendData)
-		{
-			StartCoroutine(Post(Stringify(), result => {
-				Debug.Log(result);
-			}));
-		}
-		sendData = true;
-	}*/
+		string jsonString = Stringify(playerInfo);
+		Debug.Log(jsonString);
+		/*StartCoroutine(Post(jsonString, result => {
+			Debug.Log(result);
+		}));*/
+	}
 
-	/*public static string Stringify()
+	public static string Stringify(PlayerData playerInfo)
 	{
-		return JsonUtility.ToJson(this);
-	}*/
-
-	public static PlayerData Parse(string json)
-	{
-		return (JsonUtility.FromJson<PlayerData>(json));
+		return JsonUtility.ToJson(playerInfo);
 	}
 
 	string fixJson(string value)
