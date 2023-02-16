@@ -322,7 +322,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5303953
+  orthographic size: 2.1891892
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -414,6 +414,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7681b958c7a8b314f88ca17096f0bcfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    gameOver: 0
+    apples: 0
+    oranges: 0
+    bananas: 0
+    totalFruits: 0
+    score: 0
+    duration: 0
+    username: 
 --- !u!1 &1205436970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,9 +1226,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruits:
-  - {fileID: 5446048302518902911, guid: d2705862b0e89454c8ce622b33203f94, type: 3}
+  - {fileID: 8853143796576392239, guid: 6f825a13a9ed9fc4eb795975fe54f08a, type: 3}
   - {fileID: 8103413596584198382, guid: 895b1b4d01632444192280d56dc9c369, type: 3}
-  - {fileID: 7310942698959546115, guid: a01c274f3daa5494cb09d31327b2ac34, type: 3}
+  - {fileID: 1350844979640205711, guid: a01c274f3daa5494cb09d31327b2ac34, type: 3}
   - {fileID: 5695590175472794504, guid: 234f889729f664b469a1bd1bc3b63d7a, type: 3}
   respawnTime: 0.5
 --- !u!1 &1941298193
@@ -1251,8 +1260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fcc9e8729d59c94c841030bf0c6ffc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 0}
-  sendData: 0
 --- !u!4 &1941298195
 Transform:
   m_ObjectHideFlags: 0

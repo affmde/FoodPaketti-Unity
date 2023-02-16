@@ -28,7 +28,7 @@ public class FruitManager : MonoBehaviour
 				playerData.score += 10;
 				playerData.oranges++;
 			}
-			else if (gameObject.name == "green-apple(Clone)")
+			else if (gameObject.name == "apple(Clone)")
 			{
 				playerData.apples++;
 				playerData.score += 5;
