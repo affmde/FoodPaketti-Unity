@@ -5,12 +5,12 @@ using TMPro;
 
 public class Highscores : MonoBehaviour
 {
-	private SendData data;
+	//private SendData data;
 	[SerializeField]
 	private List<TextMeshProUGUI> cols;
 	private void Awake()
 	{
-		data = GetComponent<SendData>();
+		//data = GetComponent<SendData>();
 	}
 
 	private void	PopulateGrid(PlayerData [] data)
@@ -26,8 +26,8 @@ public class Highscores : MonoBehaviour
 	}
 	private IEnumerator LoadData()
 	{
-		yield return (data.FetchData());
-		PopulateGrid(data.loadedData);
+		yield return (SendData.FetchData());
+		PopulateGrid(SendData.loadedData);
 	}
 
 	public void ReturnScene()

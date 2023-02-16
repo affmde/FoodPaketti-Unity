@@ -17,7 +17,6 @@ public class GameOver : MonoBehaviour
 	public void ReadStringInput(string str)
 	{
 		playerData.username = str;
-		Debug.Log(playerData.username);
 	}
 
 	private void Start()
