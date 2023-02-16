@@ -14,7 +14,7 @@ public class FruitManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
 	{
-		if (col.collider.name == "DownBorder")
+		if (col.collider.name == "BorderDown")
 			Destroy(gameObject);
 		if (col.collider.name == "Basket")
 		{

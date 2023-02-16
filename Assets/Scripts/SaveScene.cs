@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class SaveScene : MonoBehaviour
 {
-	//private SendData api;
-	private PlayerData data;
-
+	private GameState	state;
 	private void Awake()
 	{
-		//api = GetComponent<SendData>();
-		data = FindAnyObjectByType<GameState>().playerData;
+		state = FindAnyObjectByType<GameState>();
 	}
 
 
@@ -19,16 +16,15 @@ public class SaveScene : MonoBehaviour
 
 	}
 
-	public void PostData(PlayerData data)
+	private void PostData(PlayerData data)
 	{
-		//string jsonString = SendData.Stringify(data);
-		//Debug.Log("json string: " + jsonString);
 		StartCoroutine(SendData.Post(data));
-		//StartCoroutine(SendData.Post(jsonString));
+		state.ResetData();
+		SceneManagement.ChangeScene("StartScene");
 	}
 
 	public void SaveScore()
 	{
-		PostData(data);
+		PostData(state.playerData);
 	}
 }

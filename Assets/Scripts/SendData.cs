@@ -24,20 +24,6 @@ public static class SendData
 			}	
 		}
 	}
-	/*public static IEnumerator Post(string profile)
-	{
-		using UnityWebRequest request = new UnityWebRequest("http://localhost:3001/save","POST");
-		var bodyRaw = Encoding.UTF8.GetBytes(profile);
-        request.uploadHandler = new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = new DownloadHandlerBuffer();
-		request.SetRequestHeader(name: "Content-Type", value: "application/json");
-        yield return request.SendWebRequest();
-        
-		if (request.result == UnityWebRequest.Result.Success)
-			Debug.Log(request.downloadHandler.text);
-		else
-			Debug.Log(request.error);
-	}*/
 
 	public static IEnumerator Post(PlayerData data)
 	{
@@ -58,19 +44,6 @@ public static class SendData
             Debug.Log( "Error downloading: " + download.error );
         else
             Debug.Log(download.downloadHandler.text);
-
-			
-		/*using (UnityWebRequest request = UnityWebRequest.Post("http://localhost:3001/save", form))
-		{
-			yield return request.SendWebRequest();
-			if (request.result != UnityWebRequest.Result.Success)
-				Debug.Log("error: " + request.error);
-			else
-			{
-				string results = request.downloadHandler.text;
-				Debug.Log(results);
-			}
-		}*/
 	}
 
 	public static string Stringify(PlayerData playerInfo)
