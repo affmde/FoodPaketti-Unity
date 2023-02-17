@@ -19,11 +19,6 @@ public class GameOver : MonoBehaviour
 		playerData.username = str;
 	}
 
-	public void	PlayAgain()
-	{
-		SceneManagement.ChangeScene("SampleScene");
-	}
-
 	private void Start()
 	{
 		pointsText.text = playerData.score.ToString();

@@ -16,6 +16,18 @@ public class SaveScene : MonoBehaviour
 
 	}
 
+	public void	PlayAgain()
+	{
+		state.ResetData();
+		SceneManagement.ChangeScene("SampleScene");
+	}
+
+	public void	GoToHome()
+	{
+		state.ResetData();
+		SceneManagement.ChangeScene("StartScene");
+	}
+
 	private void PostData(PlayerData data)
 	{
 		StartCoroutine(SendData.Post(data));

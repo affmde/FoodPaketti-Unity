@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
 	[SerializeField]
 	private List<GameObject> fruits;
+	[SerializeField]
 	private float timer;
 	[SerializeField]
 	private float respawnTime = 0.1f;
@@ -88,7 +89,8 @@ public class SpawnManager : MonoBehaviour
 		{
 			if (rand < 55)
 				GenerateFruit();
-			else GenerateBombs();
+			else 
+				GenerateBombs();
 		}
 		else if (playerData.duration < 45)
 		{
