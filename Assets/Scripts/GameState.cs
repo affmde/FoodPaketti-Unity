@@ -20,14 +20,16 @@ public class GameState : MonoBehaviour
 		playerData.apples = 0;
 		playerData.oranges = 0;
 		playerData.bananas = 0;
+		playerData.gameOver = false;
+		playerData.totalFruits = 0;
 	}
 
-	void Update()
+	/*void Update()
 	{
 		if (playerData.gameOver)
 		{
 			playerData.gameOver = false;
 			SceneManager.LoadScene("GameOver");
 		}
-	}
+	}*/
 }

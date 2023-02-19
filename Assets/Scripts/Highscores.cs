@@ -8,9 +8,10 @@ public class Highscores : MonoBehaviour
 	//private SendData data;
 	[SerializeField]
 	private List<TextMeshProUGUI> cols;
+	private AudioSource audioSource;
 	private void Awake()
 	{
-		//data = GetComponent<SendData>();
+		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
 	}
 
 	private void	PopulateGrid(PlayerData [] data)
@@ -32,6 +33,7 @@ public class Highscores : MonoBehaviour
 
 	public void ReturnScene()
 	{
+		audioSource.Play();
 		SceneManagement.ChangeScene("StartScene");
 	}
 

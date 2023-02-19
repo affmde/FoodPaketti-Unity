@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveScene : MonoBehaviour
 {
 	private GameState	state;
+	public List<AudioSource> audioSource;
 	private void Awake()
 	{
 		state = FindAnyObjectByType<GameState>();
@@ -18,12 +19,14 @@ public class SaveScene : MonoBehaviour
 
 	public void	PlayAgain()
 	{
+		audioSource[0].Play();
 		state.ResetData();
 		SceneManagement.ChangeScene("SampleScene");
 	}
 
 	public void	GoToHome()
 	{
+		audioSource[0].Play();
 		state.ResetData();
 		SceneManagement.ChangeScene("StartScene");
 	}
@@ -38,5 +41,6 @@ public class SaveScene : MonoBehaviour
 	public void SaveScore()
 	{
 		PostData(state.playerData);
+		audioSource[1].Play();
 	}
 }

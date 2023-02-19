@@ -112,7 +112,7 @@ public class SpawnManager : MonoBehaviour
 	void Update()
 	{
 		timer += Time.deltaTime;
-		if (timer >= respawnTime)
+		if (timer >= respawnTime && !playerData.gameOver)
 		{
 			Difficulty();
 			timer = 0;

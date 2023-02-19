@@ -5,18 +5,29 @@ using UnityEngine;
 public class FruitManager : MonoBehaviour
 {
 	private PlayerData playerData;
-    
+	public ParticleSystem explosion;
+	[SerializeField]
+	private AudioSource audioSource;
 
 	private void Awake()
 	{
 		playerData = FindAnyObjectByType<GameState>().playerData;
+		if (gameObject.name == "bombVertical(Clone)")
+			audioSource = GameObject.Find("BombExplode").GetComponent<AudioSource>();
+		else
+			audioSource = GameObject.Find("FruitPickSound").GetComponent<AudioSource>();
 	}
 
-    private void OnCollisionEnter2D(Collision2D col)
+	private void Start()
+	{
+		//explode = Instantiate(bombExplosion);
+	}
+
+	private void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.collider.name == "BorderDown")
 			Destroy(gameObject);
-		if (col.collider.name == "Basket")
+		if (col.collider.name == "Basket" && playerData.gameOver == false)
 		{
 			if (gameObject.name == "banana(Clone)")
 			{
@@ -36,7 +47,13 @@ public class FruitManager : MonoBehaviour
 			else if (gameObject.name == "bombVertical(Clone)")
 			{
 				playerData.gameOver = true;
+				ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+				ps.Play();
+				audioSource.Play();
+				Destroy(gameObject);
+				return ;
 			}
+			audioSource.Play();
 			playerData.totalFruits++;
 			Destroy(gameObject);
 		}
