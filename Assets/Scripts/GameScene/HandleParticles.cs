@@ -13,7 +13,7 @@ public class HandleParticles : MonoBehaviour
 
 	public void OnParticleSystemStopped()
 	{
-		SceneManagement.ChangeScene("GameOver");
+		SceneManagement.ChangeScene("GameOver", Color.black, 2.5f);
 	}
 
 }

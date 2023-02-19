@@ -7,20 +7,24 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour
 {
 	private AudioSource audioSource;
+	private AudioSource backtrack;
 
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
+		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 	}
 	public void	StartGame()
 	{
 		audioSource.Play();
-		SceneManagement.ChangeScene("SampleScene");
+		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
+		SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
 	}
 
 	public void	GoTOHeighScores()
 	{
 		audioSource.Play();
-		SceneManagement.ChangeScene("Highscores");
+		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
+		SceneManagement.ChangeScene("Highscores", Color.black, 1f);
 	}
 }

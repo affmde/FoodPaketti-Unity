@@ -8,20 +8,17 @@ public class FruitManager : MonoBehaviour
 	public ParticleSystem explosion;
 	[SerializeField]
 	private AudioSource audioSource;
-
+	private AudioSource backtrack;
 	private void Awake()
 	{
 		playerData = FindAnyObjectByType<GameState>().playerData;
+		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		if (gameObject.name == "bombVertical(Clone)")
 			audioSource = GameObject.Find("BombExplode").GetComponent<AudioSource>();
 		else
 			audioSource = GameObject.Find("FruitPickSound").GetComponent<AudioSource>();
 	}
 
-	private void Start()
-	{
-		//explode = Instantiate(bombExplosion);
-	}
 
 	private void OnCollisionEnter2D(Collision2D col)
 	{
@@ -48,7 +45,9 @@ public class FruitManager : MonoBehaviour
 			{
 				playerData.gameOver = true;
 				ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+				
 				ps.Play();
+				StartCoroutine(FadeInOutSound.StartFade(backtrack, ps.main.duration, 0.25f));
 				audioSource.Play();
 				Destroy(gameObject);
 				return ;

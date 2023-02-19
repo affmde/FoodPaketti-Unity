@@ -6,9 +6,11 @@ public class SaveScene : MonoBehaviour
 {
 	private GameState	state;
 	public List<AudioSource> audioSource;
+	private AudioSource backtrack;
 	private void Awake()
 	{
 		state = FindAnyObjectByType<GameState>();
+		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 	}
 
 
@@ -21,21 +23,24 @@ public class SaveScene : MonoBehaviour
 	{
 		audioSource[0].Play();
 		state.ResetData();
-		SceneManagement.ChangeScene("SampleScene");
+		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
+		SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
 	}
 
 	public void	GoToHome()
 	{
 		audioSource[0].Play();
 		state.ResetData();
-		SceneManagement.ChangeScene("StartScene");
+		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
+		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
 	private void PostData(PlayerData data)
 	{
 		StartCoroutine(SendData.Post(data));
 		state.ResetData();
-		SceneManagement.ChangeScene("StartScene");
+		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
+		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
 	public void SaveScore()

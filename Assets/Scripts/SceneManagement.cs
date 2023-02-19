@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public static class SceneManagement
 {
-	public static void ChangeScene(string scene)
+	public static void ChangeScene(string scene, Color color, float duration)
 	{
-		Initiate.Fade(scene, Color.black, 0.25f);
+		Initiate.Fade(scene, color, duration);
 		//SceneManager.LoadScene(scene);
 	}
 }
