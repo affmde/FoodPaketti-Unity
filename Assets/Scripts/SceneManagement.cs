@@ -8,6 +8,7 @@ public static class SceneManagement
 {
 	public static void ChangeScene(string scene)
 	{
-		SceneManager.LoadScene(scene);
+		Initiate.Fade(scene, Color.black, 0.25f);
+		//SceneManager.LoadScene(scene);
 	}
 }

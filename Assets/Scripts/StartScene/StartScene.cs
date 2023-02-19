@@ -15,12 +15,12 @@ public class StartScene : MonoBehaviour
 	public void	StartGame()
 	{
 		audioSource.Play();
-		SceneManager.LoadScene("SampleScene");
+		SceneManagement.ChangeScene("SampleScene");
 	}
 
 	public void	GoTOHeighScores()
 	{
 		audioSource.Play();
-		SceneManager.LoadScene("Highscores");
+		SceneManagement.ChangeScene("Highscores");
 	}
 }
