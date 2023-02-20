@@ -15,6 +15,11 @@ public class StartScene : MonoBehaviour
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		loadingScreen = FindAnyObjectByType<SceneLoader>();
 	}
+
+	private void Start()
+	{
+		PlayerData.ResetData();
+	}
 	public void	StartGame()
 	{
 		audioSource.Play();

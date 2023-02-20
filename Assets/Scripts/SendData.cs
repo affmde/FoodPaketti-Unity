@@ -7,7 +7,7 @@ using System.Linq;
 
 public static class SendData
 {
-	public static PlayerData[] loadedData;
+	public static DataForSend[] loadedData;
 
 	public static IEnumerator FetchData()
 	{
@@ -20,23 +20,20 @@ public static class SendData
 			else
 			{
 				string jsonString = fixJson(request.downloadHandler.text);
-				loadedData = JsonHelper.FromJson<PlayerData>(jsonString);
+				loadedData = JsonHelper.FromJson<DataForSend>(jsonString);
 			}	
 		}
 	}
 
-	public static IEnumerator Post(PlayerData data)
+	public static IEnumerator Post()
 	{
-		Debug.Log("player data: " + data.username + data.score + data.duration + data.apples + data.bananas + data.oranges);
 		WWWForm form = new WWWForm();
-		form.AddField("username", data.username);
-		form.AddField("score", data.score);
-		form.AddField("apples", data.apples);
-		form.AddField("bananas", data.bananas);
-		form.AddField("oranges", data.oranges);
-		form.AddField("duration", Mathf.FloorToInt(data.duration));
-		Debug.Log(form.data);
-
+		form.AddField("username", PlayerPrefs.GetString("username"));
+		form.AddField("score", PlayerPrefs.GetInt("score"));
+		form.AddField("apples", PlayerPrefs.GetInt("apples"));
+		form.AddField("bananas", PlayerPrefs.GetInt("bananas"));
+		form.AddField("oranges", PlayerPrefs.GetInt("oranges"));
+		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 
 		var download= UnityWebRequest.Post("http://localhost:3001/save", form);
 		yield return download.SendWebRequest();
@@ -46,11 +43,6 @@ public static class SendData
             Debug.Log(download.downloadHandler.text);
 	}
 
-	public static string Stringify(PlayerData playerInfo)
-	{
-		playerInfo.duration = Mathf.FloorToInt(playerInfo.duration);
-		return JsonUtility.ToJson(playerInfo);
-	}
 
 	static string fixJson(string value)
 	{

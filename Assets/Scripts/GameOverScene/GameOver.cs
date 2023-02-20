@@ -5,23 +5,24 @@ using TMPro;
 
 public class GameOver : MonoBehaviour
 {
-	private PlayerData playerData;
+	//private PlayerData playerData;
 	[SerializeField]
 	private TextMeshProUGUI pointsText;
 	
 	private void Awake()
 	{
-		playerData = FindObjectOfType<GameState>().playerData;
+		//playerData = FindObjectOfType<GameState>().playerData;
 	}
 
 	public void ReadStringInput(string str)
 	{
-		playerData.username = str;
+		//playerData.username = str;
+		PlayerPrefs.SetString("username", str);
 	}
 
 	private void Start()
 	{
-		pointsText.text = playerData.score.ToString();
+		pointsText.text = PlayerPrefs.GetInt("score").ToString();
 	}
 
 }

@@ -744,7 +744,6 @@ GameObject:
   m_Component:
   - component: {fileID: 134387171}
   - component: {fileID: 134387170}
-  - component: {fileID: 134387172}
   m_Layer: 0
   m_Name: HighscoresManager
   m_TagString: Untagged
@@ -810,18 +809,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &134387172
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134387169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fcc9e8729d59c94c841030bf0c6ffc6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &135535240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,15 +1644,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Top 10
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b28ff752c5a98ca478f9200eb46d4b19, type: 2}
-  m_sharedMaterial: {fileID: -3650564068463748006, guid: b28ff752c5a98ca478f9200eb46d4b19, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281808717
+  m_fontColor: {r: 0.3018868, g: 0.21758634, b: 0.21758634, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1682,7 +1669,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 71.6
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1

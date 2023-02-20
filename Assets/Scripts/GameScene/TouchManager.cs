@@ -13,12 +13,11 @@ public class TouchManager : MonoBehaviour
 	[SerializeField]
 	private GameObject basket;
 	private Vector2 screenBounds;
-	private GameState gameState;
+
 
 	void Awake()
 	{
 		basket = GameObject.FindGameObjectWithTag("Basket");
-		gameState = FindAnyObjectByType<GameState>();
 		touchAction = new TouchClass();
 		rbody = basket.GetComponent<Rigidbody2D>();
 	}
@@ -40,21 +39,22 @@ public class TouchManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (!gameState.playerData.gameOver)
+		if (!PlayerData.gameOver)
 		{
 			Vector2 pos = touchAction.Touch.TouchPosition.ReadValue<Vector2>();
 			Vector2 touchToWorld = Camera.main.ScreenToWorldPoint(pos);
 			Vector2 newPos = basket.transform.position;
 			if (touchAction.Touch.TouchPress.IsPressed())
 			{
-				if (touchToWorld.x < screenBounds.x / 2)
+				Debug.Log("touch on: " + touchToWorld.x + "and border at: " + screenBounds.x);
+				if (touchToWorld.x < 0)
 				{
-					newPos.x -= 0.1f;
+					newPos.x -= 0.05f;
 					basket.transform.position =newPos;
 				}
 				else
 				{
-					newPos.x += 0.1f;
+					newPos.x += 0.05f;
 					basket.transform.position = newPos;
 				}
 			}

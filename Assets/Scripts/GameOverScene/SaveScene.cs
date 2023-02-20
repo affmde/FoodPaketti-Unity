@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class SaveScene : MonoBehaviour
 {
-	private GameState	state;
 	public List<AudioSource> audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loader;
 	private void Awake()
 	{
-		state = FindAnyObjectByType<GameState>();
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		loader = FindAnyObjectByType<SceneLoader>();
 	}
@@ -18,32 +16,30 @@ public class SaveScene : MonoBehaviour
 	public void	PlayAgain()
 	{
 		audioSource[0].Play();
-		state.ResetData();
+		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		//SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
-		loader.StartGame("SampleScene");
+		SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
 	}
 
 	public void	GoToHome()
 	{
 		audioSource[0].Play();
-		state.ResetData();
+		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		//SceneManagement.ChangeScene("StartScene", Color.black, 1f);
-		loader.StartGame("StartScene");
+		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
-	private void PostData(PlayerData data)
+	private void PostData()
 	{
-		StartCoroutine(SendData.Post(data));
-		state.ResetData();
+		StartCoroutine(SendData.Post());
+		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
 		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
 	public void SaveScore()
 	{
-		PostData(state.playerData);
+		PostData();
 		audioSource[1].Play();
 	}
 }

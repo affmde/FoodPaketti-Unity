@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class HandleParticles : MonoBehaviour
 {
-	private SceneLoader loader;
-
-	private void Awake()
-	{
-		loader = FindObjectOfType<SceneLoader>();
-	}
-
 	private void Start()
 	{
 		var main = GetComponent<ParticleSystem>().main;
@@ -20,8 +13,8 @@ public class HandleParticles : MonoBehaviour
 
 	public void OnParticleSystemStopped()
 	{
-		//SceneManagement.ChangeScene("GameOver", Color.black, 2.5f);
-		loader.StartGame("GameOver");
+		Debug.Log("Systm is stopped");
+		SceneManagement.ChangeScene("GameOver", Color.black, 2.5f);
 	}
 
 }

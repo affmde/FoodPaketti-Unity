@@ -18,7 +18,7 @@ public class Highscores : MonoBehaviour
 		loader = FindObjectOfType<SceneLoader>();
 	}
 
-	private void	PopulateGrid(PlayerData [] data)
+	private void	PopulateGrid(DataForSend[] data)
 	{
 		int	i = 0;
 		foreach(var item in data)
@@ -39,8 +39,7 @@ public class Highscores : MonoBehaviour
 	{
 		audioSource.Play();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.3f));
-		//SceneManagement.ChangeScene("StartScene", Color.white, 1f);
-		loader.StartGame("StartScene");
+		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
 	private void Start()

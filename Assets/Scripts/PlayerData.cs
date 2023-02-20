@@ -3,9 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerData
+public static class PlayerData
 {
-	public bool		gameOver = false;
+	public static bool		gameOver = false;
+	/*public int		apples;
+	public int		oranges;
+	public int		bananas;
+	public int		totalFruits;
+	public int		score;
+	public float	duration;
+	public string	username;*/
+
+	public static void	ResetData()
+	{
+		PlayerPrefs.SetInt("score", 0);
+		PlayerPrefs.SetInt("apples", 0);
+		PlayerPrefs.SetInt("bananas", 0);
+		PlayerPrefs.SetInt("oranges", 0);
+		PlayerPrefs.SetInt("totalFruits", 0);
+		PlayerPrefs.SetFloat("duration", 0);
+		PlayerPrefs.SetString("username", "");
+		PlayerData.gameOver = false;
+	}
+}
+
+[System.Serializable]
+public class DataForSend
+{
 	public int		apples;
 	public int		oranges;
 	public int		bananas;
@@ -13,13 +37,4 @@ public class PlayerData
 	public int		score;
 	public float	duration;
 	public string	username;
-}
-
-
-[System.Serializable]
-public class Player
-{
-    public string playerId;
-    public string playerLoc;
-    public string playerNick;
 }

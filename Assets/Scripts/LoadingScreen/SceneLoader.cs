@@ -14,17 +14,13 @@ public class SceneLoader : MonoBehaviour
 	TextMeshProUGUI progressText;
 	private AsyncOperation operation;
 
-    public void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
     public void StartGame(string sceneToLoad)
     {
         StartCoroutine(StartLoad(sceneToLoad));
     }
     IEnumerator StartLoad(string sceneToLoad)
     {
-        //loadingScreen.SetActive(true);
+        loadingScreen.SetActive(true);
         yield return StartCoroutine(FadeLoadingScreen(1, 1));
         operation = SceneManager.LoadSceneAsync(sceneToLoad);
         while (!operation.isDone)
@@ -34,7 +30,7 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
         yield return StartCoroutine(FadeLoadingScreen(0, 1));
-        //loadingScreen.SetActive(false);
+        loadingScreen.SetActive(false);
     }
     IEnumerator FadeLoadingScreen(float targetValue, float duration)
     {

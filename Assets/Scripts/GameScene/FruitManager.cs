@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class FruitManager : MonoBehaviour
 {
-	private PlayerData playerData;
+	//private PlayerData playerData;
 	public ParticleSystem explosion;
 	[SerializeField]
 	private AudioSource audioSource;
 	private AudioSource backtrack;
 	private void Awake()
 	{
-		playerData = FindAnyObjectByType<GameState>().playerData;
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		if (gameObject.name == "bombVertical(Clone)")
 			audioSource = GameObject.Find("BombExplode").GetComponent<AudioSource>();
@@ -24,35 +23,36 @@ public class FruitManager : MonoBehaviour
 	{
 		if (col.collider.name == "BorderDown")
 			Destroy(gameObject);
-		if (col.collider.name == "Basket" && playerData.gameOver == false)
+		if (col.collider.name == "Basket" && PlayerData.gameOver == false)
 		{
 			if (gameObject.name == "banana(Clone)")
 			{
-				playerData.score += 25;
-				playerData.bananas++;
+				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 25);
+				PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananase") + 1);
 			}
 			else if (gameObject.name == "orange(Clone)")
 			{
-				playerData.score += 10;
-				playerData.oranges++;
+				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 10);
+				PlayerPrefs.SetInt("oranges", PlayerPrefs.GetInt("oranges") + 25);
 			}
 			else if (gameObject.name == "apple(Clone)")
 			{
-				playerData.apples++;
-				playerData.score += 5;
+				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 5);
+				PlayerPrefs.SetInt("apples", PlayerPrefs.GetInt("apples") + 1);
 			}
 			else if (gameObject.name == "bombVertical(Clone)")
 			{
-				playerData.gameOver = true;
+				PlayerData.gameOver = true;
+				Debug.Log(PlayerData.gameOver);
 				ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
 				Destroy(gameObject);
 				ps.Play();
-				StartCoroutine(FadeInOutSound.StartFade(backtrack, ps.main.duration, 0.25f));
+				//StartCoroutine(FadeInOutSound.StartFade(backtrack, ps.main.duration, 0.25f));
 				audioSource.Play();
 				return ;
 			}
 			audioSource.Play();
-			playerData.totalFruits++;
+			PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			Destroy(gameObject);
 		}
 	}
