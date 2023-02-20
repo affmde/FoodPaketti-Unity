@@ -10,10 +10,12 @@ public class Highscores : MonoBehaviour
 	private List<TextMeshProUGUI> cols;
 	private AudioSource audioSource;
 	private AudioSource backtrack;
+	private SceneLoader loader;
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
+		loader = FindObjectOfType<SceneLoader>();
 	}
 
 	private void	PopulateGrid(PlayerData [] data)
@@ -37,7 +39,8 @@ public class Highscores : MonoBehaviour
 	{
 		audioSource.Play();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.3f));
-		SceneManagement.ChangeScene("StartScene", Color.white, 1f);
+		//SceneManagement.ChangeScene("StartScene", Color.white, 1f);
+		loader.StartGame("StartScene");
 	}
 
 	private void Start()

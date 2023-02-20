@@ -45,11 +45,10 @@ public class FruitManager : MonoBehaviour
 			{
 				playerData.gameOver = true;
 				ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-				
+				Destroy(gameObject);
 				ps.Play();
 				StartCoroutine(FadeInOutSound.StartFade(backtrack, ps.main.duration, 0.25f));
 				audioSource.Play();
-				Destroy(gameObject);
 				return ;
 			}
 			audioSource.Play();
