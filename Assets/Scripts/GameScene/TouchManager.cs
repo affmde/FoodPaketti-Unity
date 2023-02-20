@@ -46,7 +46,6 @@ public class TouchManager : MonoBehaviour
 			Vector2 newPos = basket.transform.position;
 			if (touchAction.Touch.TouchPress.IsPressed())
 			{
-				Debug.Log("touch on: " + touchToWorld.x + "and border at: " + screenBounds.x);
 				if (touchToWorld.x < 0)
 				{
 					newPos.x -= 0.05f;
