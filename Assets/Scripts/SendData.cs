@@ -11,7 +11,7 @@ public static class SendData
 
 	public static IEnumerator FetchData()
 	{
-		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/save/getHighscores"))
+		using (UnityWebRequest request = UnityWebRequest.Get("https://foodpaketti.monster/save/getHighscores"))
 		{
 			yield return (request.SendWebRequest());
 
@@ -35,7 +35,7 @@ public static class SendData
 		form.AddField("oranges", PlayerPrefs.GetInt("oranges"));
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 
-		var download= UnityWebRequest.Post("http://localhost:3001/save", form);
+		var download= UnityWebRequest.Post("https://foodpaketti.monster/save", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
             Debug.Log( "Error downloading: " + download.error );

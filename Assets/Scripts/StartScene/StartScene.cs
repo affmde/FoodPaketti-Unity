@@ -35,4 +35,9 @@ public class StartScene : MonoBehaviour
 		//SceneManagement.ChangeScene("Highscores", Color.black, 1f);
 		loadingScreen.StartGame("Highscores");
 	}
+
+	public void	QuitApp()
+	{
+		Application.Quit();
+	}
 }
