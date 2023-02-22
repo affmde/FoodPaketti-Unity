@@ -14,7 +14,7 @@ public class HandleParticles : MonoBehaviour
 	public void OnParticleSystemStopped()
 	{
 		Debug.Log("Systm is stopped");
-		SceneManagement.ChangeScene("GameOver", Color.black, 2.5f);
+		//SceneManagement.ChangeScene("GameOver", Color.black, 2.5f);
 	}
 
 }

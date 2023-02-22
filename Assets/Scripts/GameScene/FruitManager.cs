@@ -18,7 +18,6 @@ public class FruitManager : MonoBehaviour
 			audioSource = GameObject.Find("FruitPickSound").GetComponent<AudioSource>();
 	}
 
-
 	private void OnCollisionEnter2D(Collision2D col)
 	{
 		if (col.collider.name == "BorderDown")
@@ -29,16 +28,19 @@ public class FruitManager : MonoBehaviour
 			{
 				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 25);
 				PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananase") + 1);
+				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
 			else if (gameObject.name == "orange(Clone)")
 			{
 				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 10);
 				PlayerPrefs.SetInt("oranges", PlayerPrefs.GetInt("oranges") + 25);
+				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
 			else if (gameObject.name == "apple(Clone)")
 			{
 				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 5);
 				PlayerPrefs.SetInt("apples", PlayerPrefs.GetInt("apples") + 1);
+				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
 			else if (gameObject.name == "bombVertical(Clone)")
 			{
@@ -48,10 +50,9 @@ public class FruitManager : MonoBehaviour
 				Destroy(gameObject);
 				ps.Play();
 				audioSource.Play();
-				return ;
+				SceneManagement.ChangeScene("GameOver", Color.black, 0.5f);
 			}
 			audioSource.Play();
-			PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			Destroy(gameObject);
 		}
 	}
