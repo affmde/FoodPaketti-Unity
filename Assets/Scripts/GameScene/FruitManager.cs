@@ -27,7 +27,7 @@ public class FruitManager : MonoBehaviour
 			if (gameObject.name == "banana(Clone)")
 			{
 				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 25);
-				PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananase") + 1);
+				PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
 				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
 			else if (gameObject.name == "orange(Clone)")
