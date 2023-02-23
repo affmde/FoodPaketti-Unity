@@ -23,6 +23,7 @@ public static class PlayerData
 		PlayerPrefs.SetInt("totalFruits", 0);
 		PlayerPrefs.SetFloat("duration", 0);
 		PlayerPrefs.SetString("username", "");
+		PlayerPrefs.SetInt("multiplayer", 1);
 		PlayerData.gameOver = false;
 	}
 }

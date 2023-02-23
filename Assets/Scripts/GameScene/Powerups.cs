@@ -7,12 +7,14 @@ public class Powerups : MonoBehaviour
 {
 	private Image fruitPowerup;
 	[SerializeField]
-	private float	fruitLimit = 10f;
+	private float	fruitLimit = 2f;
 	private int		currentFruit;
 	private	int		referenceValue;
 	private string	fruitRef;
-
-
+	[SerializeField]
+	private GameObject anaimationManager;
+	private AnimatedFruits fruitAnim;
+	private	AudioSource powerupSound;
 	private void GetFruitRef()
 	{
 		if (fruitPowerup.name == "ApplePowerup")
@@ -25,7 +27,9 @@ public class Powerups : MonoBehaviour
 
 	private void Awake()
 	{
+		fruitAnim = anaimationManager.GetComponent<AnimatedFruits>();
 		fruitPowerup = GetComponent<Image>();
+		powerupSound = GameObject.Find("PowerupSound").GetComponent<AudioSource>();
 	}
 
 	private void Start()
@@ -40,10 +44,10 @@ public class Powerups : MonoBehaviour
 		currentFruit = PlayerPrefs.GetInt(fruitRef) - referenceValue;
 		if (currentFruit >= fruitLimit)
 		{
-			currentFruit = 0;
+			referenceValue = PlayerPrefs.GetInt(fruitRef);
+			powerupSound.Play();
+			fruitAnim.AnimateFruits(fruitPowerup.name);
 		}
 		fruitPowerup.fillAmount = currentFruit / fruitLimit;
-		if (fruitPowerup.name == "BananaPowerup")
-			Debug.Log("fill amount: " + fruitPowerup.fillAmount);
 	}
 }
