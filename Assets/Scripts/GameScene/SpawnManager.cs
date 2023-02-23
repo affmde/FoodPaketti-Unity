@@ -15,10 +15,6 @@ public class SpawnManager : MonoBehaviour
 	private float fruitWidth;
 	private float fruitHeight;
 
-	private void	Awake()
-	{
-		
-	}
 
 	private void	Start()
 	{

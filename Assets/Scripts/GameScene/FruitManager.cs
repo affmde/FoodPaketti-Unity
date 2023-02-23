@@ -26,19 +26,19 @@ public class FruitManager : MonoBehaviour
 		{
 			if (gameObject.name == "banana(Clone)")
 			{
-				PlayerPrefs.SetInt("score", (PlayerPrefs.GetInt("score") + 25) * PlayerPrefs.GetInt("multiplayer"));
+				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 25 * PlayerPrefs.GetInt("multiplier"));
 				PlayerPrefs.SetInt("bananas", PlayerPrefs.GetInt("bananas") + 1);
 				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
 			else if (gameObject.name == "orange(Clone)")
 			{
-				PlayerPrefs.SetInt("score", (PlayerPrefs.GetInt("score") + 10) * PlayerPrefs.GetInt("multiplayer"));
+				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 10 * PlayerPrefs.GetInt("multiplier"));
 				PlayerPrefs.SetInt("oranges", PlayerPrefs.GetInt("oranges") + 1);
 				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
 			else if (gameObject.name == "apple(Clone)")
 			{
-				PlayerPrefs.SetInt("score", (PlayerPrefs.GetInt("score") + 5) * PlayerPrefs.GetInt("multiplayer"));
+				PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 5 * PlayerPrefs.GetInt("multiplier"));
 				PlayerPrefs.SetInt("apples", PlayerPrefs.GetInt("apples") + 1);
 				PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			}
