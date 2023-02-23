@@ -11,6 +11,8 @@ public class Highscores : MonoBehaviour
 	private AudioSource audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loader;
+	[SerializeField]
+	private GameObject loading;
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
@@ -46,4 +48,5 @@ public class Highscores : MonoBehaviour
 	{
 		StartCoroutine(LoadData());
 	}
+
 }
