@@ -44,6 +44,7 @@ public class FruitManager : MonoBehaviour
 			}
 			else if (gameObject.name == "bombVertical(Clone)")
 			{
+				Debug.Log("killed by " + gameObject.name);
 				PlayerData.gameOver = true;
 				Debug.Log(PlayerData.gameOver);
 				ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
