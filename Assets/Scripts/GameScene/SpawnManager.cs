@@ -7,7 +7,9 @@ public class SpawnManager : MonoBehaviour
 	[SerializeField]
 	private List<GameObject> fruits;
 	[SerializeField]
-	private float timer;
+	private float	timer;
+	private float	defusedTimer;
+	private float refDefTime;
 	[SerializeField]
 	private float respawnTime = 0.1f;
 
@@ -104,16 +106,50 @@ public class SpawnManager : MonoBehaviour
 		}
 	}
 
+
+	private void SpawnAfterDefusing()
+	{
+		Debug.Log("Spawn after defusing active");
+		int rand = Random.Range(0, 100);
+		if (rand < 25)
+			GenerateApples();
+		else if (rand < 50)
+			GenerateOranges();
+		else if (rand < 75)
+			GenerateBananas();
+		else
+			GenerateBombs();
+	}
+
     // Update is called once per frame
 	void Update()
 	{
 		if (!PlayerData.gameOver)
 		{
-			timer += Time.deltaTime;
-			if (timer >= respawnTime)
+			if (!PlayerData.bombDefused)
 			{
-				Difficulty();
-				timer = 0;
+				timer += Time.deltaTime;
+				if (timer >= respawnTime)
+				{
+					Difficulty();
+					timer = 0;
+				}
+			}
+			else
+			{
+				defusedTimer += Time.deltaTime;
+				refDefTime += defusedTimer;
+				if (defusedTimer >= respawnTime)
+				{
+					defusedTimer = 0;
+					SpawnAfterDefusing();
+				}
+				if (refDefTime >= 25)
+				{
+					defusedTimer = 0;
+					refDefTime = 0;
+					PlayerData.bombDefused = false;
+				}
 			}
 		}
 	}

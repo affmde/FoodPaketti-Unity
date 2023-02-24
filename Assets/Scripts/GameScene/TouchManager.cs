@@ -7,13 +7,13 @@ public class TouchManager : MonoBehaviour
 {
 	[SerializeField]
 	private float speed;
-	private TouchClass touchAction;
+	public TouchClass touchAction;
 	private Rigidbody2D rbody;
 	private Vector2 moveInput;
 	[SerializeField]
 	private GameObject basket;
 	private Vector2 screenBounds;
-
+	public Vector3	touchToWorld;
 
 	void Awake()
 	{
@@ -42,7 +42,7 @@ public class TouchManager : MonoBehaviour
 		if (!PlayerData.gameOver)
 		{
 			Vector2 pos = touchAction.Touch.TouchPosition.ReadValue<Vector2>();
-			Vector2 touchToWorld = Camera.main.ScreenToWorldPoint(pos);
+			touchToWorld = Camera.main.ScreenToWorldPoint(pos);
 			Vector2 newPos = basket.transform.position;
 			if (touchAction.Touch.TouchPress.IsPressed())
 			{

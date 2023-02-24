@@ -5,14 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public static class PlayerData
 {
-	public static bool		gameOver = false;
-	/*public int		apples;
-	public int		oranges;
-	public int		bananas;
-	public int		totalFruits;
-	public int		score;
-	public float	duration;
-	public string	username;*/
+	public static bool	gameOver = false;
+	public static bool	bombDefused = false;
 
 	public static void	ResetData()
 	{
@@ -25,6 +19,7 @@ public static class PlayerData
 		PlayerPrefs.SetString("username", "");
 		PlayerPrefs.SetInt("multiplier", 1);
 		PlayerData.gameOver = false;
+		PlayerData.bombDefused = false;
 	}
 }
 
