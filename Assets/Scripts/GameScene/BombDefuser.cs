@@ -20,18 +20,36 @@ public class BombDefuser : MonoBehaviour
 	{
 		image.fillAmount = 0;
 		button.interactable = false;
+		PlayerData.bombDefused = false;
 	}
+
+	IEnumerator resetDefuseBool()
+	{
+		yield return (new WaitForSeconds(25));
+		fillTimeRef = PlayerPrefs.GetFloat("duration");
+		PlayerData.bombDefused = false;
+	}
+
 	public void	DefuseBomb()
 	{
 		PlayerData.bombDefused = true;
-		fillTimeRef = PlayerPrefs.GetFloat("duration");
+		image.fillAmount = 0;
+		StartCoroutine(resetDefuseBool());
 	}
 
 	private void Update()
 	{
-		currentTime = PlayerPrefs.GetFloat("duration") - fillTimeRef;
-		image.fillAmount = Mathf.Clamp01(currentTime / timeToFill);
-		if (currentTime >= timeToFill)
+		if (!PlayerData.bombDefused)
+		{
+			currentTime = PlayerPrefs.GetFloat("duration") - fillTimeRef;
+			image.fillAmount = Mathf.Clamp01(currentTime / timeToFill);
+		}
+		if (image.fillAmount == 1)
+		{
 			button.interactable = true;
+			currentTime = 0;
+		}
+		else
+			button.interactable = false;
 	}
 }

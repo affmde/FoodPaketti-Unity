@@ -148,7 +148,7 @@ public class SpawnManager : MonoBehaviour
 				{
 					defusedTimer = 0;
 					refDefTime = 0;
-					PlayerData.bombDefused = false;
+					//PlayerData.bombDefused = false;
 				}
 			}
 		}

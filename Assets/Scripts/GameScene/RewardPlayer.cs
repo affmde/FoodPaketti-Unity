@@ -10,6 +10,7 @@ public class RewardPlayer : MonoBehaviour
 	private Vector2 screenBounds;
 	private bool	RewardReleased;
 	private float randomX;
+	[SerializeField] private float speed;
 
 	private void	Start()
 	{
@@ -27,7 +28,7 @@ public class RewardPlayer : MonoBehaviour
 
 	public void	ReleaseReward()
 	{
-		Vector3 newPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.05f, gameObject.transform.position.z);
+		Vector3 newPos = new Vector3(randomX, gameObject.transform.position.y - speed * Time.deltaTime, gameObject.transform.position.z);
 		gameObject.transform.position = newPos;
 	}
 
@@ -38,7 +39,7 @@ public class RewardPlayer : MonoBehaviour
 			Destroy(gameObject);
 		if (col.collider.name == "Basket" && PlayerData.gameOver == false)
 		{
-			PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 200);
+			PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 100);
 			Destroy(gameObject);
 		}
 	}
