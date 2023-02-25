@@ -8,7 +8,7 @@ public class HandleBonus : MonoBehaviour
 	[SerializeField]
 	public Slider		slider;
 	[SerializeField]
-	private float		bonusMaxTime = 8;
+	private float		bonusMaxTime = 10;
 	private float		bonusTime;
 	public float		currentAmount;
 
@@ -19,19 +19,6 @@ public class HandleBonus : MonoBehaviour
 		slider.value = 0;
 		slider.gameObject.SetActive(false);
 	}
-
-	/*private void OnCollisionEnter2D(Collision2D col)
-	{
-		if (col.collider.name == "Bonus(Clone)")
-		{
-			slider.gameObject.SetActive(true);
-			bonusOn = true;
-			PlayerPrefs.SetInt("multiplier", 2);
-			Destroy(col.collider.gameObject);
-			currentAmount = 1;
-		}
-	}*/
-
 
 	private void	Bonus()
 	{
@@ -54,6 +41,4 @@ public class HandleBonus : MonoBehaviour
 		if (bonusOn)
 			Bonus();
 	}
-
-
 }

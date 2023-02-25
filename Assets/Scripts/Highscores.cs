@@ -5,7 +5,6 @@ using TMPro;
 
 public class Highscores : MonoBehaviour
 {
-	//private SendData data;
 	[SerializeField]
 	private List<TextMeshProUGUI> cols;
 	private AudioSource audioSource;

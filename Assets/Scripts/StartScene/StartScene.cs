@@ -24,7 +24,6 @@ public class StartScene : MonoBehaviour
 	{
 		audioSource.Play();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
-		//SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
 		loadingScreen.StartGame("SampleScene");
 	}
 
@@ -32,7 +31,6 @@ public class StartScene : MonoBehaviour
 	{
 		audioSource.Play();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
-		//SceneManagement.ChangeScene("Highscores", Color.black, 1f);
 		loadingScreen.StartGame("Highscores");
 	}
 

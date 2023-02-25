@@ -44,7 +44,6 @@ public class BonusSpawner : MonoBehaviour
 		if (currentVal > minTotalFruits)
 		{
 			refValue = PlayerPrefs.GetInt("totalFruits");
-			Debug.Log("Bonus spawn");
 			GenerateBonus();
 		}
 	}

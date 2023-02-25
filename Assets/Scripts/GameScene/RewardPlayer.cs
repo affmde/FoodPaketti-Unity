@@ -11,6 +11,13 @@ public class RewardPlayer : MonoBehaviour
 	private bool	RewardReleased;
 	private float randomX;
 	[SerializeField] private float speed;
+	private AudioSource rewardDropSound;
+	private bool		audioPlaying = false;
+
+	private void Awake()
+	{
+		rewardDropSound = GetComponent<AudioSource>();
+	}
 
 	private void	Start()
 	{
@@ -49,7 +56,14 @@ public class RewardPlayer : MonoBehaviour
 	private void	Update()
 	{
 		if (transform.position.x >= randomX && !RewardReleased)
+		{
 			RewardReleased = true;
+			if (!audioPlaying)
+			{
+				rewardDropSound.Play();
+				audioPlaying = true;
+			}
+		}
 		if (RewardReleased)
 			ReleaseReward();
 	}

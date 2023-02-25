@@ -109,7 +109,6 @@ public class SpawnManager : MonoBehaviour
 
 	private void SpawnAfterDefusing()
 	{
-		Debug.Log("Spawn after defusing active");
 		int rand = Random.Range(0, 100);
 		if (rand < 25)
 			GenerateApples();
@@ -121,7 +120,6 @@ public class SpawnManager : MonoBehaviour
 			GenerateBombs();
 	}
 
-    // Update is called once per frame
 	void Update()
 	{
 		if (!PlayerData.gameOver)
@@ -148,7 +146,6 @@ public class SpawnManager : MonoBehaviour
 				{
 					defusedTimer = 0;
 					refDefTime = 0;
-					//PlayerData.bombDefused = false;
 				}
 			}
 		}

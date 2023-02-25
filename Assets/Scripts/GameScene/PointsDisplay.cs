@@ -7,16 +7,14 @@ public class PointsDisplay : MonoBehaviour
 	[SerializeField]
 	private TextMeshProUGUI text;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	void Start()
+	{
 		text.text = 0.ToString();
-    }
+	}
 
-    // Update is called once per frame
-    void Update()
-    {
+	void Update()
+	{
 		int	points = PlayerPrefs.GetInt("score");
 		text.text = points.ToString();
-    }
+	}
 }

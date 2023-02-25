@@ -8,20 +8,20 @@ public class BirdPlayer : MonoBehaviour
 	[SerializeField] private float speed = 5f;
 	private Vector2 screenBounds;
 	private Rigidbody2D rb;
-	
+	private AudioSource birdSound;
 
 	private void Awake()
 	{
 		birdTransform = GetComponent<Transform>();
 		rb = GetComponentInChildren<Rigidbody2D>();
+		birdSound = GetComponent<AudioSource>();
 	}
 
 	private void Start()
 	{
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+		birdSound.Play();
 	}
-
-
 	
 
 	private void Update()

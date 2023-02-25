@@ -23,5 +23,4 @@ public class TimeDisplay : MonoBehaviour
 		int	timeDisplay = Mathf.FloorToInt(PlayerPrefs.GetFloat("duration"));
 		text.text = timeDisplay.ToString();
 	}
-	
 }

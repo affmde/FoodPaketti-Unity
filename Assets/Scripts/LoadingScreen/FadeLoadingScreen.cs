@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FadeLoadingScreen : MonoBehaviour
 {
-    public CanvasGroup loadingScreen;
+	public CanvasGroup loadingScreen;
 
 
 	private void Awake()
@@ -12,10 +12,10 @@ public class FadeLoadingScreen : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-    void Start()
-    {
-        StartCoroutine(FadeLoadScreen(2));
-    }
+	void Start()
+	{
+		StartCoroutine(FadeLoadScreen(2));
+	}
 
 	IEnumerator FadeLoadScreen(float duration)
 	{
@@ -29,10 +29,4 @@ public class FadeLoadingScreen : MonoBehaviour
 		}
 		loadingScreen.alpha = 1;
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

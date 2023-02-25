@@ -15,10 +15,9 @@ public class AsyncSceneManager : MonoBehaviour
 		loadingOperation = SceneManager.LoadSceneAsync(nextScene);
 	}
 
-    // Update is called once per frame
-    void Update()
-    {
-        progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
+	void Update()
+	{
+		progressBar.value = Mathf.Clamp01(loadingOperation.progress / 0.9f);
 		progressText.text = Mathf.Round(progressBar.value * 100).ToString() + "%";
-    }
+	}
 }

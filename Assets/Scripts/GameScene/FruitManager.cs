@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FruitManager : MonoBehaviour
 {
-	//private PlayerData playerData;
 	public ParticleSystem explosion;
 	[SerializeField]
 	private AudioSource audioSource;
@@ -44,9 +43,7 @@ public class FruitManager : MonoBehaviour
 			}
 			else if (gameObject.name == "bombVertical(Clone)")
 			{
-				Debug.Log("killed by " + gameObject.name);
 				PlayerData.gameOver = true;
-				Debug.Log(PlayerData.gameOver);
 				ParticleSystem ps = Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
 				Destroy(gameObject);
 				ps.Play();
