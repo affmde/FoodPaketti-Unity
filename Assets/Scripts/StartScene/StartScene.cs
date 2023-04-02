@@ -19,8 +19,6 @@ public class StartScene : MonoBehaviour
 	private void Start()
 	{
 		PlayerData.ResetData();
-		Debug.Log("Name: " + UserData.name);
-		Debug.Log("Facebook id: " + UserData.facebookId);
 	}
 	public void	StartGame()
 	{

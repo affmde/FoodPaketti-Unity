@@ -32,7 +32,7 @@ public class Highscores : MonoBehaviour
 	}
 	private IEnumerator LoadData()
 	{
-		yield return (SendData.FetchData());
+		yield return (SendData.FetchData("https://foodpaketti.monster/save/getHighscores"));
 		PopulateGrid(SendData.loadedData);
 	}
 

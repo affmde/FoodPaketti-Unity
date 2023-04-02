@@ -55,6 +55,7 @@ public class FacebookLogin : MonoBehaviour
         else if (FB.IsLoggedIn)
         {
             AmILoggedIn = true;
+			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
         }
     }
 
@@ -62,6 +63,7 @@ public class FacebookLogin : MonoBehaviour
     {
         if (FB.IsInitialized)
         {
+			SceneManagement.ChangeScene("RegisterLogin", Color.black, 1f);
             IsSDKReady = true;
             FacebookLog("Ready!", true, false, false);
             LogIn(false);
@@ -136,8 +138,8 @@ public class FacebookLogin : MonoBehaviour
                     ScanFBPerm(perm);
                 }
 
-                RequestUserInfo();
-				SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+				RequestUserInfo();
+				PostLoginData();
             }
             else
             {
@@ -307,5 +309,14 @@ public class FacebookLogin : MonoBehaviour
             Debug.LogWarning("<facebook> " + _msg);
         }
     }
+
+
+
+	private void PostLoginData()
+	{
+		StartCoroutine(SendData.PostUserLogin());
+		//PlayerData.ResetData();
+		//SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+	}
 
 }
