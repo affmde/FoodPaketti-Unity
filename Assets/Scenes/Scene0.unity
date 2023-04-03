@@ -241,7 +241,7 @@ MonoBehaviour:
   fbCanAccessEmail: 1
   fbCanAccessProfile: 1
   fbCanAccessFriends: 1
-  AmILoggedIn: 1
+  AmILoggedIn: 0
   PERM_EMAIL: 1
   PERM_PUBLICPROFILE: 1
   PERM_USERFRIENDS: 1

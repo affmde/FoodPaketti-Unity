@@ -60,17 +60,50 @@ public static class SendData
             Debug.Log(download.downloadHandler.text);
 	}
 
+	//Create User
+	public static IEnumerator RegisterUSer()
+	{
+		Debug.Log("Start process o creating user");
+		WWWForm form = new WWWForm();
+		form.AddField("facebookId", UserData.facebookId);
+		form.AddField("name", UserData.name);
+		form.AddField("email", UserData.email);
+
+		var download= UnityWebRequest.Post("http://localhost:3001/users/addUser", form);
+		yield return download.SendWebRequest();
+		if (download.result != UnityWebRequest.Result.Success)
+		{
+			Debug.Log( "Error downloading: " + download.error );
+			string message = JsonUtility.FromJson<UserDataForSend>(download.downloadHandler.text).message;
+			Debug.Log("message: " + message);	
+		}
+        else
+        {
+			Debug.Log("User registered successfully");
+			Debug.Log("result: " + download.downloadHandler.text);
+			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+		}
+	}
+
+	//User Login
 	public static IEnumerator PostUserLogin()
 	{
 		WWWForm form = new WWWForm();
 		form.AddField("facebookId", UserData.facebookId);
+		form.AddField("name", UserData.name);
+		form.AddField("email", UserData.email);
 
 		var download= UnityWebRequest.Post("http://localhost:3001/users/login", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
-            Debug.Log( "Error downloading: " + download.error );
+		{
+			Debug.Log( "Error downloading: " + download.error );
+			Debug.Log("Please register first with facebook");
+			//RegisterUSer();
+		}
         else
         {
+			Debug.Log("User log in. ready to json");
 			string jsonString = download.downloadHandler.text;
 			UserData.jsonUserDataString =  jsonString;
 			SceneManagement.ChangeScene("StartScene", Color.black, 1f);

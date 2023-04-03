@@ -63,7 +63,6 @@ public class FacebookLogin : MonoBehaviour
     {
         if (FB.IsInitialized)
         {
-			SceneManagement.ChangeScene("RegisterLogin", Color.black, 1f);
             IsSDKReady = true;
             FacebookLog("Ready!", true, false, false);
             LogIn(false);
@@ -139,7 +138,6 @@ public class FacebookLogin : MonoBehaviour
                 }
 
 				RequestUserInfo();
-				PostLoginData();
             }
             else
             {
@@ -168,7 +166,7 @@ public class FacebookLogin : MonoBehaviour
             {
                 myPerms.Add("name");
                 myPerms.Add("first_name");
-                myPerms.Add("last_name");
+                //myPerms.Add("last_name");
             }
             else
             {
@@ -184,21 +182,22 @@ public class FacebookLogin : MonoBehaviour
     {
         if (_FbUserResp.Error == null)
         {
-            Debug.Log(_FbUserResp.RawResult);
+            Debug.Log("raw result: " + _FbUserResp.RawResult);
             if (_ReqName)
             {
                 myName = _FbUserResp.ResultDictionary["name"].ToString();
                 myFirstName = _FbUserResp.ResultDictionary["first_name"].ToString();
-                myLastName = _FbUserResp.ResultDictionary["last_name"].ToString();
+               // myLastName = _FbUserResp.ResultDictionary["last_name"].ToString();
 				UserData.name = myName;
 				UserData.first_name = myFirstName;
-				UserData.last_name = myLastName;
+				//UserData.last_name = myLastName;
             }
             if (_ReqEmail)
             {
                 myEmail = _FbUserResp.ResultDictionary["email"].ToString();
 				UserData.email = myEmail;
             }
+			RegisterNewUser();
         }
         else
         {
@@ -317,6 +316,11 @@ public class FacebookLogin : MonoBehaviour
 		StartCoroutine(SendData.PostUserLogin());
 		//PlayerData.ResetData();
 		//SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+	}
+
+	private void	RegisterNewUser()
+	{
+		StartCoroutine(SendData.RegisterUSer());
 	}
 
 }

@@ -34,11 +34,23 @@ public class UserDataHandler : MonoBehaviour
 
 	private void	Awake()
 	{
-		UserDataParser();
+		PostLoginData();
+		//UserDataParser();
 	}
 
 	private void	Start()
 	{
 		PopulateUserData();
+	}
+
+	private void PostLoginData()
+	{
+		StartCoroutine(FetchDataProcedure());
+	}
+
+	private IEnumerator FetchDataProcedure()
+	{
+		yield return (StartCoroutine(SendData.PostUserLogin()));
+		UserDataParser();
 	}
 }
