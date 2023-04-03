@@ -111,19 +111,20 @@ public static class SendData
 	}
 
 	//Save Data after play Highscore game
-	public static IEnumerator SaveHighscoreGame()
+	public static IEnumerator SaveHighscoreGame(int xp)
 	{
 		WWWForm form = new WWWForm();
 		form.AddField("facebookId", UserData.facebookId);
-		form.AddField("username", PlayerPrefs.GetString("username"));
+		form.AddField("username", UserData.name);
 		form.AddField("score", PlayerPrefs.GetInt("score"));
 		form.AddField("apples", PlayerPrefs.GetInt("apples"));
 		form.AddField("bananas", PlayerPrefs.GetInt("bananas"));
 		form.AddField("oranges", PlayerPrefs.GetInt("oranges"));
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
+		form.AddField("xp", xp);
 
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/save", form);
+		var download= UnityWebRequest.Post("http://localhost:3001/users/highscoregame", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
             Debug.Log( "Error downloading: " + download.error );

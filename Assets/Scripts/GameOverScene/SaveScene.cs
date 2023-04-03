@@ -34,7 +34,7 @@ public class SaveScene : MonoBehaviour
 		StartCoroutine(SendData.Post());
 		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+		SceneManagement.ChangeScene("RegisterLogin", Color.black, 1f);
 	}
 
 	public void SaveScore()
