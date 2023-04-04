@@ -49,6 +49,13 @@ public class StartScene : MonoBehaviour
 		loadingScreen.StartGame("Highscores");
 	}
 
+	public void	GoToProfile()
+	{
+		audioSource.Play();
+		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
+		loadingScreen.StartGame("ProfileScene");
+	}
+
 	public void	QuitApp()
 	{
 		Application.Quit();
