@@ -48,7 +48,10 @@ public class FruitManager : MonoBehaviour
 				Destroy(gameObject);
 				ps.Play();
 				audioSource.Play();
-				SceneManagement.ChangeScene("GameOver", Color.black, 0.5f);
+				if (UserData.logedIn)
+					SceneManagement.ChangeScene("GameOver", Color.black, 0.5f);
+				else
+					SceneManagement.ChangeScene("GameOverNotLogged", Color.black, 0.5f);
 			}
 			audioSource.Play();
 			Destroy(gameObject);

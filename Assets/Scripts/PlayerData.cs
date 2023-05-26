@@ -34,3 +34,10 @@ public class DataForSend
 	public float	duration;
 	public string	username;
 }
+
+public static class UserData
+{
+	public static string	username;
+	public static string	email;
+	public static bool		logedIn;
+}

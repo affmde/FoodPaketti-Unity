@@ -19,6 +19,8 @@ public class StartScene : MonoBehaviour
 	private void Start()
 	{
 		PlayerData.ResetData();
+		Debug.Log("username: " + UserData.username);
+		Debug.Log("email: " + UserData.email);
 	}
 	public void	StartGame()
 	{
