@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class StartScene : MonoBehaviour
 {
 	private AudioSource audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loadingScreen;
+
+	
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
@@ -19,8 +21,6 @@ public class StartScene : MonoBehaviour
 	private void Start()
 	{
 		PlayerData.ResetData();
-		Debug.Log("username: " + UserData.username);
-		Debug.Log("email: " + UserData.email);
 	}
 	public void	StartGame()
 	{

@@ -6,76 +6,101 @@ using Facebook.Unity;
 
 public class FacebookLogin : MonoBehaviour{
 
-	public string Token;
-	public string Error;
-
-	// Awake function from Unity's MonoBehavior
-	void Awake()
+	private void Awake()
 	{
-		if (!FB.IsInitialized)
+		FB.Init(SetInit, onHidenUnity);
+		// Panel_Add.SetActive(false);
+	}
+	void SetInit()
+	{
+		if (FB.IsLoggedIn)
 		{
-			// Initialize the Facebook SDK
-			FB.Init(InitCallback, OnHideUnity);
+			Debug.Log("Facebook is Login!");
 		}
 		else
 		{
-			// Already initialized, signal an app activation App Event
-			FB.ActivateApp();
+			Debug.Log("Facebook is not Logged in!");
 		}
+		DealWithFbMenus(FB.IsLoggedIn);
 	}
 
-	void InitCallback()
-	{
-		if (FB.IsInitialized)
-		{
-			// Signal an app activation App Event
-			FB.ActivateApp();
-			// Continue with Facebook SDK
-		}
-		else
-		{
-			Debug.Log("Failed to Initialize the Facebook SDK");
-		}
-	}
-
-	void OnHideUnity(bool isGameShown)
+	void onHidenUnity(bool isGameShown)
 	{
 		if (!isGameShown)
 		{
-			// Pause the game - we will need to hide
 			Time.timeScale = 0;
 		}
 		else
 		{
-			// Resume the game - we're getting focus again
 			Time.timeScale = 1;
 		}
 	}
-
-	public void Login()
+	public void FBLogin()
 	{
-		// Define the permissions
-		var perms = new List<string>() { "public_profile", "email" };
-
-		FB.LogInWithReadPermissions(perms, result =>
+		List<string> permissions = new List<string>();
+		permissions.Add("public_profile");
+		FB.LogInWithReadPermissions(permissions, AuthCallBack);
+	}
+	// Start is called before the first frame update
+	void AuthCallBack(IResult result)
+	{
+		if (result.Error != null)
+		{
+			Debug.Log(result.Error);
+		}
+		else
 		{
 			if (FB.IsLoggedIn)
 			{
-				FB.API("me?fields=name", Facebook.Unity.HttpMethod.GET, GetFacebookData);
+				Debug.Log("Facebook is Login!");
+				// Panel_Add.SetActive(true);
 			}
 			else
 			{
-				Error = "User cancelled login";
-				Debug.Log("[Facebook Login] User cancelled login");
+				Debug.Log("Facebook is not Logged in!");
 			}
-		});
+			DealWithFbMenus(FB.IsLoggedIn);
+		}
 	}
 
-	void GetFacebookData(Facebook.Unity.IGraphResult result)
+	void DealWithFbMenus(bool isLoggedIn)
 	{
-		string fbName = result.ResultDictionary["name"].ToString();
-		UserData.username = fbName;
-		UserData.logedIn = true;
-		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+		if (isLoggedIn)
+		{
+			FB.API("/me?fields=first_name",HttpMethod.GET,DisplayUsername);
+			FB.API("/me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayProfilePic);
+			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+		}
+		else
+		{
+			
+		}
+	}
+	void DisplayUsername(IResult result)
+	{
+		if (result.Error == null)
+		{
+			string name = ""+result.ResultDictionary["first_name"];
+			UserData.username = name;
+		
+			Debug.Log(""+name);
+		}
+		else
+		{
+			Debug.Log(result.Error);
+		}
+	}
+
+	void DisplayProfilePic(IGraphResult result)
+	{
+		if (result.Texture != null)
+		{
+			Debug.Log("Profile Pic");
+			// FB_useerDp.sprite = Sprite.Create(result.Texture,new Rect(0,0,128,128),new Vector2());
+		}
+		else
+		{
+			Debug.Log(result.Error);
+		}
 	}
 }

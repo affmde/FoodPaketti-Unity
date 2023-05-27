@@ -488,8 +488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb11991824090941a2d7a3c9d3beb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Token: 
-  Error: 
 --- !u!1 &719950733
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +679,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 600912037}
         m_TargetAssemblyTypeName: FacebookLogin, Assembly-CSharp
-        m_MethodName: Login
+        m_MethodName: FBLogin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
