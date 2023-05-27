@@ -6,8 +6,12 @@ using Facebook.Unity;
 
 public class FacebookLogin : MonoBehaviour{
 
+	[SerializeField] GameObject registerScreen;
+	[SerializeField] GameObject loadingScreen;
 	private void Awake()
 	{
+		registerScreen.SetActive(false);
+		loadingScreen.SetActive(true);
 		FB.Init(SetInit, onHidenUnity);
 		// Panel_Add.SetActive(false);
 	}
@@ -73,7 +77,8 @@ public class FacebookLogin : MonoBehaviour{
 		}
 		else
 		{
-			
+			loadingScreen.SetActive(false);
+			registerScreen.SetActive(true);
 		}
 	}
 	void DisplayUsername(IResult result)
