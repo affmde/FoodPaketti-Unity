@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class RegisterScene : MonoBehaviour
 {
-	public void Play()
+
+	[SerializeField] AudioSource	audioSource;
+
+	private void	Awake()
 	{
-		UserData.logedIn = false;
-		SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
+		SceneManagement.ToogleAudioSource(audioSource);
+	}
+
+	private void	Start()
+	{
+		audioSource.Play();
 	}
 }

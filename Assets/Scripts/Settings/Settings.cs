@@ -5,15 +5,30 @@ using Facebook.Unity;
 using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
-	[SerializeField] GameObject	logout;
-	[SerializeField] Image		On;
-	[SerializeField] Image		Off;
-
-	private AudioSource[] allAudioSources;
+	[SerializeField] GameObject		logout;
+	[SerializeField] Image			On;
+	[SerializeField] Image			Off;
+	[SerializeField] AudioSource	audioSource;
 	private void	Awake()
 	{
-		allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+		SceneManagement.ToogleAudioSource(audioSource);
+		if (PlayerPrefs.GetInt("sound") == 0)
+		{
+			On.gameObject.SetActive(true);
+			Off.gameObject.SetActive(false);
+		}
+		else
+		{
+			On.gameObject.SetActive(false);
+			Off.gameObject.SetActive(true);
+		}
 	}
+
+	private void	Start()
+	{
+		audioSource.Play();
+	}
+
 	public void	Logout()
 	{
 		if (FB.IsLoggedIn)
