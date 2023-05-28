@@ -25,6 +25,8 @@ public class BombDefuser : MonoBehaviour
 		image.fillAmount = 0;
 		button.interactable = false;
 		PlayerData.bombDefused = false;
+		foreach(var audioS in audioSource)
+			SceneManagement.ToogleAudioSource(audioS);
 	}
 
 	IEnumerator resetDefuseBool()

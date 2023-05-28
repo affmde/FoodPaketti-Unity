@@ -20,6 +20,8 @@ public class StartScene : MonoBehaviour
 
 	private void Start()
 	{
+		SceneManagement.ToogleAudioSource(backtrack);
+		SceneManagement.ToogleAudioSource(audioSource);
 		PlayerData.ResetData();
 	}
 	public void	StartGame()

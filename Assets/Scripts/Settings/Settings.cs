@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
+using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
 	[SerializeField] GameObject	logout;
-	[SerializeField] GameObject	sound;
+	[SerializeField] Image		On;
+	[SerializeField] Image		Off;
 
+	private AudioSource[] allAudioSources;
+	private void	Awake()
+	{
+		allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+	}
 	public void	Logout()
 	{
 		if (FB.IsLoggedIn)
@@ -27,6 +34,22 @@ public class Settings : MonoBehaviour
 		else
 		{
 			SceneManagement.ChangeScene("RegisterLogin", Color.black, 1f);
+		}
+	}
+
+	public void	ToogleSound()
+	{
+		if (PlayerPrefs.GetInt("sound") == 0)
+		{
+			On.gameObject.SetActive(false);
+			Off.gameObject.SetActive(true);
+			PlayerPrefs.SetInt("sound", 1);
+		}
+		else
+		{
+			On.gameObject.SetActive(true);
+			Off.gameObject.SetActive(false);
+			PlayerPrefs.SetInt("sound", 0);
 		}
 	}
 

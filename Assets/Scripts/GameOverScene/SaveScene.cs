@@ -11,6 +11,9 @@ public class SaveScene : MonoBehaviour
 	{
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		loader = FindAnyObjectByType<SceneLoader>();
+		foreach(var audioS in audioSource)
+			SceneManagement.ToogleAudioSource(audioS);
+		SceneManagement.ToogleAudioSource(backtrack);
 	}
 
 	public void	PlayAgain()
@@ -42,10 +45,7 @@ public class SaveScene : MonoBehaviour
 		StartCoroutine(SendData.Post());
 		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		if (UserData.logedIn)
-			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
-		else
-			SceneManagement.ChangeScene("RegisterLogin", Color.black, 1f);
+		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
 	public void SaveScore()

@@ -15,6 +15,8 @@ public class FruitManager : MonoBehaviour
 			audioSource = GameObject.Find("BombExplode").GetComponent<AudioSource>();
 		else
 			audioSource = GameObject.Find("FruitPickSound").GetComponent<AudioSource>();
+		SceneManagement.ToogleAudioSource(audioSource);
+		SceneManagement.ToogleAudioSource(backtrack);
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)
@@ -48,10 +50,7 @@ public class FruitManager : MonoBehaviour
 				Destroy(gameObject);
 				ps.Play();
 				audioSource.Play();
-				if (UserData.logedIn)
-					SceneManagement.ChangeScene("GameOver", Color.black, 0.5f);
-				else
-					SceneManagement.ChangeScene("GameOverNotLogged", Color.black, 0.5f);
+				SceneManagement.ChangeScene("GameOver", Color.black, 0.5f);
 			}
 			audioSource.Play();
 			Destroy(gameObject);

@@ -24,6 +24,7 @@ public class RewardPlayer : MonoBehaviour
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 		randomX = Random.Range(-screenBounds.x, screenBounds.x - screenBounds.x / 2);
 		ActiveReward();
+		SceneManagement.ToogleAudioSource(rewardDropSound);
 	}
 
 	private void	ActiveReward()

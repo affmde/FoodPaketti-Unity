@@ -17,6 +17,8 @@ public class Highscores : MonoBehaviour
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		loader = FindObjectOfType<SceneLoader>();
+		SceneManagement.ToogleAudioSource(audioSource);
+		SceneManagement.ToogleAudioSource(backtrack);
 	}
 
 	private void	PopulateGrid(DataForSend[] data)
