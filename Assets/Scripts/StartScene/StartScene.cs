@@ -36,6 +36,12 @@ public class StartScene : MonoBehaviour
 		loadingScreen.StartGame("Highscores");
 	}
 
+	public void	GoToSettings()
+	{
+		audioSource.Play();
+		SceneManagement.ChangeScene("SettingsScene", Color.black, 1f);
+	}
+
 	public void	QuitApp()
 	{
 		Application.Quit();

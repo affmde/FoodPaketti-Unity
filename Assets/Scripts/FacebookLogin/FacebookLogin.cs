@@ -12,8 +12,24 @@ public class FacebookLogin : MonoBehaviour{
 	{
 		registerScreen.SetActive(false);
 		loadingScreen.SetActive(true);
-		FB.Init(SetInit, onHidenUnity);
-		// Panel_Add.SetActive(false);
+		if (!FB.IsInitialized) {
+        	// Initialize the Facebook SDK
+       		FB.Init(SetInit, onHidenUnity);
+		} else {
+			// Already initialized, signal an app activation App Event
+			FB.ActivateApp();
+			if (FB.IsLoggedIn)
+			{
+				Debug.Log("Facebook is Login!");
+			}
+			else
+			{
+				Debug.Log("Facebook is not Logged in!");
+				loadingScreen.SetActive(false);
+				registerScreen.SetActive(true);
+			}
+			DealWithFbMenus(FB.IsLoggedIn);
+			}
 	}
 	void SetInit()
 	{
