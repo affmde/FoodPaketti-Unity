@@ -8,7 +8,7 @@ public static class PlayerData
 {
 	public static bool	gameOver = false;
 	public static bool	bombDefused = false;
-
+	public static float[]	levelRamp;
 	public static void	ResetData()
 	{
 		PlayerPrefs.SetInt("score", 0);
@@ -52,6 +52,10 @@ public static class UserData
 	public static int				totalTimePlayed;
 	public static int				totalPointsAcomolated;
 	public static List<DataForSend> ownBestScores;
+
+
+	public static int				maxPoints;
+	public static int				maxDuration;
 
 }
 

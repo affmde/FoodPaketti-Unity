@@ -8,10 +8,11 @@ public class Settings : MonoBehaviour
 	[SerializeField] GameObject		logout;
 	[SerializeField] Image			On;
 	[SerializeField] Image			Off;
-	[SerializeField] AudioSource	audioSource;
+	[SerializeField] List<AudioSource>	audioList;
 	private void	Awake()
 	{
-		SceneManagement.ToogleAudioSource(audioSource);
+		foreach(AudioSource audioS in audioList)
+			SceneManagement.ToogleAudioSource(audioS);
 		if (PlayerPrefs.GetInt("sound") == 0)
 		{
 			On.gameObject.SetActive(true);
@@ -26,13 +27,14 @@ public class Settings : MonoBehaviour
 
 	private void	Start()
 	{
-		audioSource.Play();
+		audioList[0].Play();
 	}
 
 	public void	Logout()
 	{
 		if (FB.IsLoggedIn)
 		{
+			audioList[1].Play();
 			FB.LogOut();
 			StartCoroutine("CheckFacebookLogout");
 		}
@@ -54,6 +56,7 @@ public class Settings : MonoBehaviour
 
 	public void	ToogleSound()
 	{
+		audioList[1].Play();
 		if (PlayerPrefs.GetInt("sound") == 0)
 		{
 			On.gameObject.SetActive(false);
@@ -70,6 +73,7 @@ public class Settings : MonoBehaviour
 
 	public void	Return()
 	{
+		audioList[1].Play();
 		SceneManagement.ChangeScene("StartScene", Color.black, 0.4f);
 	}
 }

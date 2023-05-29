@@ -17,7 +17,7 @@ public static class API
 		string	facebookId = UserData.facebookId;
 		form.AddField("facebookId", facebookId);
 
-		var download= UnityWebRequest.Post("http://localhost:3001/users/addUser", form);
+		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/addUser", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error downloading: " + download.error );
@@ -43,7 +43,7 @@ public static class API
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 		form.AddField("xp", xp);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
-		var download= UnityWebRequest.Post("http://localhost:3001/users/highscoregame", form);
+		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/highscoregame", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error saving downloading: " + download.error );
@@ -57,7 +57,7 @@ public static class API
 		WWWForm form = new WWWForm();
 		form.AddField("username", UserData.username);
 		form.AddField("facebookId", UserData.facebookId);
-		var download= UnityWebRequest.Post("http://localhost:3001/users/getUserInfo", form);
+		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/getUserInfo", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 		{

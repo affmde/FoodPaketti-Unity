@@ -21,8 +21,16 @@ public class Stats : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI	maxTime;
 	[SerializeField] private TextMeshProUGUI	totalScoreTogether;
 	[SerializeField] private TextMeshProUGUI	totalXP;
+	[SerializeField] private List<AudioSource>	audioList;
+
+	private void	Awake()
+	{
+		foreach(AudioSource audioS in audioList)
+			SceneManagement.ToogleAudioSource(audioS);
+	}
 	private void	Start()
 	{
+		audioList[0].Play();
 		startArea.SetActive(true);
 		fruitsStatsArea.SetActive(false);
 		gameStatsArea.SetActive(false);
@@ -41,6 +49,7 @@ public class Stats : MonoBehaviour
 		startArea.SetActive(false);
 		gameStatsArea.SetActive(false);
 		ScoresStatsArea.SetActive(false);
+		audioList[1].Play();
 	}
 
 	public void	ShowGameStats()
@@ -53,6 +62,7 @@ public class Stats : MonoBehaviour
 		totalTimePlayed.text = UserData.totalTimePlayed.ToString();
 		totalXP.text = UserData.xp.ToString();
 		totalScoreTogether.text = UserData.totalPointsAcomolated.ToString();
+		audioList[1].Play();
 	}
 
 	public void	ShowScoresStats()
@@ -61,36 +71,14 @@ public class Stats : MonoBehaviour
 		startArea.SetActive(false);
 		gameStatsArea.SetActive(false);
 		ScoresStatsArea.SetActive(true);
-		//UserData.ownBestScores.Sort();
-		maxScore.text = GetPersonalBestScore().ToString();
-		maxTime.text = GetPersonalBestTime().ToString();
-	}
-
-	private int	GetPersonalBestScore()
-	{
-		int best = 0;
-		foreach(var score in UserData.ownBestScores)
-		{
-			if (score.score > best)
-				best = score.score;
-		}
-		return (best);
-	}
-
-	private int	GetPersonalBestTime()
-	{
-		int best = 0;
-		foreach(var game in UserData.ownBestScores)
-		{
-			Debug.Log(game.duration);
-			if (game.duration > best)
-				best = Mathf.FloorToInt(game.duration);
-		}
-		return (best);
+		maxScore.text = UserData.maxPoints.ToString();
+		maxTime.text = UserData.maxDuration.ToString();
+		audioList[1].Play();
 	}
 
 	public void	GoToHome()
 	{
+		audioList[1].Play();
 		SceneManagement.ChangeScene("StartScene", Color.black, 0.5f);
 	}
 }
