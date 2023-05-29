@@ -42,7 +42,8 @@ public class SaveScene : MonoBehaviour
 
 	private void PostData()
 	{
-		StartCoroutine(SendData.Post());
+		//StartCoroutine(SendData.Post());
+		StartCoroutine(API.SaveGameData(20));
 		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
 		SceneManagement.ChangeScene("StartScene", Color.black, 1f);

@@ -967,7 +967,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.5
+  orthographic size: 4.7796354
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1012,7 +1012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wireColor: {r: 1, g: 1, b: 1, a: 1}
   UnitsSize: 17
-  constraint: 1
+  constraint: 0
   camera: {fileID: 1195864602}
   executeInUpdate: 1
 --- !u!1 &1524608710

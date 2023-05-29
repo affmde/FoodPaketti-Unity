@@ -41,7 +41,13 @@ public class StartScene : MonoBehaviour
 	public void	GoToSettings()
 	{
 		audioSource.Play();
-		SceneManagement.ChangeScene("SettingsScene", Color.black, 1f);
+		SceneManagement.ChangeScene("SettingsScene", Color.black, 0.5f);
+	}
+
+	public void	GoToStats()
+	{
+		audioSource.Play();
+		SceneManagement.ChangeScene("StatsScene", Color.black, 0.5f);
 	}
 
 	public void	QuitApp()

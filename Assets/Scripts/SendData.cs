@@ -44,7 +44,7 @@ public static class SendData
 	}
 
 
-	static string fixJson(string value)
+	public static string fixJson(string value)
 	{
 		value = "{\"Items\":" + value + "}";
 		return value;

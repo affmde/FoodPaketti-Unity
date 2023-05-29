@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-
 // Other needed dependencies
 using Facebook.Unity;
+using System.Collections;
 
 public class FacebookLogin : MonoBehaviour{
 
@@ -89,6 +89,7 @@ public class FacebookLogin : MonoBehaviour{
 		{
 			FB.API("/me?fields=first_name",HttpMethod.GET,DisplayUsername);
 			FB.API("/me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayProfilePic);
+			Debug.Log("Going to change to start scene now");
 			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 		}
 		else
@@ -103,21 +104,22 @@ public class FacebookLogin : MonoBehaviour{
 		{
 			string name = ""+result.ResultDictionary["first_name"];
 			UserData.username = name;
-		
-			Debug.Log(""+name);
+			string id = "" + result.ResultDictionary["id"];
+			UserData.facebookId = id;
+			StartCoroutine(API.AddUserToDatabase());
 		}
 		else
-		{
 			Debug.Log(result.Error);
-		}
 	}
 
 	void DisplayProfilePic(IGraphResult result)
 	{
+
 		if (result.Texture != null)
 		{
-			Debug.Log("Profile Pic");
-			// FB_useerDp.sprite = Sprite.Create(result.Texture,new Rect(0,0,128,128),new Vector2());
+			//Debug.Log("Profile Pic: " + result.Texture.dimension);
+			//Sprite sprite;
+			//sprite = Sprite.Create(result.Texture,new Rect(0,0,128,128),new Vector2());
 		}
 		else
 		{
