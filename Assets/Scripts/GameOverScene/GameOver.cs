@@ -6,13 +6,7 @@ using TMPro;
 public class GameOver : MonoBehaviour
 {
 	//private PlayerData playerData;
-	[SerializeField]
-	private TextMeshProUGUI pointsText;
-	
-	private void Awake()
-	{
-		//playerData = FindObjectOfType<GameState>().playerData;
-	}
+	[SerializeField] private TextMeshProUGUI pointsText;
 
 	public void ReadStringInput(string str)
 	{

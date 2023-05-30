@@ -7,6 +7,7 @@ public class SaveScene : MonoBehaviour
 	public List<AudioSource> audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loader;
+
 	private void Awake()
 	{
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
@@ -16,42 +17,18 @@ public class SaveScene : MonoBehaviour
 		SceneManagement.ToogleAudioSource(backtrack);
 	}
 
-	public void	PlayAgain()
-	{
-		audioSource[0].Play();
-		PlayerData.ResetData();
-		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		SceneManagement.ChangeScene("SampleScene", Color.black, 1f);
-	}
-
-	public void	GoToHome()
-	{
-		audioSource[0].Play();
-		PlayerData.ResetData();
-		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
-	}
-
-	public void	GoBack()
-	{
-		audioSource[0].Play();
-		PlayerData.ResetData();
-		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		SceneManagement.ChangeScene("RegisterLogin", Color.black, 1f);
-	}
-
 	private void PostData()
 	{
 		StartCoroutine(SendData.Post());
-		StartCoroutine(API.SaveGameData(20));
+		StartCoroutine(API.SaveGameData(GameSettings.xpGained));
 		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
 		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
-	public void SaveScore()
+	public void Continue()
 	{
-		PostData();
 		audioSource[1].Play();
+		PostData();
 	}
 }

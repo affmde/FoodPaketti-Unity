@@ -8,6 +8,7 @@ public class FacebookLogin : MonoBehaviour{
 
 	[SerializeField] GameObject registerScreen;
 	[SerializeField] GameObject loadingScreen;
+	private bool	ready = false;
 	private void Awake()
 	{
 		registerScreen.SetActive(false);
@@ -29,7 +30,7 @@ public class FacebookLogin : MonoBehaviour{
 				registerScreen.SetActive(true);
 			}
 			DealWithFbMenus(FB.IsLoggedIn);
-			}
+		}
 	}
 	void SetInit()
 	{
@@ -89,8 +90,6 @@ public class FacebookLogin : MonoBehaviour{
 		{
 			FB.API("/me?fields=first_name",HttpMethod.GET,DisplayUsername);
 			FB.API("/me/picture?type=square&height=128&width=128", HttpMethod.GET, DisplayProfilePic);
-			Debug.Log("Going to change to start scene now");
-			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 		}
 		else
 		{

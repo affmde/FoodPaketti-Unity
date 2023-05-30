@@ -42,18 +42,9 @@ public static class DataParser
 		int best = 0;
 		foreach(var game in UserData.ownBestScores)
 		{
-			Debug.Log(game.duration);
 			if (game.duration > best)
 				best = Mathf.FloorToInt(game.duration);
 		}
 		return (best);
-	}
-
-	public static void	GameSettings()
-	{
-		for(int i = 0; i < 20; i++)
-		{
-			PlayerData.levelRamp[i] = 2000 * Mathf.Pow(i, 1.5f);
-		}
 	}
 }

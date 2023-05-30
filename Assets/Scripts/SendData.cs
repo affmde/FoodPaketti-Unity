@@ -27,8 +27,9 @@ public static class SendData
 
 	public static IEnumerator Post()
 	{
+		Debug.Log("Posting highscore");
 		WWWForm form = new WWWForm();
-		form.AddField("username", PlayerPrefs.GetString("username"));
+		form.AddField("username", UserData.username);
 		form.AddField("score", PlayerPrefs.GetInt("score"));
 		form.AddField("apples", PlayerPrefs.GetInt("apples"));
 		form.AddField("bananas", PlayerPrefs.GetInt("bananas"));
@@ -38,9 +39,10 @@ public static class SendData
 		var download= UnityWebRequest.Post("https://foodpaketti.monster/save", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
-            Debug.Log( "Error downloading: " + download.error );
-        else
-            Debug.Log(download.downloadHandler.text);
+			Debug.Log( "Error downloading: " + download.error );
+		else
+			Debug.Log(download.downloadHandler.text);
+		Debug.Log("HighScore posted finished");
 	}
 
 
