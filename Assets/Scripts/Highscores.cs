@@ -12,8 +12,7 @@ public class Highscores : MonoBehaviour
 	private SceneLoader loader;
 	[SerializeField]
 	private GameObject	loading;
-	private PersonalHighscoresDataAPI	data;
-
+	
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
@@ -56,11 +55,20 @@ public class Highscores : MonoBehaviour
 	public void	ShowPersonalHighScores()
 	{
 		int i = 0;
-		foreach(var game in API.personalHighscoreData.data)
+		for (int j = 0; j < 10; j++)
 		{
-			cols[i].text = game.username;
-			cols[i + 1].text = game.score.ToString();
-			cols[i + 2].text = game.duration.ToString();
+			if (j < API.personalHighscoreData.data.Count)
+			{
+				cols[i].text = (API.personalHighscoreData.data[j] != null) ? API.personalHighscoreData.data[j].username : " ";
+				cols[i + 1].text = (API.personalHighscoreData.data[j] != null ? API.personalHighscoreData.data[j].score.ToString() : " ");
+				cols[i + 2].text = (API.personalHighscoreData.data[j] != null) ?  API.personalHighscoreData.data[j].duration.ToString() : " ";
+			}
+			else
+			{
+				cols[i].text = " ";
+				cols[i + 1].text = " ";
+				cols[i + 2].text = " ";
+			}
 			i += 3;
 		}
 	}
