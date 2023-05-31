@@ -37,6 +37,7 @@ public class Powerups : MonoBehaviour
 		GetFruitRef();
 		fruitPowerup.fillAmount = 0;
 		referenceValue = PlayerPrefs.GetInt(fruitRef);
+		SceneManagement.ToogleAudioSource(powerupSound);
 	}
 
 	private void Update()

@@ -11,12 +11,15 @@ public class Highscores : MonoBehaviour
 	private AudioSource backtrack;
 	private SceneLoader loader;
 	[SerializeField]
-	private GameObject loading;
+	private GameObject	loading;
+	
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
 		backtrack = GameObject.Find("BackgroundSound").GetComponent<AudioSource>();
 		loader = FindObjectOfType<SceneLoader>();
+		SceneManagement.ToogleAudioSource(audioSource);
+		SceneManagement.ToogleAudioSource(backtrack);
 	}
 
 	private void	PopulateGrid(DataForSend[] data)
@@ -46,6 +49,33 @@ public class Highscores : MonoBehaviour
 	private void Start()
 	{
 		StartCoroutine(LoadData());
+		StartCoroutine(API.GetUserHighscores());
+	}
+
+	public void	ShowPersonalHighScores()
+	{
+		int i = 0;
+		for (int j = 0; j < 10; j++)
+		{
+			if (j < API.personalHighscoreData.data.Count)
+			{
+				cols[i].text = (API.personalHighscoreData.data[j] != null) ? API.personalHighscoreData.data[j].username : " ";
+				cols[i + 1].text = (API.personalHighscoreData.data[j] != null ? API.personalHighscoreData.data[j].score.ToString() : " ");
+				cols[i + 2].text = (API.personalHighscoreData.data[j] != null) ?  API.personalHighscoreData.data[j].duration.ToString() : " ";
+			}
+			else
+			{
+				cols[i].text = " ";
+				cols[i + 1].text = " ";
+				cols[i + 2].text = " ";
+			}
+			i += 3;
+		}
+	}
+
+	public void	ShowWorldHighScores()
+	{
+		PopulateGrid(SendData.loadedData);
 	}
 
 }

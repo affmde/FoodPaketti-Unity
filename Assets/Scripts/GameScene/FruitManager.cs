@@ -15,6 +15,8 @@ public class FruitManager : MonoBehaviour
 			audioSource = GameObject.Find("BombExplode").GetComponent<AudioSource>();
 		else
 			audioSource = GameObject.Find("FruitPickSound").GetComponent<AudioSource>();
+		SceneManagement.ToogleAudioSource(audioSource);
+		SceneManagement.ToogleAudioSource(backtrack);
 	}
 
 	private void OnCollisionEnter2D(Collision2D col)

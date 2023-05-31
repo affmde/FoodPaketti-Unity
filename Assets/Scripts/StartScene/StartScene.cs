@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 
 public class StartScene : MonoBehaviour
 {
 	private AudioSource audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loadingScreen;
+
+	
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
@@ -18,6 +20,9 @@ public class StartScene : MonoBehaviour
 
 	private void Start()
 	{
+		API.GetUserData();
+		SceneManagement.ToogleAudioSource(backtrack);
+		SceneManagement.ToogleAudioSource(audioSource);
 		PlayerData.ResetData();
 	}
 	public void	StartGame()
@@ -32,6 +37,18 @@ public class StartScene : MonoBehaviour
 		audioSource.Play();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
 		loadingScreen.StartGame("Highscores");
+	}
+
+	public void	GoToSettings()
+	{
+		audioSource.Play();
+		SceneManagement.ChangeScene("SettingsScene", Color.black, 0.5f);
+	}
+
+	public void	GoToStats()
+	{
+		audioSource.Play();
+		SceneManagement.ChangeScene("StatsScene", Color.black, 0.5f);
 	}
 
 	public void	QuitApp()

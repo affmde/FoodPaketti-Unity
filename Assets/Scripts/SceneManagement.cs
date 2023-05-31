@@ -10,4 +10,12 @@ public static class SceneManagement
 	{
 		Initiate.Fade(scene, color, duration);
 	}
+
+	public static void	ToogleAudioSource(AudioSource audioS)
+	{
+		if (PlayerPrefs.GetInt("sound") == 1)
+			audioS.enabled = false;
+		else
+			audioS.enabled = true;
+	}
 }
