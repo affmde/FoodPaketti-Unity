@@ -44,9 +44,11 @@ public class HandleStatsShow : MonoBehaviour
 			fruitsObj[i].SetActive(true);
 			yield return new WaitForSeconds(0.5f);
 		}
-		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("bananas") * 0.3f);
-		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("oranges") * 0.2f);
-		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("apples") * 0.1f);
+		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("bananas") * 0.4f);
+		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("oranges") * 0.3f);
+		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("apples") * 0.25f);
+		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("score") * 0.1f);
+		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetFloat("duration") * 0.20f);
 		yield return new WaitForSeconds(0.5f);
 		SymbolToDisplay(PlayerPrefs.GetInt("score"), UserData.maxPoints, bestScoreCorrect, bestScoreWrong);
 		yield return new WaitForSeconds(0.5f);

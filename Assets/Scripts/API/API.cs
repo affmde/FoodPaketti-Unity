@@ -10,9 +10,7 @@ public static class API
 	public static PersonalHighscoresDataAPI personalHighscoreData;
 	public static IEnumerator AddUserToDatabase()
 	{
-		Debug.Log("STart the Unity POST");
 		WWWForm form = new WWWForm();
-		Debug.Log("userdata.username: " + UserData.username);
 		string username = UserData.username;
 		form.AddField("username", username);
 		string	facebookId = UserData.facebookId;
@@ -24,7 +22,6 @@ public static class API
 			Debug.Log( "Error downloading: " + download.error );
 		else
 		{
-			Debug.Log("Logged in successfully. Ready to parse data");
 			Debug.Log(download.downloadHandler.text);
 			UserData.userDataJson = download.downloadHandler.text;
 			DataParser.UserDataParser();
