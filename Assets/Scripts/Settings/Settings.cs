@@ -9,6 +9,8 @@ public class Settings : MonoBehaviour
 	[SerializeField] Image			On;
 	[SerializeField] Image			Off;
 	[SerializeField] List<AudioSource>	audioList;
+	[SerializeField] GameObject			menu;
+	[SerializeField] GameObject			panel;
 	private void	Awake()
 	{
 		foreach(AudioSource audioS in audioList)
@@ -28,6 +30,8 @@ public class Settings : MonoBehaviour
 	private void	Start()
 	{
 		audioList[0].Play();
+		panel.SetActive(false);
+		menu.SetActive(true);
 	}
 
 	public void	Logout()
@@ -75,5 +79,18 @@ public class Settings : MonoBehaviour
 	{
 		audioList[1].Play();
 		SceneManagement.ChangeScene("StartScene", Color.black, 0.4f);
+	}
+
+	public void	ChangeUsername()
+	{
+		audioList[1].Play();
+		menu.SetActive(false);
+		panel.SetActive(true);
+	}
+
+	public void	GoToCredits()
+	{
+		audioList[1].Play();
+		SceneManagement.ChangeScene("CreditsScene", Color.black, 0.2f);
 	}
 }

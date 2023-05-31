@@ -9,7 +9,10 @@ public static class DataParser
 	public static void	UserDataParser()
 	{
 		userData = JsonUtility.FromJson<UserDataToAPI>(UserData.userDataJson);
-		UserData.username = userData.data.username;
+		if (PlayerPrefs.HasKey("username") && PlayerPrefs.GetString("username").Length > 0)
+			UserData.username = PlayerPrefs.GetString("username");
+		else
+			UserData.username = userData.data.username;
 		UserData.facebookId = userData.data.facebookId;
 		UserData.level = userData.data.level;
 		UserData.xp = userData.data.xp;
