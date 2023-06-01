@@ -34,6 +34,8 @@ public class HandleStatsShow : MonoBehaviour
 	{
 		continueButton.SetActive(false);
 		StartCoroutine(DisplayStats());
+		Debug.Log("10 world best: " + GetWorld10thBestScore());
+		Debug.Log("10 best personal: " + GetPersonal10thBestScore());
 	}
 
 	private IEnumerator	DisplayStats()
@@ -75,4 +77,20 @@ public class HandleStatsShow : MonoBehaviour
 			no.gameObject.SetActive(true);
 		i++;
 	}
+
+	private int	GetWorld10thBestScore()
+	{
+		if (SendData.loadedData.Length < 10)
+			return (-1);
+		return (SendData.loadedData[9].score);
+	}
+
+	private int	GetPersonal10thBestScore()
+	{
+		if (API.personalHighscoreData.data.Count < 10)
+			return (-1);
+		return (API.personalHighscoreData.data[9].score);
+
+	}
+
 }

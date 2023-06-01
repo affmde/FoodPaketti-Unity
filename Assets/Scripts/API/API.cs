@@ -88,7 +88,7 @@ public static class API
 				Debug.Log("loaded data: " + loadedData);
 				GameSettings.worldRecord = loadedData.score;
 				Debug.Log("record: " + GameSettings.worldRecord);
-			}	
+			}
 		}
 	}
 

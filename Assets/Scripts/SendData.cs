@@ -1,14 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Text;
 using UnityEngine.Networking;
-using System.Linq;
 
 public static class SendData
 {
 	public static DataForSend[] loadedData;
-
 	public static IEnumerator FetchData()
 	{
 		using (UnityWebRequest request = UnityWebRequest.Get("https://foodpaketti.monster/save/getHighscores"))
@@ -21,7 +17,7 @@ public static class SendData
 			{
 				string jsonString = fixJson(request.downloadHandler.text);
 				loadedData = JsonHelper.FromJson<DataForSend>(jsonString);
-			}	
+			}
 		}
 	}
 

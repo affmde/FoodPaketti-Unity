@@ -40,7 +40,7 @@ public class XpBarGameOver : MonoBehaviour
 				UserData.level++;
 				StartCoroutine(API.LevelUp());
 			}
-			yield return new WaitForSeconds(.002f);
+			yield return new WaitForSeconds(2f / amount);
 		}
 		handleBar.continueButton.SetActive(true);
 		handleBar.experienceBar.SetActive(false);
