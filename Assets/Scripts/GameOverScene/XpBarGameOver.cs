@@ -26,7 +26,6 @@ public class XpBarGameOver : MonoBehaviour
 
 		for (int i = 0; i < amount; i++)
 		{
-			Debug.Log("i: " + i + "  UserXP: " + UserData.xp);
 			UserData.xp++;
 			next = GameSettings.baseLevel * Mathf.Pow(UserData.level, 1.5f);
 			before = GameSettings.baseLevel * Mathf.Pow(UserData.level - 1, 1.5f);
@@ -40,7 +39,10 @@ public class XpBarGameOver : MonoBehaviour
 				UserData.level++;
 				StartCoroutine(API.LevelUp());
 			}
-			yield return new WaitForSeconds(2f / amount);
+			if (amount > 75)
+				yield return new WaitForSeconds(2f / amount);
+			else
+				yield return (0.02f);
 		}
 		handleBar.continueButton.SetActive(true);
 		handleBar.experienceBar.SetActive(false);

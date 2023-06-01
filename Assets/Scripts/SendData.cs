@@ -30,6 +30,8 @@ public static class SendData
 		form.AddField("apples", PlayerPrefs.GetInt("apples"));
 		form.AddField("bananas", PlayerPrefs.GetInt("bananas"));
 		form.AddField("oranges", PlayerPrefs.GetInt("oranges"));
+		form.AddField("parsimmons", PlayerPrefs.GetInt("parsimmons"));
+		form.AddField("watermelons", PlayerPrefs.GetInt("watermelons"));
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 
 		var download= UnityWebRequest.Post("https://foodpaketti.monster/save", form);

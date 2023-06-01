@@ -10,8 +10,8 @@ public class Highscores : MonoBehaviour
 	private AudioSource audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loader;
-	[SerializeField]
-	private GameObject	loading;
+	[SerializeField] private GameObject	scoresPanel;
+	[SerializeField] private GameObject	rankingPanel;
 	
 	private void Awake()
 	{
@@ -37,6 +37,7 @@ public class Highscores : MonoBehaviour
 	{
 		yield return (SendData.FetchData());
 		PopulateGrid(SendData.loadedData);
+		yield return (API.GetTopUsers());
 	}
 
 	public void ReturnScene()
@@ -50,6 +51,8 @@ public class Highscores : MonoBehaviour
 	{
 		StartCoroutine(LoadData());
 		StartCoroutine(API.GetUserHighscores());
+		scoresPanel.SetActive(true);
+		rankingPanel.SetActive(false);
 	}
 
 	public void	ShowPersonalHighScores()
@@ -71,11 +74,21 @@ public class Highscores : MonoBehaviour
 			}
 			i += 3;
 		}
+		rankingPanel.SetActive(false);
+		scoresPanel.SetActive(true);
 	}
 
 	public void	ShowWorldHighScores()
 	{
 		PopulateGrid(SendData.loadedData);
+		rankingPanel.SetActive(false);
+		scoresPanel.SetActive(true);
+	}
+
+	public void	ShowRanking()
+	{
+		rankingPanel.SetActive(true);
+		scoresPanel.SetActive(false);
 	}
 
 }

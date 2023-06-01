@@ -14,6 +14,10 @@ public class HandleStatsShow : MonoBehaviour
 	[SerializeField] Image bestTimeWrong;
 	[SerializeField] Image worldRecordCorrect;
 	[SerializeField] Image worldRecordWrong;
+	[SerializeField] Image worldTop10Correct;
+	[SerializeField] Image worldTop10Wrong;
+	[SerializeField] Image personalTop10Correct;
+	[SerializeField] Image personalTop10Wrong;
 	[SerializeField] public GameObject experienceBar;
 	[SerializeField] public GameObject continueButton;
 	private XpBarGameOver	fillBar;
@@ -32,10 +36,9 @@ public class HandleStatsShow : MonoBehaviour
 
 	private void	Start()
 	{
-		continueButton.SetActive(false);
-		StartCoroutine(DisplayStats());
-		Debug.Log("10 world best: " + GetWorld10thBestScore());
-		Debug.Log("10 best personal: " + GetPersonal10thBestScore());
+		//continueButton.SetActive(false);
+		//StartCoroutine(DisplayStats());
+		StartCoroutine(LoadData());
 	}
 
 	private IEnumerator	DisplayStats()
@@ -44,7 +47,7 @@ public class HandleStatsShow : MonoBehaviour
 		for(int i = 0; i < fruitsObj.Count; i++)
 		{
 			fruitsObj[i].SetActive(true);
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.4f);
 		}
 		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("bananas") * 0.4f);
 		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetInt("oranges") * 0.3f);
@@ -53,10 +56,14 @@ public class HandleStatsShow : MonoBehaviour
 		xpAmountToAdd += Mathf.FloorToInt(PlayerPrefs.GetFloat("duration") * 0.20f);
 		yield return new WaitForSeconds(0.5f);
 		SymbolToDisplay(PlayerPrefs.GetInt("score"), UserData.maxPoints, bestScoreCorrect, bestScoreWrong);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.4f);
 		SymbolToDisplay(Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")), UserData.maxDuration, bestTimeCorrect, bestTimeWrong);
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.4f);
 		SymbolToDisplay(PlayerPrefs.GetInt("score"), GameSettings.worldRecord, worldRecordCorrect, worldRecordWrong);
+		yield return new WaitForSeconds(0.4f);
+		SymbolToDisplay(PlayerPrefs.GetInt("score"), GetWorld10thBestScore(), worldTop10Correct, worldTop10Wrong);
+		yield return new WaitForSeconds(0.4f);
+		SymbolToDisplay(PlayerPrefs.GetInt("score"), GetPersonal10thBestScore(), personalTop10Correct, personalTop10Wrong);
 		fillBar.UpdateFill(xpAmountToAdd);
 		GameSettings.xpGained = xpAmountToAdd;
 	}
@@ -72,6 +79,10 @@ public class HandleStatsShow : MonoBehaviour
 				xpAmountToAdd += 250;
 			else if (i == 2)
 				xpAmountToAdd += 1000;
+			else if (i == 3)
+				xpAmountToAdd += 600;
+			else if (i == 4)
+				xpAmountToAdd += 300;
 		}
 		else
 			no.gameObject.SetActive(true);
@@ -93,4 +104,14 @@ public class HandleStatsShow : MonoBehaviour
 
 	}
 
+	private IEnumerator	LoadData()
+	{
+		yield return (API.GetWorldRecord());
+		yield return (API.GetUserHighscores());
+		yield return (SendData.FetchData());
+		continueButton.SetActive(false);
+		Debug.Log("10th wolrd score: " + GetWorld10thBestScore());
+		Debug.Log("Personal 10th score: " + GetPersonal10thBestScore());
+		StartCoroutine(DisplayStats());
+	}
 }

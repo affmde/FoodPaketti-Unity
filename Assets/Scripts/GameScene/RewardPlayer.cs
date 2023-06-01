@@ -47,7 +47,9 @@ public class RewardPlayer : MonoBehaviour
 			Destroy(gameObject);
 		if (col.collider.name == "Basket" && PlayerData.gameOver == false)
 		{
-			PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + 100);
+			PlayerPrefs.SetInt("score", PlayerPrefs.GetInt("score") + (100 * PlayerPrefs.GetInt("multiplier")));
+			PlayerPrefs.SetInt("persimmons", PlayerPrefs.GetInt("persimmons") + 1);
+			PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			Destroy(gameObject);
 		}
 	}

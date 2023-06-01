@@ -14,6 +14,8 @@ public static class PlayerData
 		PlayerPrefs.SetInt("apples", 0);
 		PlayerPrefs.SetInt("bananas", 0);
 		PlayerPrefs.SetInt("oranges", 0);
+		PlayerPrefs.SetInt("parsimmons", 0);
+		PlayerPrefs.SetInt("watermelons", 0);
 		PlayerPrefs.SetInt("totalFruits", 0);
 		PlayerPrefs.SetFloat("duration", 0);
 		PlayerPrefs.SetString("username", "");
@@ -29,6 +31,8 @@ public class DataForSend
 	public int		apples;
 	public int		oranges;
 	public int		bananas;
+	public int		parsimons;
+	public int		watermelons;
 	public int		totalFruits;
 	public int		score;
 	public float	duration;
@@ -47,6 +51,8 @@ public static class UserData
 	public static int				bananas;
 	public static int				oranges;
 	public static int				apples;
+	public static int				parsimmons;
+	public static int				watermelons;
 	public static int				totalHighScoreGames;
 	public static int				totalTimePlayed;
 	public static int				totalPointsAcomolated;
@@ -80,6 +86,8 @@ public struct Data
 	public int				bananas;
 	public int				oranges;
 	public int				apples;
+	public int				parsimmons;
+	public int				watermelons;
 	public int				totalHighScoreGames;
 	public int				totalTimePlayed;
 	public int				totalPointsAcomolated;

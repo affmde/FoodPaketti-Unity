@@ -21,6 +21,8 @@ public static class DataParser
 		UserData.bananas = userData.data.bananas;
 		UserData.oranges = userData.data.oranges;
 		UserData.apples = userData.data.apples;
+		UserData.parsimmons = userData.data.parsimmons;
+		UserData.watermelons = userData.data.watermelons;
 		UserData.totalHighScoreGames = userData.data.totalHighScoreGames;
 		UserData.totalTimePlayed = userData.data.totalTimePlayed;
 		UserData.ownBestScores = userData.data.ownBestScores;

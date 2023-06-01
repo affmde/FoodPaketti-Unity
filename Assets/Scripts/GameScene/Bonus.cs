@@ -19,6 +19,8 @@ public class Bonus : MonoBehaviour
 			bonusHandling.slider.gameObject.SetActive(true);
 			bonusHandling.bonusOn = true;
 			PlayerPrefs.SetInt("multiplier", 2);
+			PlayerPrefs.SetInt("watermelons", PlayerPrefs.GetInt("watermelons") + 1);
+			PlayerPrefs.SetInt("totalFruits", PlayerPrefs.GetInt("totalFruits") + 1);
 			bonusHandling.currentAmount = 1;
 			Destroy(gameObject);
 		}

@@ -9,3 +9,17 @@ public class PersonalHighscoresDataAPI
 	public bool					success;
 	public List<DataForSend>	data;
 }
+
+[System.Serializable]
+public class TopUserDataAPI
+{
+	public List<DataForTopUsersAPI> topUsers;
+}
+
+[System.Serializable]
+public struct DataForTopUsersAPI
+{
+	public int		level;
+	public int		xp;
+	public string	username;
+}
