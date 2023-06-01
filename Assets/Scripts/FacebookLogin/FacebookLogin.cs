@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 // Other needed dependencies
 using Facebook.Unity;
-using System.Collections;
+using UnityEngine.UI;
 
 public class FacebookLogin : MonoBehaviour{
 
-	[SerializeField] GameObject registerScreen;
-	[SerializeField] GameObject loadingScreen;
+	[SerializeField] GameObject	registerScreen;
+	[SerializeField] GameObject	loadingScreen;
+	[SerializeField] Image		facebookButton;	
 	private bool	ready = false;
 	private void Awake()
 	{
@@ -58,6 +59,7 @@ public class FacebookLogin : MonoBehaviour{
 	}
 	public void FBLogin()
 	{
+		facebookButton.enabled = false;
 		List<string> permissions = new List<string>();
 		permissions.Add("public_profile");
 		FB.LogInWithReadPermissions(permissions, AuthCallBack);
@@ -68,6 +70,7 @@ public class FacebookLogin : MonoBehaviour{
 		if (result.Error != null)
 		{
 			Debug.Log(result.Error);
+			facebookButton.enabled = true;
 		}
 		else
 		{
@@ -78,6 +81,7 @@ public class FacebookLogin : MonoBehaviour{
 			}
 			else
 			{
+				facebookButton.enabled = true;
 				Debug.Log("Facebook is not Logged in!");
 			}
 			DealWithFbMenus(FB.IsLoggedIn);
@@ -95,6 +99,7 @@ public class FacebookLogin : MonoBehaviour{
 		{
 			loadingScreen.SetActive(false);
 			registerScreen.SetActive(true);
+			facebookButton.enabled = true;
 		}
 	}
 	void DisplayUsername(IResult result)

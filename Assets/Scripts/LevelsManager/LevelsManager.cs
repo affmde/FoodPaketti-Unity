@@ -6,6 +6,8 @@ using System.Linq;
 public class LevelsManager : MonoBehaviour
 {
 	[SerializeField] private bool	unlocked;
+	[SerializeField] private int	level;
+	[SerializeField] private bool	completed;
 	public Image					unlockImage;
 	public Image					completedImage;
 	private GameObject				levelInfoPanel;
@@ -19,16 +21,14 @@ public class LevelsManager : MonoBehaviour
 	private void	Start()
 	{
 		levelInfoPanel.SetActive(false);
+		level = int.Parse(gameObject.name);
 		Debug.Log("name: " + gameObject.name);
 		if (UserData.completedLevels.Contains(int.Parse(gameObject.name)))
+			completed = true;
+		if (UserData.completedLevels.Contains(level) || (UserData.completedLevels.Length == 0 && level == 1))
 		{
-			Debug.Log("Parsing -> unlock true");
+			Debug.Log("Detected First level here. SHould unlock");
 			unlocked = true;
-		}
-		else
-		{
-			Debug.Log("Parsing -> unlock false");
-			unlocked = false;
 		}
 		UpdateLevelImage();
 	}
@@ -40,6 +40,11 @@ public class LevelsManager : MonoBehaviour
 			completedImage.gameObject.SetActive(false);
 			Debug.Log("Unlock false");
 		}
+		else if (unlocked && !completed)
+		{
+			unlockImage.gameObject.SetActive(false);
+			completedImage.gameObject.SetActive(false);
+		}
 		else
 		{
 			Debug.Log("Unlock true");
@@ -50,7 +55,7 @@ public class LevelsManager : MonoBehaviour
 
 	public void	PressLevel()
 	{
-		if (!unlocked)
+		if (unlocked && !completed)
 		{
 			levelInfoPanel.SetActive(true);
 		}

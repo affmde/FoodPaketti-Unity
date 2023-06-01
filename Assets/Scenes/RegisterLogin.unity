@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registerScreen: {fileID: 1838144556}
   loadingScreen: {fileID: 1655628066}
+  facebookButton: {fileID: 1011629037}
 --- !u!82 &600912038
 AudioSource:
   m_ObjectHideFlags: 0
@@ -967,7 +968,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10.121581
+  orthographic size: 8.526316
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class PanelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	private TextMeshProUGUI	description;
+	private TextMeshProUGUI	title;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void	ClosePanel()
+	{
+		gameObject.SetActive(false);
+	}
 }

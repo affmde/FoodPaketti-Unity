@@ -179,6 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 2015536102}
   completedImage: {fileID: 65535805}
 --- !u!114 &30541163
@@ -1050,6 +1052,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 1171299627}
   completedImage: {fileID: 285785764}
 --- !u!114 &288471643
@@ -1202,6 +1206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 822983724}
   completedImage: {fileID: 613079210}
 --- !u!114 &403705405
@@ -2181,6 +2187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 1344308633}
   completedImage: {fileID: 1039154256}
 --- !u!114 &765912343
@@ -2485,6 +2493,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 1730166662}
   completedImage: {fileID: 1062835949}
 --- !u!114 &852509798
@@ -2848,6 +2858,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 81796911}
   completedImage: {fileID: 1159265140}
 --- !u!114 &941210877
@@ -3152,6 +3164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 916309917}
   completedImage: {fileID: 1789778442}
 --- !u!114 &1000371728
@@ -3743,6 +3757,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 1871328297}
   completedImage: {fileID: 1974098407}
 --- !u!114 &1123168505
@@ -4002,6 +4018,7 @@ GameObject:
   - component: {fileID: 1297576721}
   - component: {fileID: 1297576723}
   - component: {fileID: 1297576722}
+  - component: {fileID: 1297576724}
   m_Layer: 5
   m_Name: CloseButton
   m_TagString: Untagged
@@ -4067,6 +4084,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297576720}
   m_CullTransparentMesh: 1
+--- !u!114 &1297576724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297576720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1297576722}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1724107646}
+        m_TargetAssemblyTypeName: PanelManager, Assembly-CSharp
+        m_MethodName: ClosePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1298707253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4416,6 +4489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 120084148}
   completedImage: {fileID: 1619602805}
 --- !u!114 &1425765213
@@ -4662,6 +4737,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 1959361074}
   completedImage: {fileID: 770873872}
 --- !u!1 &1445077939
@@ -5228,6 +5305,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 1053125363}
   completedImage: {fileID: 978850786}
 --- !u!114 &1580668832
@@ -5380,6 +5459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 670542256}
   completedImage: {fileID: 1095590430}
 --- !u!114 &1608355203
@@ -5652,6 +5733,7 @@ GameObject:
   - component: {fileID: 1724107643}
   - component: {fileID: 1724107645}
   - component: {fileID: 1724107644}
+  - component: {fileID: 1724107646}
   m_Layer: 5
   m_Name: LevelInfoPanel
   m_TagString: LevelInfoPanel
@@ -5721,6 +5803,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724107642}
   m_CullTransparentMesh: 1
+--- !u!114 &1724107646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724107642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1946b245bb150a348b5bafa2041c7f83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1730166660
 GameObject:
   m_ObjectHideFlags: 0
@@ -6849,6 +6943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlocked: 0
+  level: 0
+  completed: 0
   unlockImage: {fileID: 946367171}
   completedImage: {fileID: 2108698117}
 --- !u!114 &2136671976
