@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class LevelsData
 {
-	public static int	Level;
+	public static int		level;
 	public static string	title;
 	public static string	description;
 	public static string	type;

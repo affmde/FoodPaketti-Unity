@@ -9,6 +9,7 @@ public static class API
 {
 	public static PersonalHighscoresDataAPI	personalHighscoreData;
 	public static TopUserDataAPI			topUsersData;
+	public static LevelsDataForAPI			levelsData;
 	public static IEnumerator AddUserToDatabase()
 	{
 		WWWForm form = new WWWForm();
@@ -150,8 +151,23 @@ public static class API
 			else
 			{
 				string json = request.downloadHandler.text;
-				Debug.Log("json: " + json);
 				topUsersData = JsonUtility.FromJson<TopUserDataAPI>(json);
+			}
+		}
+	}
+
+	public static IEnumerator GetLevels()
+	{
+		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/levels/getLevels"))
+		{
+			yield return (request.SendWebRequest());
+
+			if (request.result == UnityWebRequest.Result.ConnectionError)
+				Debug.Log(request.error);
+			else
+			{
+				string json = request.downloadHandler.text;
+				levelsData= JsonUtility.FromJson<LevelsDataForAPI>(json);
 			}
 		}
 	}

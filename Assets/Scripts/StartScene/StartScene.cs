@@ -47,6 +47,12 @@ public class StartScene : MonoBehaviour
 		SceneManagement.ChangeScene("StatsScene", Color.black, 0.5f);
 	}
 
+	public void	GoToLevels()
+	{
+		audioSource.Play();
+		SceneManagement.ChangeScene("LevelsManagerScene", Color.black, 0.5f);
+	}
+
 	public void	QuitApp()
 	{
 		Application.Quit();

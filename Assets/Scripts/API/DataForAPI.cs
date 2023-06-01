@@ -23,3 +23,24 @@ public struct DataForTopUsersAPI
 	public int		xp;
 	public string	username;
 }
+
+
+[SerializeField]
+public class LevelsDataForAPI
+{
+	public bool					success;
+	public string				message;
+	public List<LevelsStruct>	data;
+}
+
+[System.Serializable]
+public class LevelsStruct
+{
+	public int		level;
+	public string	title;
+	public string	description;
+	public string	type;
+	public List<CollectorWinningCondition> collector;
+	public int		surviver;
+	public int		scorer;
+}

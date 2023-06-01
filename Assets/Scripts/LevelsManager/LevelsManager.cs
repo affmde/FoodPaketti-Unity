@@ -11,6 +11,7 @@ public class LevelsManager : MonoBehaviour
 	public Image					unlockImage;
 	public Image					completedImage;
 	private GameObject				levelInfoPanel;
+	
 
 
 	private void	Awake()
@@ -22,12 +23,13 @@ public class LevelsManager : MonoBehaviour
 	{
 		levelInfoPanel.SetActive(false);
 		level = int.Parse(gameObject.name);
-		Debug.Log("name: " + gameObject.name);
 		if (UserData.completedLevels.Contains(int.Parse(gameObject.name)))
 			completed = true;
 		if (UserData.completedLevels.Contains(level) || (UserData.completedLevels.Length == 0 && level == 1))
+			unlocked = true;
+		if (level == 1)
 		{
-			Debug.Log("Detected First level here. SHould unlock");
+			unlockImage.gameObject.SetActive(false);
 			unlocked = true;
 		}
 		UpdateLevelImage();
@@ -38,7 +40,6 @@ public class LevelsManager : MonoBehaviour
 		if (!unlocked){
 			unlockImage.gameObject.SetActive(true);
 			completedImage.gameObject.SetActive(false);
-			Debug.Log("Unlock false");
 		}
 		else if (unlocked && !completed)
 		{
@@ -47,7 +48,6 @@ public class LevelsManager : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Unlock true");
 			unlockImage.gameObject.SetActive(false);
 			completedImage.gameObject.SetActive(true);
 		}
