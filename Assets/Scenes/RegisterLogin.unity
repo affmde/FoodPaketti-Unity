@@ -926,6 +926,7 @@ GameObject:
   - component: {fileID: 1195864602}
   - component: {fileID: 1195864601}
   - component: {fileID: 1195864604}
+  - component: {fileID: 1195864605}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -968,7 +969,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.526316
+  orthographic size: 7.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1014,6 +1015,23 @@ MonoBehaviour:
   wireColor: {r: 1, g: 1, b: 1, a: 1}
   UnitsSize: 36
   constraint: 0
+  camera: {fileID: 1195864602}
+  executeInUpdate: 1
+--- !u!114 &1195864605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195864600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d55d83e4c4d956e4e942a11a7bdc6839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wireColor: {r: 1, g: 1, b: 1, a: 1}
+  UnitsSize: 15
+  constraint: 1
   camera: {fileID: 1195864602}
   executeInUpdate: 1
 --- !u!1 &1524608710

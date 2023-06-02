@@ -17,10 +17,5 @@ public class XpBar : MonoBehaviour
 		UserData.playerLevelProgress = currXP / targetXP;
 		fillBar.fillAmount = UserData.playerLevelProgress;
 		level.text = UserData.level.ToString();
-
-		Debug.Log("before: " + before);
-		Debug.Log("next: " + next);
-		Debug.Log("Current: " + currXP);
-		Debug.Log("Target: " + targetXP);
 	}
 }

@@ -40,7 +40,12 @@ public class LevelsStruct
 	public string	title;
 	public string	description;
 	public string	type;
-	public List<CollectorWinningCondition> collector;
-	public int		surviver;
+	public CollectorWinningCondition collector;
+	public int		survivor;
 	public int		scorer;
+	public int		bananaOdd;
+	public int		appleOdd;
+	public int		orangeOdd;
+	public int		difficulty;
+	public int		xp;
 }

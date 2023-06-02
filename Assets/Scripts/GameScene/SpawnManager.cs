@@ -20,6 +20,7 @@ public class SpawnManager : MonoBehaviour
 
 	private void	Start()
 	{
+		Physics.gravity = new Vector3(0,-1,0);
 		screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 		fruitWidth = fruits[0].transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
 		fruitHeight = fruits[0].transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;

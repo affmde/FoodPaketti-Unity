@@ -14,7 +14,5 @@ public class Levels : MonoBehaviour
 	{
 		yield return (API.GetLevels());
 		loadingPanel.SetActive(false);
-		foreach(var a in API.levelsData.data)
-			Debug.Log("Level: " + a.level + " type: " + a.type);
 	}
 }

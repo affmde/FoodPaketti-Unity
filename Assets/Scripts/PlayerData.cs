@@ -46,7 +46,7 @@ public static class UserData
 	public static string			facebookId;
 	public static int				level;
 	public static int				xp;
-	public static int[]				completedLevels;
+	public static List<int>			completedLevels;
 	public static int				totalFruits;
 	public static int				bananas;
 	public static int				oranges;
@@ -81,7 +81,7 @@ public struct Data
 	public string			facebookId;
 	public int				level;
 	public int				xp;
-	public int[]			completedLevels;
+	public List<int>		completedLevels;
 	public int				totalFruits;
 	public int				bananas;
 	public int				oranges;

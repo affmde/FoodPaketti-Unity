@@ -43,6 +43,7 @@ public static class API
 		form.AddField("oranges", PlayerPrefs.GetInt("oranges"));
 		form.AddField("parsimmons", PlayerPrefs.GetInt("parsimmons"));
 		form.AddField("watermelons", PlayerPrefs.GetInt("watermelons"));
+		form.AddField("level", UserData.level);
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 		form.AddField("xp", xp);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
@@ -167,8 +168,33 @@ public static class API
 			else
 			{
 				string json = request.downloadHandler.text;
+				Debug.Log(json);
 				levelsData= JsonUtility.FromJson<LevelsDataForAPI>(json);
 			}
 		}
+	}
+
+	public static IEnumerator SaveCompletedLevel()
+	{
+		WWWForm form = new WWWForm();
+		form.AddField("username", UserData.username);
+		form.AddField("facebookId", UserData.facebookId);
+		form.AddField("score", PlayerPrefs.GetInt("score"));
+		form.AddField("apples", PlayerPrefs.GetInt("apples"));
+		form.AddField("bananas", PlayerPrefs.GetInt("bananas"));
+		form.AddField("oranges", PlayerPrefs.GetInt("oranges"));
+		form.AddField("parsimmons", PlayerPrefs.GetInt("parsimmons"));
+		form.AddField("watermelons", PlayerPrefs.GetInt("watermelons"));
+		form.AddField("level", UserData.level);
+		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
+		form.AddField("xp", LevelsData.xp);
+		form.AddField("levelCompleted", LevelsData.level);
+		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
+		var download= UnityWebRequest.Post("http://localhost:3001/users/levelCompleted", form);
+		yield return download.SendWebRequest();
+		if (download.result != UnityWebRequest.Result.Success)
+			Debug.Log( "Error saving downloading: " + download.error );
+		else
+			Debug.Log(download.downloadHandler.text);
 	}
 }

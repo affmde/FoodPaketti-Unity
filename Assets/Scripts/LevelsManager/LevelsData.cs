@@ -8,9 +8,14 @@ public static class LevelsData
 	public static string	title;
 	public static string	description;
 	public static string	type;
-	public static List<CollectorWinningCondition> collector;
-	public static int		surviver;
+	public static CollectorWinningCondition collector;
+	public static int		survivor;
 	public static int		scorer;
+	public static int		bananaOdd;
+	public static int		appleOdd;
+	public static int		orangeOdd;
+	public static int		difficulty;
+	public static int		xp;
 
 }
 
