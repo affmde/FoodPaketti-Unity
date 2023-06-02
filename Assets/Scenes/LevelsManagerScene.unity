@@ -183,6 +183,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 2015536102}
   completedImage: {fileID: 65535805}
+  levelText: {fileID: 639193954}
 --- !u!114 &30541163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1191,6 +1192,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1171299627}
   completedImage: {fileID: 285785764}
+  levelText: {fileID: 0}
 --- !u!114 &288471643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,6 +1458,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 822983724}
   completedImage: {fileID: 613079210}
+  levelText: {fileID: 2130539913}
 --- !u!114 &403705405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3002,6 +3005,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1344308633}
   completedImage: {fileID: 1039154256}
+  levelText: {fileID: 1020153506}
 --- !u!114 &765912343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3308,6 +3312,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1730166662}
   completedImage: {fileID: 1062835949}
+  levelText: {fileID: 184044337}
 --- !u!114 &852509798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3673,6 +3678,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 81796911}
   completedImage: {fileID: 1159265140}
+  levelText: {fileID: 195387519}
 --- !u!114 &941210877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3979,6 +3985,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 916309917}
   completedImage: {fileID: 1789778442}
+  levelText: {fileID: 593091972}
 --- !u!114 &1000371728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4572,6 +4579,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1871328297}
   completedImage: {fileID: 1974098407}
+  levelText: {fileID: 1911558855}
 --- !u!114 &1123168505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5349,6 +5357,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 120084148}
   completedImage: {fileID: 1619602805}
+  levelText: {fileID: 1543672566}
 --- !u!114 &1425765213
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5597,6 +5606,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1959361074}
   completedImage: {fileID: 770873872}
+  levelText: {fileID: 505583210}
 --- !u!1 &1452208939
 GameObject:
   m_ObjectHideFlags: 0
@@ -6031,6 +6041,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1053125363}
   completedImage: {fileID: 978850786}
+  levelText: {fileID: 725385326}
 --- !u!114 &1580668832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6185,6 +6196,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 670542256}
   completedImage: {fileID: 1095590430}
+  levelText: {fileID: 1872641870}
 --- !u!114 &1608355203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8072,6 +8084,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 946367171}
   completedImage: {fileID: 2108698117}
+  levelText: {fileID: 1890966028}
 --- !u!114 &2136671976
 MonoBehaviour:
   m_ObjectHideFlags: 0

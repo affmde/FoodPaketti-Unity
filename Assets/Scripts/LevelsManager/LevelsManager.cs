@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using TMPro;
+
 public class LevelsManager : MonoBehaviour
 {
-	[SerializeField] private bool	unlocked;
-	[SerializeField] private int	level;
-	[SerializeField] private bool	completed;
-	public Image					unlockImage;
-	public Image					completedImage;
-	private GameObject				levelInfoPanel;
+	[SerializeField] private bool		unlocked;
+	[SerializeField] private int		level;
+	[SerializeField] private bool		completed;
+	public Image						unlockImage;
+	public Image						completedImage;
+	private GameObject					levelInfoPanel;
+	[SerializeField] TextMeshProUGUI	levelText;
 
 	private void	Awake()
 	{
@@ -21,6 +24,7 @@ public class LevelsManager : MonoBehaviour
 	{
 		levelInfoPanel.SetActive(false);
 		level = int.Parse(gameObject.name);
+		levelText.text = gameObject.name;
 		if (UserData.completedLevels.Contains(int.Parse(gameObject.name)))
 			completed = true;
 		if (UserData.completedLevels.Contains(level - 1))
