@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453084, guid: 552227f7d7092a848bc3231f2a2a5a54, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.3
+      value: 6.9
       objectReference: {fileID: 0}
     - target: {fileID: 453084, guid: 552227f7d7092a848bc3231f2a2a5a54, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1383,6 +1383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 447119155}
+  - component: {fileID: 447119156}
   m_Layer: 5
   m_Name: Watermelon
   m_TagString: Untagged
@@ -1412,6 +1413,19 @@ RectTransform:
   m_AnchoredPosition: {x: 126.8, y: 19}
   m_SizeDelta: {x: 88.09, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &447119156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447119154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfee04a7718e76498b0dab5fd9e1ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: {fileID: 437746822}
 --- !u!1001 &484075898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1449,7 +1463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 425166, guid: 0fa72a843191b2e4c924dfe0c98fd45e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.2
+      value: -6.92
       objectReference: {fileID: 0}
     - target: {fileID: 425166, guid: 0fa72a843191b2e4c924dfe0c98fd45e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2868,8 +2882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -191.16998, y: -65.880005}
-  m_SizeDelta: {x: -532.58, y: -320.53}
+  m_AnchoredPosition: {x: -186, y: -60.71}
+  m_SizeDelta: {x: -522.25, y: -310.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &868597756
 MonoBehaviour:
@@ -3145,7 +3159,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.0263157
+  orthographic size: 4.135135
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3870,8 +3884,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 13.16, y: 0}
-  m_SizeDelta: {x: 927.25, y: 504.76}
+  m_AnchoredPosition: {x: -0.27, y: 6.41}
+  m_SizeDelta: {x: 868.15, y: 485.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1317839279
 MonoBehaviour:
@@ -4299,8 +4313,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 195.29999, y: -65.88098}
-  m_SizeDelta: {x: -584.99, y: -320.53}
+  m_AnchoredPosition: {x: 201.21, y: -60.713}
+  m_SizeDelta: {x: -573.18, y: -310.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500785948
 MonoBehaviour:
@@ -5465,6 +5479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2031559872}
+  - component: {fileID: 2031559873}
   m_Layer: 5
   m_Name: Parsimmons
   m_TagString: Untagged
@@ -5494,6 +5509,19 @@ RectTransform:
   m_AnchoredPosition: {x: 66.9, y: 19}
   m_SizeDelta: {x: 88.09, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2031559873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031559871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfee04a7718e76498b0dab5fd9e1ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  total: {fileID: 1536426453}
 --- !u!1 &2067824801
 GameObject:
   m_ObjectHideFlags: 0

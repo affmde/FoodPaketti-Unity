@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using System;
 
 public class Stats : MonoBehaviour
 {
@@ -54,12 +54,15 @@ public class Stats : MonoBehaviour
 
 	public void	ShowGameStats()
 	{
+		string	hours = TimeSpan.FromSeconds(UserData.totalTimePlayed).Hours.ToString();
+		string	minutes = TimeSpan.FromSeconds(UserData.totalTimePlayed).Minutes.ToString();
+		string	seconds = TimeSpan.FromSeconds(UserData.totalTimePlayed).Seconds.ToString();
 		fruitsStatsArea.SetActive(false);
 		startArea.SetActive(false);
 		gameStatsArea.SetActive(true);
 		ScoresStatsArea.SetActive(false);
 		totalHighScoreGames.text = UserData.totalHighScoreGames.ToString();
-		totalTimePlayed.text = UserData.totalTimePlayed.ToString();
+		totalTimePlayed.text = hours + "h " + minutes + "m " + seconds + "s";
 		totalXP.text = UserData.xp.ToString();
 		totalScoreTogether.text = UserData.totalPointsAcomolated.ToString();
 		audioList[1].Play();

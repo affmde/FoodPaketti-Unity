@@ -36,8 +36,7 @@ public class HandleStatsShow : MonoBehaviour
 
 	private void	Start()
 	{
-		//continueButton.SetActive(false);
-		//StartCoroutine(DisplayStats());
+		Debug.Log("Parsimmons: " + PlayerPrefs.GetInt("parsimmons"));
 		StartCoroutine(LoadData());
 	}
 
