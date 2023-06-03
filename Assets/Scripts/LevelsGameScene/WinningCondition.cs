@@ -19,6 +19,7 @@ public class WinningCondition : MonoBehaviour
 
 	private void	Update()
 	{
+		PlayerPrefs.SetFloat("duration", PlayerPrefs.GetFloat("duration") + Time.deltaTime);
 		Debug.Log("Entered the Updated of Winning condition script");
 		if (type == "scorer")
 		{

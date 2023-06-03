@@ -18,4 +18,9 @@ public class XpBar : MonoBehaviour
 		fillBar.fillAmount = UserData.playerLevelProgress;
 		level.text = UserData.level.ToString();
 	}
+
+	private void Update()
+	{
+		level.text = UserData.level.ToString();
+	}
 }

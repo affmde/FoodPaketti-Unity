@@ -37,7 +37,6 @@ public class InfoPanel : MonoBehaviour
 			points.text = PlayerPrefs.GetInt("score").ToString() + "/" + requiredPoints.ToString() + " Points";
 		else if (type == "survivor")
 		{
-			PlayerPrefs.SetFloat("duration", PlayerPrefs.GetFloat("duration") + Time.deltaTime);
 			points.text = Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")).ToString() + "/" + requiredPoints.ToString() + " seconds";
 		}
 	}

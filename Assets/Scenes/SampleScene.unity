@@ -340,56 +340,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133149246}
   m_CullTransparentMesh: 1
---- !u!1 &194807349
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 194807351}
-  - component: {fileID: 194807350}
-  m_Layer: 0
-  m_Name: BirdSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &194807350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194807349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373e420700e778b4abd8abde66163b52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bird:
-  - {fileID: 7969946016079009171, guid: 28e215b765ae7834080e43e57de44cc9, type: 3}
-  - {fileID: 77304507441517234, guid: 05a02c25443fde64ea31ba08a2616588, type: 3}
-  - {fileID: 4731537535774133702, guid: 9f2f6c974cc8ec64f8c7558a512a6e5c, type: 3}
-  - {fileID: 2787598053806573127, guid: 3338530678f6dc1469e15530c927e585, type: 3}
-  birdSpawnTime: 7
---- !u!4 &194807351
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194807349}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &212809913
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +547,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279075850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.58, y: 2.13125, z: 0}
+  m_LocalPosition: {x: -3.58, y: 2.1303952, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -856,7 +806,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.53125
+  orthographic size: 2.5303953
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2175,7 +2125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 732120965962055641, guid: d4c7491f3b12859419a1a460b624e34f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.06125
+      value: -3.0603952
       objectReference: {fileID: 0}
     - target: {fileID: 732120965962055641, guid: d4c7491f3b12859419a1a460b624e34f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2211,6 +2161,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c7491f3b12859419a1a460b624e34f, type: 3}
+--- !u!1001 &3484583860923154243
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958516, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3484583861117958518, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
+      propertyPath: m_Name
+      value: BirdSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb6175c75bb404647a6cd9f90d204da6, type: 3}
 --- !u!1001 &4926238180328338620
 PrefabInstance:
   m_ObjectHideFlags: 0
