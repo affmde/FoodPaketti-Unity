@@ -5,12 +5,20 @@ using System.Linq;
 
 public class Levels : MonoBehaviour
 {
-	[SerializeField] GameObject		loadingPanel;
+	[SerializeField] GameObject			loadingPanel;
+	[SerializeField] List<AudioSource>	audioList;
 
 	private void	Awake()
 	{
 		StartCoroutine(LoadLevels());
 	}
+
+	private void	Start()
+	{
+		foreach (AudioSource audioS in audioList)
+			SceneManagement.ToogleAudioSource(audioS);
+	}
+
 	private IEnumerator LoadLevels()
 	{
 		yield return (API.GetLevels());
@@ -34,5 +42,11 @@ public class Levels : MonoBehaviour
 		LevelsData.collector.totalFruits = API.levelsData.data[LevelsData.level].collector.totalFruits;
 		LevelsData.collector.parsimmons = API.levelsData.data[LevelsData.level].collector.parsimmons;
 		LevelsData.collector.watermelons = API.levelsData.data[LevelsData.level].collector.watermelons;
+	}
+
+	public void	Return()
+	{
+		audioList[1].Play();
+		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 }

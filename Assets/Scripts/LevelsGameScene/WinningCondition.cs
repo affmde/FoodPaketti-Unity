@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 public class WinningCondition : MonoBehaviour
 {
 	private string type;
-
-
+	[SerializeField] ParticleSystem	winningParticle;
+	[SerializeField] AudioSource	winningSound;
+	private bool					particlePlaying;
 	private void	Start()
 	{
+		SceneManagement.ToogleAudioSource(winningSound);
 		Debug.Log("Game Started!");
 		Debug.Log("gameOver?: " + PlayerData.gameOver);
 		type = LevelsData.type;
@@ -21,13 +23,19 @@ public class WinningCondition : MonoBehaviour
 		if (type == "scorer")
 		{
 			if (PlayerPrefs.GetInt("score") >= LevelsData.scorer)
+			{
+				PlayParticle();
 				GameSettings.levelCompleted = true;
+			}
 		}
 		else if (type == "survivor")
 		{
 			Debug.Log("duration: " + PlayerPrefs.GetFloat("duration") + " required: " + LevelsData.survivor);
 			if (PlayerPrefs.GetFloat("duration") >= LevelsData.survivor)
+			{
+				PlayParticle();
 				GameSettings.levelCompleted = true;
+			}
 		}
 		else if (type == "collector")
 		{
@@ -39,6 +47,7 @@ public class WinningCondition : MonoBehaviour
 				PlayerPrefs.GetInt("watermelon") >= LevelsData.collector.watermelons)
 			{
 				GameSettings.levelCompleted = true;
+				PlayParticle();
 			}
 
 		}
@@ -50,6 +59,17 @@ public class WinningCondition : MonoBehaviour
 	private void	ChangeScene()
 	{
 		GameSettings.levelCompleted = false;
-		SceneManager.LoadScene("CompletedLevelScene");
+		SceneManagement.ChangeScene("CompletedLevelScene", Color.black, 0.5f);
+	}
+
+	private void	PlayParticle()
+	{
+		if (!particlePlaying)
+		{
+			ParticleSystem ps = Instantiate(winningParticle, gameObject.transform.position, gameObject.transform.rotation);
+			ps.Play();
+			winningSound.Play();
+		}
+		particlePlaying = true;
 	}
 }

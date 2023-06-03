@@ -14,7 +14,7 @@ public class LevelsManager : MonoBehaviour
 	public Image						completedImage;
 	private GameObject					levelInfoPanel;
 	[SerializeField] TextMeshProUGUI	levelText;
-
+	[SerializeField] AudioSource		buttonClick;
 	private void	Awake()
 	{
 		levelInfoPanel = GameObject.FindWithTag("LevelInfoPanel");
@@ -22,6 +22,7 @@ public class LevelsManager : MonoBehaviour
 
 	private void	Start()
 	{
+		SceneManagement.ToogleAudioSource(buttonClick);
 		levelInfoPanel.SetActive(false);
 		level = int.Parse(gameObject.name);
 		levelText.text = gameObject.name;
@@ -62,12 +63,8 @@ public class LevelsManager : MonoBehaviour
 	{
 		if (unlocked && !completed)
 		{
+			buttonClick.Play();
 			levelInfoPanel.SetActive(true);
 		}
-	}
-
-	public void	Return()
-	{
-		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 }

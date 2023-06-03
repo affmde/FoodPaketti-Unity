@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class CompletedLevel : MonoBehaviour
 {
+	[SerializeField] AudioSource	audioSource;
+
+	private void Start()
+	{
+		SceneManagement.ToogleAudioSource(audioSource);
+	}
 	public void	Continue()
 	{
 		StartCoroutine(SaveLevel());

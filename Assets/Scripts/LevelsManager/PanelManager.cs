@@ -12,8 +12,10 @@ public class PanelManager : MonoBehaviour
 	[SerializeField] private GameObject			collectorDescriptionPanel;
 	[SerializeField] private GameObject[]		fruitsToDescription;
 	[SerializeField] private GameObject			loadingPanel;
+	[SerializeField] private AudioSource		buttonClick;
 	private void	Start()
 	{
+		SceneManagement.ToogleAudioSource(buttonClick);
 		loadingPanel.SetActive(false);
 		if (LevelsData.type == "scorer" || LevelsData.type == "survivor")
 		{
@@ -29,11 +31,13 @@ public class PanelManager : MonoBehaviour
 	}
 	public void	ClosePanel()
 	{
+		buttonClick.Play();
 		gameObject.SetActive(false);
 	}
 
 	public void	Play()
 	{
+		buttonClick.Play();
 		GameSettings.gameType = "levelGame";
 		loadingPanel.SetActive(true);
 		PlayerData.ResetData();
