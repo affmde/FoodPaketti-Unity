@@ -39,8 +39,8 @@ public class XpBarGameOver : MonoBehaviour
 				UserData.level++;
 				StartCoroutine(API.LevelUp());
 			}
-			if (amount > 75)
-				yield return new WaitForSeconds(2f / amount);
+			if (amount > 300)
+				yield return new WaitForSeconds(0.01f);
 			else
 				yield return (0.02f);
 		}

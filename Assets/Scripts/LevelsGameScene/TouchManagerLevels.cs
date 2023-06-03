@@ -5,8 +5,6 @@ using UnityEngine.InputSystem;
 
 public class TouchManagerLevels : MonoBehaviour
 {
-	[SerializeField]
-	private float speed;
 	public TouchClass touchAction;
 	private Rigidbody2D rbody;
 	private Vector2 moveInput;
@@ -48,12 +46,12 @@ public class TouchManagerLevels : MonoBehaviour
 			{
 				if (touchToWorld.x < 0)
 				{
-					newPos.x -= speed * Time.deltaTime;
+					newPos.x -= 0.05f;
 					basket.transform.position =newPos;
 				}
 				else
 				{
-					newPos.x += speed * Time.deltaTime;
+					newPos.x += 0.05f;
 					basket.transform.position = newPos;
 				}
 			}

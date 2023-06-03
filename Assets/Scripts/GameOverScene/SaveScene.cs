@@ -20,11 +20,18 @@ public class SaveScene : MonoBehaviour
 	private void PostData()
 	{
 		if (GameSettings.gameType == "highscores")
+		{
 			StartCoroutine(SendData.Post());
-		StartCoroutine(API.SaveGameData(GameSettings.xpGained));
+			StartCoroutine(API.SaveGameData(GameSettings.xpGained));
+		}
+		else if (GameSettings.gameType == "levelGame")
+			StartCoroutine(API.SaveLevelGame());
 		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
-		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+		if (GameSettings.gameType == "highscores")
+			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+		else if (GameSettings.gameType == "levelGame")
+			SceneManagement.ChangeScene("LevelsManagerScene", Color.black, 1f);
 	}
 
 	public void Continue()

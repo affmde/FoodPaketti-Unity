@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class CollectorTopPanel : MonoBehaviour
 {
 	[SerializeField] TextMeshProUGUI	text;
+	[SerializeField] Image				completedImage;
 	private int							requiredFruit;
 	private int							currentFruit;
+
+	private void	Start()
+	{
+		completedImage.gameObject.SetActive(false);
+	}
 	private void	Update()
 	{
-		CollectorWinningCondition data = API.levelsData.data[LevelsData.level - 1].collector;
+		CollectorWinningCondition data = LevelsData.collector;
 		if (gameObject.name == "Apple")
 		{
 			if (data.apples < 1)
@@ -64,6 +71,11 @@ public class CollectorTopPanel : MonoBehaviour
 				currentFruit = PlayerPrefs.GetInt("watermelons");
 				text.text = currentFruit + "/" + requiredFruit;
 			}
+		}
+		if (gameObject.activeInHierarchy && currentFruit >= requiredFruit)
+		{
+			completedImage.gameObject.SetActive(true);
+			text.gameObject.SetActive(false);
 		}
 	}
 }

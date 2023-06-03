@@ -13,7 +13,7 @@ public class CompletedLevel : MonoBehaviour
 	{
 		yield return (API.SaveCompletedLevel());
 		PlayerData.ResetData();
-		UserData.completedLevels.Add(LevelsData.level);
+		UserData.completedLevels.Add(LevelsData.level + 1);
 		SceneManagement.ChangeScene("LevelsManagerScene", Color.black, 0.5f);
 	}
 }

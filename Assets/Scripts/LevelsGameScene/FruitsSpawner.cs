@@ -16,7 +16,7 @@ public class FruitsSpawner : MonoBehaviour
 	[SerializeField] List<int>					fruitsOdds;
 	[SerializeField] int						difficlutyLevel;
 	private Vector3								resize;
-	private Vector3								gravity;
+	[SerializeField] float						downWardForce = 5f;
 
 	private void	Start()
 	{
@@ -28,8 +28,6 @@ public class FruitsSpawner : MonoBehaviour
 		fruitWidth = fruits[0].transform.GetComponent<SpriteRenderer>().bounds.size.x / 2;
 		fruitHeight = fruits[0].transform.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 		resize = new Vector3(3,3,3);
-		gravity = new Vector3(0, -10f, 0);
-		Physics.gravity = gravity;
 	}
 
 	private Vector3 GetRandomPosition()
@@ -45,25 +43,21 @@ public class FruitsSpawner : MonoBehaviour
 	private void GenerateApples()
 	{
 		GameObject apple = Instantiate(fruits[0], GetRandomPosition(), Quaternion.Euler(0,0,0));
-		apple.transform.localScale = resize;
 	}
 
 	private void	GenerateOranges()
 	{
 		GameObject orange = Instantiate(fruits[1], GetRandomPosition(), Quaternion.Euler(0,0,0));
-		orange.transform.localScale = resize;
 	}
 
 	private void	GenerateBananas()
 	{
 		GameObject banana = Instantiate(fruits[2], GetRandomPosition(), Quaternion.Euler(0,0,0));
-		banana.transform.localScale = resize;
 	}
 
 	private void	GenerateBombs()
 	{
 		GameObject bomb = Instantiate(fruits[3], GetRandomPosition(), Quaternion.Euler(0,0,0));
-		bomb.transform.localScale = resize;
 	}
 
 	private void GenerateFruit()

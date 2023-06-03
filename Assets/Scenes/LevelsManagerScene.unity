@@ -1192,7 +1192,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1171299627}
   completedImage: {fileID: 285785764}
-  levelText: {fileID: 0}
+  levelText: {fileID: 195387519}
 --- !u!114 &288471643
 MonoBehaviour:
   m_ObjectHideFlags: 0

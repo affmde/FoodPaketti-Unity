@@ -19,13 +19,13 @@ public class PanelManager : MonoBehaviour
 		{
 			descriptionPanel.SetActive(true);
 			collectorDescriptionPanel.SetActive(false);
-			description.text = API.levelsData.data[LevelsData.level - 1].description;
+			description.text = LevelsData.description;
 		}
 		else if (LevelsData.type == "collector")
 		{
 			HandleCollectorPanel();
 		}
-		title.text = API.levelsData.data[LevelsData.level - 1].title;
+		title.text = LevelsData.title;
 	}
 	public void	ClosePanel()
 	{
@@ -34,6 +34,7 @@ public class PanelManager : MonoBehaviour
 
 	public void	Play()
 	{
+		GameSettings.gameType = "levelGame";
 		loadingPanel.SetActive(true);
 		PlayerData.ResetData();
 		SceneManagement.ChangeScene("LevelsGameScene", Color.black, 0.5f);

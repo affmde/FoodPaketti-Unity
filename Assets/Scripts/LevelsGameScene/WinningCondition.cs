@@ -12,7 +12,7 @@ public class WinningCondition : MonoBehaviour
 		Debug.Log("Game Started!");
 		Debug.Log("gameOver?: " + PlayerData.gameOver);
 		type = LevelsData.type;
-		PlayerData.gameOver = false;
+		GameSettings.levelCompleted = false;
 	}
 
 	private void	Update()
@@ -21,13 +21,13 @@ public class WinningCondition : MonoBehaviour
 		if (type == "scorer")
 		{
 			if (PlayerPrefs.GetInt("score") >= LevelsData.scorer)
-				PlayerData.gameOver = true;
+				GameSettings.levelCompleted = true;
 		}
 		else if (type == "survivor")
 		{
 			Debug.Log("duration: " + PlayerPrefs.GetFloat("duration") + " required: " + LevelsData.survivor);
 			if (PlayerPrefs.GetFloat("duration") >= LevelsData.survivor)
-				PlayerData.gameOver = true;
+				GameSettings.levelCompleted = true;
 		}
 		else if (type == "collector")
 		{
@@ -38,18 +38,18 @@ public class WinningCondition : MonoBehaviour
 				PlayerPrefs.GetInt("parsimmons") >= LevelsData.collector.parsimmons &&
 				PlayerPrefs.GetInt("watermelon") >= LevelsData.collector.watermelons)
 			{
-				PlayerData.gameOver = true;
+				GameSettings.levelCompleted = true;
 			}
 
 		}
-		if (PlayerData.gameOver)
+		if (GameSettings.levelCompleted)
 			ChangeScene();
 	}
 
 
 	private void	ChangeScene()
 	{
-		PlayerData.gameOver = false;
+		GameSettings.levelCompleted = false;
 		SceneManager.LoadScene("CompletedLevelScene");
 	}
 }
