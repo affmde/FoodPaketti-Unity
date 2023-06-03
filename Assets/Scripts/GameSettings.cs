@@ -7,4 +7,5 @@ public static class GameSettings
 	public static int		baseLevel = 2000;
 	public static int		worldRecord;
 	public static int		xpGained;
+	public static string	gameType;
 }

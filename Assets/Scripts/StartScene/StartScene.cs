@@ -23,6 +23,7 @@ public class StartScene : MonoBehaviour
 	}
 	public void	StartGame()
 	{
+		GameSettings.gameType = "highscores";
 		audioSource.Play();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0));
 		loadingScreen.StartGame("SampleScene");
@@ -49,6 +50,7 @@ public class StartScene : MonoBehaviour
 
 	public void	GoToLevels()
 	{
+		GameSettings.gameType = "levels";
 		audioSource.Play();
 		SceneManagement.ChangeScene("LevelsManagerScene", Color.black, 0.5f);
 	}

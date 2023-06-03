@@ -11,7 +11,7 @@ public class FruitInfo : MonoBehaviour
 	{
 		if (gameObject.name == "Parsimmons")
 			total.text = PlayerPrefs.GetInt("parsimmons").ToString();
-		else if (gameObject.name == "watermelons")
+		else if (gameObject.name == "Watermelons")
 			total.text = PlayerPrefs.GetInt("watermelons").ToString();
 	}
 }

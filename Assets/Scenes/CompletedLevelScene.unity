@@ -222,6 +222,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1721400960619881241, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1721400960619881243, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
@@ -355,8 +359,28 @@ PrefabInstance:
       value: 0.000013351
       objectReference: {fileID: 0}
     - target: {fileID: 1721400961542607054, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721400961542607054, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721400961542607055, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 319.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721400961542607055, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 79.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721400961542607055, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1721400961542607055, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 3.79
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
@@ -387,39 +411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &74595504 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1721400960979771265, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
-  m_PrefabInstance: {fileID: 74595500}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &74595505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74595504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6107f06ca2bea45b3d2a3712760da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fillBar: {fileID: 74595503}
-  level: {fileID: 74595502}
---- !u!114 &74595506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74595504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6107f06ca2bea45b3d2a3712760da1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fillBar: {fileID: 74595503}
-  level: {fileID: 74595502}
 --- !u!1 &101800894
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,7 +879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 344dacf1994d8ff4db049c7ee82481ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  continueButton: {fileID: 671413870}
 --- !u!4 &658136586
 Transform:
   m_ObjectHideFlags: 0
@@ -1368,6 +1358,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1239995016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1721400961301087338, guid: cf1eb3ce0b157d74087580480f910009, type: 3}
+  m_PrefabInstance: {fileID: 74595500}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1239995019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239995016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02262588d53845646aab3cdbac490a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  continueButton: {fileID: 671413870}
+  fillBar: {fileID: 74595503}
 --- !u!1 &1305873279
 GameObject:
   m_ObjectHideFlags: 0

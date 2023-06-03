@@ -19,7 +19,8 @@ public class SaveScene : MonoBehaviour
 
 	private void PostData()
 	{
-		StartCoroutine(SendData.Post());
+		if (GameSettings.gameType == "highscores")
+			StartCoroutine(SendData.Post());
 		StartCoroutine(API.SaveGameData(GameSettings.xpGained));
 		PlayerData.ResetData();
 		StartCoroutine(FadeInOutSound.StartFade(backtrack, 1f, 0.25f));
