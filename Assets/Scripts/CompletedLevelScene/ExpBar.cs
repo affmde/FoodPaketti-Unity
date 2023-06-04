@@ -41,6 +41,7 @@ public class ExpBar : MonoBehaviour
 			}
 			yield return (0.02f);
 		}
+		gameObject.SetActive(false);
 		continueButton.SetActive(true);
 	}
 }

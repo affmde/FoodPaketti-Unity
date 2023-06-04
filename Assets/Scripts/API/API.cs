@@ -158,7 +158,7 @@ public static class API
 
 	public static IEnumerator GetLevels()
 	{
-		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/levels/getLevels"))
+		using (UnityWebRequest request = UnityWebRequest.Get("https://foodpaketti.monster/levels/getLevels"))
 		{
 			yield return (request.SendWebRequest());
 
@@ -189,7 +189,7 @@ public static class API
 		form.AddField("xp", LevelsData.xp);
 		form.AddField("levelCompleted", LevelsData.level + 1);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
-		var download= UnityWebRequest.Post("http://localhost:3001/users/levelCompleted", form);
+		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/levelCompleted", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error saving downloading: " + download.error );
@@ -212,7 +212,7 @@ public static class API
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 		form.AddField("xp", 0);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
-		var download= UnityWebRequest.Post("http://localhost:3001/users/saveLevelGame", form);
+		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/saveLevelGame", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error saving downloading: " + download.error );
