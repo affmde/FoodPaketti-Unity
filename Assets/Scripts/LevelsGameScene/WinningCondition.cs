@@ -60,6 +60,7 @@ public class WinningCondition : MonoBehaviour
 	private void	ChangeScene()
 	{
 		GameSettings.levelCompleted = false;
+		PlayerData.gameOver = true;
 		SceneManagement.ChangeScene("CompletedLevelScene", Color.black, 0.5f);
 	}
 

@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class CompletedLevel : MonoBehaviour
 {
-	[SerializeField] AudioSource	audioSource;
-
+	[SerializeField] List<AudioSource>	audioList;
+	[SerializeField] TextMeshProUGUI	title;
 	private void Start()
 	{
-		SceneManagement.ToogleAudioSource(audioSource);
+		foreach (AudioSource audioS in audioList)
+			SceneManagement.ToogleAudioSource(audioS);
+		title.text = LevelsData.title;
 	}
 	public void	Continue()
 	{
+		audioList[1].Play();
 		StartCoroutine(SaveLevel());
 	}
 

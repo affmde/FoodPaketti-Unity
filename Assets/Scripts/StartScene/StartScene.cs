@@ -1,12 +1,15 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class StartScene : MonoBehaviour
 {
 	private AudioSource audioSource;
 	private AudioSource backtrack;
 	private SceneLoader loadingScreen;
-
-	
+	[SerializeField] GameObject	playPanel;
+	[SerializeField] GameObject	startPanel;
+	[SerializeField] List<GameObject> fruitsParts;
 	private void Awake()
 	{
 		audioSource = GameObject.Find("BtnClickSound").GetComponent<AudioSource>();
@@ -20,7 +23,29 @@ public class StartScene : MonoBehaviour
 		SceneManagement.ToogleAudioSource(backtrack);
 		SceneManagement.ToogleAudioSource(audioSource);
 		PlayerData.ResetData();
+		playPanel.SetActive(false);
 	}
+
+	public void	OpenPanel()
+	{
+		audioSource.Play();
+		playPanel.SetActive(true);
+		startPanel.SetActive(false);
+		foreach (GameObject s in fruitsParts)
+			s.GetComponent<SpriteRenderer>().sortingOrder = 0;
+	}
+
+	public void	ClosePanel()
+	{
+		audioSource.Play();
+		playPanel.SetActive(false);
+		startPanel.SetActive(true);
+		//leftFruit.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		//rightFruit.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		foreach (GameObject s in fruitsParts)
+			s.GetComponent<SpriteRenderer>().sortingOrder = 1;
+	}
+
 	public void	StartGame()
 	{
 		GameSettings.gameType = "highscores";
