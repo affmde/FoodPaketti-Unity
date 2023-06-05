@@ -54,4 +54,6 @@ SHop for powerups
 ## **_Requirements_**
 Unity: LTS Release 2021.3.25f1
 
+Facebook account
+
 Check the dependencies list. You will need to install some packages from the Download manager, if you want to open the project in the Unity editor.
