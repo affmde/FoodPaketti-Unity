@@ -28,14 +28,21 @@ Highscore game mode.
 Save score
 
 Top 10 highscore table
+
+Facebook login integration
+
+Level career mode
+
+Personal statistics and users ranking
 <br><br>
 
 ## **_Planned future feactures_**
-Facebook login integration
 
 Achievments
 
-Level career mode
+SHop for powerups
+
+
 <br><br>
 
 ## **_Preview_**
