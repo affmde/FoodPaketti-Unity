@@ -40,10 +40,13 @@ public class StartScene : MonoBehaviour
 		audioSource.Play();
 		playPanel.SetActive(false);
 		startPanel.SetActive(true);
-		//leftFruit.GetComponent<SpriteRenderer>().sortingOrder = 1;
-		//rightFruit.GetComponent<SpriteRenderer>().sortingOrder = 1;
 		foreach (GameObject s in fruitsParts)
-			s.GetComponent<SpriteRenderer>().sortingOrder = 1;
+		{
+			if (s.name == "body")
+				s.GetComponent<SpriteRenderer>().sortingOrder = 2;
+			else
+				s.GetComponent<SpriteRenderer>().sortingOrder = 3;
+		}
 	}
 
 	public void	StartGame()

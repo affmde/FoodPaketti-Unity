@@ -36,7 +36,6 @@ public class HandleStatsShow : MonoBehaviour
 
 	private void	Start()
 	{
-		Debug.Log("Parsimmons: " + PlayerPrefs.GetInt("parsimmons"));
 		StartCoroutine(LoadData());
 	}
 
@@ -109,8 +108,6 @@ public class HandleStatsShow : MonoBehaviour
 		yield return (API.GetUserHighscores());
 		yield return (SendData.FetchData());
 		continueButton.SetActive(false);
-		Debug.Log("10th wolrd score: " + GetWorld10thBestScore());
-		Debug.Log("Personal 10th score: " + GetPersonal10thBestScore());
 		StartCoroutine(DisplayStats());
 	}
 }

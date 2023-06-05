@@ -48,7 +48,6 @@ public class LevelsManager : MonoBehaviour
 		}
 		else if (unlocked && !completed)
 		{
-			Debug.Log("HEre!!!");
 			unlockImage.gameObject.SetActive(false);
 			completedImage.gameObject.SetActive(false);
 		}

@@ -10,8 +10,6 @@ public class UserRanking : MonoBehaviour
 
 	private void	Start()
 	{
-		Debug.Log("name: " + gameObject.name + " Parse name: " + int.Parse(gameObject.name));
-		Debug.Log("Count: " + API.topUsersData.topUsers.Count);
 		if (int.Parse(gameObject.name) >= API.topUsersData.topUsers.Count)
 			gameObject.SetActive(false);
 		else

@@ -23,13 +23,16 @@ public class XpBarGameOver : MonoBehaviour
 		float	targetXP;
 		float	next;
 		float	before;
-
-		for (int i = 0; i < amount; i++)
+		float	i = 0;
+		float	current = UserData.xp;
+		float	timeToWait = 2 / 0.02f;
+		float	valToIncrease = amount / timeToWait;
+		while (i < amount)
 		{
-			UserData.xp++;
+			current += valToIncrease;
 			next = GameSettings.baseLevel * Mathf.Pow(UserData.level, 1.5f);
 			before = GameSettings.baseLevel * Mathf.Pow(UserData.level - 1, 1.5f);
-			currXP = UserData.xp - before;
+			currXP = current - before;
 			targetXP = next - before;
 			UserData.playerLevelProgress = currXP / targetXP;
 			fillBar.fillAmount = UserData.playerLevelProgress;
@@ -39,11 +42,10 @@ public class XpBarGameOver : MonoBehaviour
 				UserData.level++;
 				StartCoroutine(API.LevelUp());
 			}
-			if (amount > 300)
-				yield return new WaitForSeconds(0.01f);
-			else
-				yield return (0.02f);
+			i += valToIncrease;
+			yield return (timeToWait);
 		}
+		UserData.xp += amount;
 		handleBar.continueButton.SetActive(true);
 		handleBar.experienceBar.SetActive(false);
 	}

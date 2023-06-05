@@ -11,8 +11,6 @@ public class WinningCondition : MonoBehaviour
 	private void	Start()
 	{
 		SceneManagement.ToogleAudioSource(winningSound);
-		Debug.Log("Game Started!");
-		Debug.Log("gameOver?: " + PlayerData.gameOver);
 		type = LevelsData.type;
 		GameSettings.levelCompleted = false;
 	}
@@ -20,7 +18,6 @@ public class WinningCondition : MonoBehaviour
 	private void	Update()
 	{
 		PlayerPrefs.SetFloat("duration", PlayerPrefs.GetFloat("duration") + Time.deltaTime);
-		Debug.Log("Entered the Updated of Winning condition script");
 		if (type == "scorer")
 		{
 			if (PlayerPrefs.GetInt("score") >= LevelsData.scorer)
@@ -31,7 +28,6 @@ public class WinningCondition : MonoBehaviour
 		}
 		else if (type == "survivor")
 		{
-			Debug.Log("duration: " + PlayerPrefs.GetFloat("duration") + " required: " + LevelsData.survivor);
 			if (PlayerPrefs.GetFloat("duration") >= LevelsData.survivor)
 			{
 				PlayParticle();
@@ -40,7 +36,6 @@ public class WinningCondition : MonoBehaviour
 		}
 		else if (type == "collector")
 		{
-			Debug.Log("apples oclected: " + PlayerPrefs.GetInt("apples") + " required: " + LevelsData.collector.apples);
 			if (PlayerPrefs.GetInt("apples") >= LevelsData.collector.apples && 
 				PlayerPrefs.GetInt("oranges") >= LevelsData.collector.oranges &&
 				PlayerPrefs.GetInt("bananas") >= LevelsData.collector.bananas &&

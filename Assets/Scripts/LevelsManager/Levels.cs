@@ -23,12 +23,18 @@ public class Levels : MonoBehaviour
 	{
 		yield return (API.GetLevels());
 		loadingPanel.SetActive(false);
-		int size = UserData.completedLevels.Count;
-		Debug.Log("Size of completedLogos list: " + size);
-		LevelsData.level = UserData.completedLevels[size - 1];
+		int index = UserData.completedLevels.Max();
+		Debug.Log("size: " + UserData.completedLevels.Count + " max: " + UserData.completedLevels.Max());
+		foreach(int level in UserData.completedLevels)
+			Debug.Log("Level completed: " + level);
+		if (UserData.completedLevels.Count <= 1)
+			LevelsData.level = 0;
+		else
+			LevelsData.level = UserData.completedLevels[index];
 		LevelsData.title = API.levelsData.data[LevelsData.level].title;
 		LevelsData.description = API.levelsData.data[LevelsData.level].description;
 		LevelsData.type = API.levelsData.data[LevelsData.level].type;
+		LevelsData.xp = API.levelsData.data[LevelsData.level].xp;
 		LevelsData.scorer = API.levelsData.data[LevelsData.level].scorer;
 		LevelsData.survivor = API.levelsData.data[LevelsData.level].survivor;
 		LevelsData.bananaOdd = API.levelsData.data[LevelsData.level].bananaOdd;

@@ -22,6 +22,7 @@ public struct DataForTopUsersAPI
 	public int		level;
 	public int		xp;
 	public string	username;
+	public int[]	completedLevels;
 }
 
 

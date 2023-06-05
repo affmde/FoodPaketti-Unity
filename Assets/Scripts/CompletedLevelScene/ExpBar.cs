@@ -23,14 +23,19 @@ public class ExpBar : MonoBehaviour
 		float	before;
 		float	currXP;
 		float	targetXP;
+		float	i = 0;
+		float	current = UserData.xp;
+		float	timeToWait = 2 / 0.02f;
+		float	valToIncrease = LevelsData.xp / timeToWait;
 
-		Debug.Log("Filling the button");
-		for (int i = 0; i < LevelsData.xp; i++)
+		Debug.Log("i: " + i + " xp given: " + LevelsData.xp);
+		while (i < LevelsData.xp)
 		{
-			UserData.xp++;
+			Debug.Log("i: " + i);
+			current += valToIncrease;
 			next = GameSettings.baseLevel * Mathf.Pow(UserData.level, 1.5f);
 			before = GameSettings.baseLevel * Mathf.Pow(UserData.level - 1, 1.5f);
-			currXP = UserData.xp - before;
+			currXP = current - before;
 			targetXP = next - before;
 			UserData.playerLevelProgress = currXP / targetXP;
 			fillBar.fillAmount = UserData.playerLevelProgress;
@@ -39,8 +44,10 @@ public class ExpBar : MonoBehaviour
 				UserData.level++;
 				yield return StartCoroutine(API.LevelUp());
 			}
-			yield return (0.02f);
+			i += valToIncrease;
+			yield return (timeToWait);
 		}
+		UserData.xp += LevelsData.xp;
 		gameObject.SetActive(false);
 		continueButton.SetActive(true);
 	}
