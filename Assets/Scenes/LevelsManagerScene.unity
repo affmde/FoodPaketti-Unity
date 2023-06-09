@@ -4522,7 +4522,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 1335938712}
   completedImage: {fileID: 1892579388}
-  levelText: {fileID: 2076370634}
+  levelText: {fileID: 590910734}
   buttonClick: {fileID: 732932067}
 --- !u!114 &354592190
 MonoBehaviour:
@@ -9806,7 +9806,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 81796911}
   completedImage: {fileID: 1159265140}
-  levelText: {fileID: 195387519}
+  levelText: {fileID: 619061574}
   buttonClick: {fileID: 732932067}
 --- !u!114 &941210877
 MonoBehaviour:
@@ -18133,7 +18133,7 @@ MonoBehaviour:
   completed: 0
   unlockImage: {fileID: 295936688}
   completedImage: {fileID: 372879570}
-  levelText: {fileID: 174691269}
+  levelText: {fileID: 1460849876}
   buttonClick: {fileID: 732932067}
 --- !u!114 &1828853861
 MonoBehaviour:

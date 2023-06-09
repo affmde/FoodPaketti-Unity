@@ -30,29 +30,40 @@ public class Levels : MonoBehaviour
 		if (UserData.completedLevels.Count <= 1)
 			LevelsData.level = 0;
 		else
-			LevelsData.level = UserData.completedLevels[index];
-		LevelsData.title = API.levelsData.data[LevelsData.level].title;
-		LevelsData.description = API.levelsData.data[LevelsData.level].description;
-		LevelsData.type = API.levelsData.data[LevelsData.level].type;
-		LevelsData.xp = API.levelsData.data[LevelsData.level].xp;
-		LevelsData.scorer = API.levelsData.data[LevelsData.level].scorer;
-		LevelsData.survivor = API.levelsData.data[LevelsData.level].survivor;
-		LevelsData.bananaOdd = API.levelsData.data[LevelsData.level].bananaOdd;
-		LevelsData.appleOdd = API.levelsData.data[LevelsData.level].appleOdd;
-		LevelsData.orangeOdd = API.levelsData.data[LevelsData.level].orangeOdd;
-		LevelsData.difficulty = API.levelsData.data[LevelsData.level].difficulty;
-		LevelsData.collector = API.levelsData.data[LevelsData.level].collector;
-		LevelsData.collector.bananas = API.levelsData.data[LevelsData.level].collector.bananas;
-		LevelsData.collector.apples = API.levelsData.data[LevelsData.level].collector.apples;
-		LevelsData.collector.oranges = API.levelsData.data[LevelsData.level].collector.oranges;
-		LevelsData.collector.totalFruits = API.levelsData.data[LevelsData.level].collector.totalFruits;
-		LevelsData.collector.parsimmons = API.levelsData.data[LevelsData.level].collector.parsimmons;
-		LevelsData.collector.watermelons = API.levelsData.data[LevelsData.level].collector.watermelons;
+			LevelsData.level = index;
+		LevelsStruct currentLevel = FindCurrentLevel(index + 1);
+		LevelsData.title = currentLevel.title;
+		LevelsData.description = currentLevel.description;
+		LevelsData.type = currentLevel.type;
+		LevelsData.xp = currentLevel.xp;
+		LevelsData.scorer = currentLevel.scorer;
+		LevelsData.survivor = currentLevel.survivor;
+		LevelsData.bananaOdd = currentLevel.bananaOdd;
+		LevelsData.appleOdd = currentLevel.appleOdd;
+		LevelsData.orangeOdd = currentLevel.orangeOdd;
+		LevelsData.difficulty = currentLevel.difficulty;
+		LevelsData.collector = currentLevel.collector;
+		LevelsData.collector.bananas = currentLevel.collector.bananas;
+		LevelsData.collector.apples = currentLevel.collector.apples;
+		LevelsData.collector.oranges = currentLevel.collector.oranges;
+		LevelsData.collector.totalFruits = currentLevel.collector.totalFruits;
+		LevelsData.collector.parsimmons = currentLevel.collector.parsimmons;
+		LevelsData.collector.watermelons = currentLevel.collector.watermelons;
 	}
 
 	public void	Return()
 	{
 		audioList[1].Play();
 		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
+	}
+
+	LevelsStruct	FindCurrentLevel(int currentLevel)
+	{
+		foreach (var l in API.levelsData.data)
+		{
+			if (l.level == currentLevel)
+				return (l);
+		}
+		return (null);
 	}
 }

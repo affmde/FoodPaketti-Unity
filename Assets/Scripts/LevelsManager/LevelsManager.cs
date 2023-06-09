@@ -38,6 +38,7 @@ public class LevelsManager : MonoBehaviour
 			unlocked = true;
 		}
 		UpdateLevelImage();
+		Debug.Log("current level: " + LevelsData.level);
 	}
 
 	private void	UpdateLevelImage()
