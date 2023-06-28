@@ -39,7 +39,7 @@ public class TouchManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (!PlayerData.gameOver)
+		if (!PlayerData.gameOver && !PlayerData.isPaused)
 		{
 			Vector2 pos = touchAction.Touch.TouchPosition.ReadValue<Vector2>();
 			touchToWorld = Camera.main.ScreenToWorldPoint(pos);

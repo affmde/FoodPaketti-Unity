@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public static class PlayerData
 {
 	public static bool	gameOver = false;
+	public static bool	isPaused = false;
 	public static bool	bombDefused = false;
 	public static void	ResetData()
 	{
@@ -21,6 +22,7 @@ public static class PlayerData
 		PlayerPrefs.SetString("username", "");
 		PlayerPrefs.SetInt("multiplier", 1);
 		PlayerData.gameOver = false;
+		PlayerData.isPaused = false;
 		PlayerData.bombDefused = false;
 	}
 }
