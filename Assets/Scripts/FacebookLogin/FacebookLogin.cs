@@ -101,6 +101,7 @@ public class FacebookLogin : MonoBehaviour{
 			registerScreen.SetActive(true);
 			facebookButton.enabled = true;
 		}
+		PlayerPrefs.SetInt("registerMode", 1);
 	}
 	void DisplayUsername(IResult result)
 	{

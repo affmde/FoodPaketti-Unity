@@ -14,6 +14,8 @@ public class RegisterScene : MonoBehaviour
 
 	private void	Start()
 	{
+		if (PlayerPrefs.GetInt("login") == 1)
+			SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 		audioSource.Play();
 	}
 }

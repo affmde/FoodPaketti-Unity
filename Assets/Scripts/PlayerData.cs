@@ -19,7 +19,6 @@ public static class PlayerData
 		PlayerPrefs.SetInt("watermelons", 0);
 		PlayerPrefs.SetInt("totalFruits", 0);
 		PlayerPrefs.SetFloat("duration", 0);
-		PlayerPrefs.SetString("username", "");
 		PlayerPrefs.SetInt("multiplier", 1);
 		PlayerData.gameOver = false;
 		PlayerData.isPaused = false;

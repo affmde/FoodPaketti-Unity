@@ -42,6 +42,7 @@ public class Settings : MonoBehaviour
 			FB.LogOut();
 			StartCoroutine("CheckFacebookLogout");
 		}
+		PlayerPrefs.SetInt("login", 0);
 		
 	}
 

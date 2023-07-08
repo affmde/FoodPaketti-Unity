@@ -72,15 +72,15 @@ public class HandleStatsShow : MonoBehaviour
 		{
 			yes.gameObject.SetActive(true);
 			if (i == 0)
-				xpAmountToAdd += 400;
+				xpAmountToAdd += 200;
 			else if (i == 1)
-				xpAmountToAdd += 250;
+				xpAmountToAdd += 150;
 			else if (i == 2)
 				xpAmountToAdd += 1000;
 			else if (i == 3)
 				xpAmountToAdd += 600;
 			else if (i == 4)
-				xpAmountToAdd += 300;
+				xpAmountToAdd += 100;
 		}
 		else
 			no.gameObject.SetActive(true);
@@ -104,9 +104,9 @@ public class HandleStatsShow : MonoBehaviour
 
 	private IEnumerator	LoadData()
 	{
-		yield return (API.GetWorldRecord());
-		yield return (API.GetUserHighscores());
-		yield return (SendData.FetchData());
+		yield return (StartCoroutine(API.GetWorldRecord()));
+		yield return (StartCoroutine(API.GetUserHighscores()));
+		yield return (StartCoroutine(SendData.FetchData()));
 		continueButton.SetActive(false);
 		StartCoroutine(DisplayStats());
 	}

@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ReadInputField : MonoBehaviour
 {
-	string input;
+	[SerializeField] private string idName;
 	public void ReadInputString(string str)
 	{
-		input = str;
-		Debug.Log("input: " + input);
+		Debug.Log("id name: " + idName);
+		if (idName == "Username")
+			LoginDataManager.username = str;
+		else if (idName == "Password")
+			LoginDataManager.password = str;
 	}
 }

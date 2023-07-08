@@ -31,12 +31,63 @@ public static class API
 		SceneManagement.ChangeScene("StartScene", Color.black, 1f);
 	}
 
+	public static IEnumerator RegisterUserToDatabase(string username, string password, string name, string email)
+	{
+		WWWForm form = new WWWForm();
+		form.AddField("username", username);
+		form.AddField("password", password);
+		form.AddField("name", name);
+		form.AddField("email", email);
 
+		var download= UnityWebRequest.Post("http://localhost:3001/users/registerUser", form);
+		yield return download.SendWebRequest();
+		if (download.result != UnityWebRequest.Result.Success)
+		{
+			UserData.userDataJson = download.downloadHandler.text;
+			UserDataToAPI userData = JsonUtility.FromJson<UserDataToAPI>(UserData.userDataJson);
+			LoginDataManager.errorMessage = userData.message;
+			LoginDataManager.userCreatedSuccessfully = false;
+			Debug.Log( "Error downloading: " + download.error );
+		}
+		else
+		{
+			Debug.Log(download.downloadHandler.text);
+			UserData.userDataJson = download.downloadHandler.text;
+			DataParser.UserDataParser();
+			LoginDataManager.userCreatedSuccessfully = true;
+		}
+	}
+
+	public static IEnumerator UserLogin()
+	{
+		WWWForm form = new WWWForm();
+		form.AddField("username", LoginDataManager.username);
+		form.AddField("password", LoginDataManager.password);
+
+		var download= UnityWebRequest.Post("http://localhost:3001/users/login", form);
+		yield return download.SendWebRequest();
+		if (download.result != UnityWebRequest.Result.Success)
+		{
+			PlayerPrefs.SetInt("login", 0);
+			UserData.userDataJson = download.downloadHandler.text;
+			UserDataToAPI userData = JsonUtility.FromJson<UserDataToAPI>(UserData.userDataJson);
+			LoginDataManager.errorMessage = userData.message;
+			LoginDataManager.userLoggedSuccessfully = false;
+			Debug.Log( "Error downloading: " + download.error );
+		}
+		else
+		{
+			UserData.userDataJson = download.downloadHandler.text;
+			LoginDataManager.userLoggedSuccessfully = true;
+			DataParser.UserDataParser();
+		}
+	}
 	public static IEnumerator SaveGameData(int xp)
 	{
 		WWWForm form = new WWWForm();
 		form.AddField("username", UserData.username);
-		form.AddField("facebookId", UserData.facebookId);
+		if (PlayerPrefs.GetInt("registerMode") == 1)
+			form.AddField("facebookId", UserData.facebookId);
 		form.AddField("score", PlayerPrefs.GetInt("score"));
 		form.AddField("apples", PlayerPrefs.GetInt("apples"));
 		form.AddField("bananas", PlayerPrefs.GetInt("bananas"));
@@ -47,20 +98,28 @@ public static class API
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 		form.AddField("xp", xp);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/highscoregame", form);
+		var download= UnityWebRequest.Post("http://localhost:3001/users/highscoregame", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error saving downloading: " + download.error );
 		else
+		{
+			LoginDataManager.userCreatedSuccessfully = true;
 			Debug.Log(download.downloadHandler.text);
+		}
 	}
 
 	public static IEnumerator GetUserData()
 	{
 		WWWForm form = new WWWForm();
-		form.AddField("username", UserData.username);
-		form.AddField("facebookId", UserData.facebookId);
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/getUserInfo", form);
+		if (PlayerPrefs.GetInt("registerMode") == 0)
+			form.AddField("username", PlayerPrefs.GetString("username"));
+		else
+		{
+			form.AddField("username", UserData.username);
+			form.AddField("facebookId", UserData.facebookId);
+		}
+		var download= UnityWebRequest.Post("http://localhost:3001/users/getUserInfo", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 		{
@@ -79,7 +138,7 @@ public static class API
 
 	public static IEnumerator GetWorldRecord()
 	{
-		using (UnityWebRequest request = UnityWebRequest.Get("https://foodpaketti.monster/save/getWorldRecord"))
+		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/save/getWorldRecord"))
 		{
 			yield return (request.SendWebRequest());
 
@@ -106,7 +165,7 @@ public static class API
 		string	facebookId = UserData.facebookId;
 		form.AddField("facebookId", facebookId);
 
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/levelUp", form);
+		var download= UnityWebRequest.Post("http://localhost:3001/users/levelUp", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error downloading: " + download.error );
@@ -121,9 +180,14 @@ public static class API
 	public static IEnumerator GetUserHighscores()
 	{
 		WWWForm form = new WWWForm();
-		form.AddField("username", UserData.username);
-		form.AddField("facebookId", UserData.facebookId);
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/getUserHeighScores", form);
+		if (PlayerPrefs.GetInt("registerMode") == 0)
+			form.AddField("username", PlayerPrefs.GetString("username"));
+		else
+		{
+			form.AddField("username", UserData.username);
+			form.AddField("facebookId", UserData.facebookId);
+		}
+		var download= UnityWebRequest.Post("http://localhost:3001/users/getUserHeighScores", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 		{
@@ -142,7 +206,7 @@ public static class API
 
 	public static IEnumerator GetTopUsers()
 	{
-		using (UnityWebRequest request = UnityWebRequest.Get("https://foodpaketti.monster/users/topUsers"))
+		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/users/topUsers"))
 		{
 			yield return (request.SendWebRequest());
 
@@ -158,7 +222,7 @@ public static class API
 
 	public static IEnumerator GetLevels()
 	{
-		using (UnityWebRequest request = UnityWebRequest.Get("https://foodpaketti.monster/levels/getLevels"))
+		using (UnityWebRequest request = UnityWebRequest.Get("http://localhost:3001/levels/getLevels"))
 		{
 			yield return (request.SendWebRequest());
 
@@ -189,7 +253,7 @@ public static class API
 		form.AddField("xp", LevelsData.xp);
 		form.AddField("levelCompleted", LevelsData.level + 1);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/levelCompleted", form);
+		var download= UnityWebRequest.Post("http://localhost:3001/users/levelCompleted", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error saving downloading: " + download.error );
@@ -212,7 +276,7 @@ public static class API
 		form.AddField("duration", Mathf.FloorToInt(PlayerPrefs.GetFloat("duration")));
 		form.AddField("xp", 0);
 		form.AddField("totalFruits", PlayerPrefs.GetInt("totalFruits"));
-		var download= UnityWebRequest.Post("https://foodpaketti.monster/users/saveLevelGame", form);
+		var download= UnityWebRequest.Post("http://localhost:3001/users/saveLevelGame", form);
 		yield return download.SendWebRequest();
 		if (download.result != UnityWebRequest.Result.Success)
 			Debug.Log( "Error saving downloading: " + download.error );
