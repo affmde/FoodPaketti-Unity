@@ -9,5 +9,6 @@ public static class LoginDataManager
 	public static bool userCreatedSuccessfully;
 	public static bool userLoggedSuccessfully;
 	public static string errorMessage;
+	public static bool success;
 }
 

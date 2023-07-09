@@ -11,6 +11,9 @@ public class HandleSignUp : MonoBehaviour
 	[SerializeField] Image errorArea;
 	[SerializeField] TextMeshProUGUI errorMessage;
 	[SerializeField] GameObject panel;
+	[SerializeField] GameObject loadingPanel;
+	[SerializeField] GameObject signinPanel;
+	[SerializeField] GameObject signupPanel;
 
 	private void Start()
 	{
@@ -56,6 +59,7 @@ public class HandleSignUp : MonoBehaviour
 		if (!isReadyToConfirm())
 		{
 			errorArea.gameObject.SetActive(true);
+			errorArea.color = Color.red;
 			return ;
 		}
 		errorArea.gameObject.SetActive(false);
@@ -64,15 +68,21 @@ public class HandleSignUp : MonoBehaviour
 
 	private IEnumerator Register()
 	{
+		loadingPanel.SetActive(true);
 		yield return (StartCoroutine(API.RegisterUserToDatabase(inputList[0].text, inputList[1].text, inputList[3].text, inputList[4].text)));
 		if (LoginDataManager.userCreatedSuccessfully)
 		{
-			panel.SetActive(false);
+			loadingPanel.SetActive(false);
+			signupPanel.SetActive(false);
+			signinPanel.SetActive(true);
+			foreach(TMP_InputField input in inputList)
+				input.text = "";
 		}
 		else
 		{
 			errorArea.gameObject.SetActive(true);
 			errorMessage.text = LoginDataManager.errorMessage;
+			loadingPanel.SetActive(false);
 		}
 	}
 }

@@ -90,6 +90,7 @@ public class FacebookLogin : MonoBehaviour{
 
 	void DealWithFbMenus(bool isLoggedIn)
 	{
+		loadingScreen.SetActive(true);
 		if (isLoggedIn)
 		{
 			FB.API("/me?fields=first_name",HttpMethod.GET,DisplayUsername);

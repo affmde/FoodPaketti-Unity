@@ -26,6 +26,7 @@ public class LoginUser : MonoBehaviour
 		if (LoginDataManager.userLoggedSuccessfully == false)
 		{
 			errorArea.gameObject.SetActive(true);
+			errorArea.color = Color.red;
 			errorMessage.text = LoginDataManager.errorMessage;
 			loading.gameObject.SetActive(false);
 		}

@@ -47,6 +47,7 @@ public static class API
 			UserDataToAPI userData = JsonUtility.FromJson<UserDataToAPI>(UserData.userDataJson);
 			LoginDataManager.errorMessage = userData.message;
 			LoginDataManager.userCreatedSuccessfully = false;
+			LoginDataManager.success = false;
 			Debug.Log( "Error downloading: " + download.error );
 		}
 		else
@@ -55,6 +56,8 @@ public static class API
 			UserData.userDataJson = download.downloadHandler.text;
 			DataParser.UserDataParser();
 			LoginDataManager.userCreatedSuccessfully = true;
+			LoginDataManager.success = true;
+			LoginDataManager.errorMessage = "User created successfuly.";
 		}
 	}
 
@@ -73,12 +76,14 @@ public static class API
 			UserDataToAPI userData = JsonUtility.FromJson<UserDataToAPI>(UserData.userDataJson);
 			LoginDataManager.errorMessage = userData.message;
 			LoginDataManager.userLoggedSuccessfully = false;
+			LoginDataManager.success = false;
 			Debug.Log( "Error downloading: " + download.error );
 		}
 		else
 		{
 			UserData.userDataJson = download.downloadHandler.text;
 			LoginDataManager.userLoggedSuccessfully = true;
+			LoginDataManager.success = true;
 			DataParser.UserDataParser();
 		}
 	}
