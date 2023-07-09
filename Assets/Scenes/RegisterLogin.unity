@@ -159,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -31.99997, y: -32}
+  m_AnchoredPosition: {x: -32, y: -32}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163946674
@@ -1371,7 +1371,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 201, y: 0.0000076293945}
+  m_AnchoredPosition: {x: 201, y: 0}
   m_SizeDelta: {x: -399.6, y: 0.000015259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427614303
@@ -3343,7 +3343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -8.329987, y: -69.27998}
+  m_AnchoredPosition: {x: -8.329956, y: -69.28003}
   m_SizeDelta: {x: -16.68, y: -157.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969229733
@@ -4716,7 +4716,6 @@ GameObject:
   - component: {fileID: 1195864602}
   - component: {fileID: 1195864601}
   - component: {fileID: 1195864604}
-  - component: {fileID: 1195864605}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4759,7 +4758,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7.5
+  orthographic size: 10.125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4805,23 +4804,6 @@ MonoBehaviour:
   wireColor: {r: 1, g: 1, b: 1, a: 1}
   UnitsSize: 36
   constraint: 0
-  camera: {fileID: 1195864602}
-  executeInUpdate: 1
---- !u!114 &1195864605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1195864600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d55d83e4c4d956e4e942a11a7bdc6839, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wireColor: {r: 1, g: 1, b: 1, a: 1}
-  UnitsSize: 15
-  constraint: 1
   camera: {fileID: 1195864602}
   executeInUpdate: 1
 --- !u!1 &1201571471
@@ -5179,7 +5161,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -199.79996, y: 0.0000076293945}
+  m_AnchoredPosition: {x: -199.79996, y: 0}
   m_SizeDelta: {x: -399.6, y: 0.000015259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1306396869
